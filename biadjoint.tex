@@ -13,9 +13,14 @@
 \usepackage{lmodern}
 \usepackage[hidelinks]{hyperref}
 \usepackage{cleveref}
-
+\usepackage[enable]{darkmode}
+\definecolor{marlight}{RGB}{156, 155, 0}
+\sethlcolor{marlight}
+\usepackage[style=numeric,backend=biber]{biblatex}
+\addbibresource{references.bib}
 
 \titleformat{\section}[block]{\normalsize\filcenter}{\thesection}{1em}{\MakeUppercase}
+
 
 \numberwithin{equation}{section}
 
@@ -29,8 +34,11 @@
 \theoremstyle{remark}
 \newtheorem{rem}[thm]{Remark}
 
+\theoremstyle{remark}
+\newtheorem{exa}[thm]{Example}
+
 \title{On Biadjoint Triangles}
-\author{Kate Birch}
+\author{K}
 \date{\today}
 
 \begin{document}
@@ -43,227 +51,41 @@
 \newpage
 
 \pagenumbering{arabic}
-\paragraph{Introduction}
 
-Let us write $ \textbf{A}(A,B)$ to denote $ \textsf{Hom}_{\textbf{A}}(A,B)$.
-%In this talk, let \textit{closed category} mean \textit{bicomplete, symmetric, monoidal closed category}. 
-%That is, a closed category $ \mathcal{V}$ has equalisers, coequalisers, set-indexed products and coproducts, as well as a \textit{monoidal} structure which is symmetric and closed.
+\section{Monads}
 
-\begin{defn}
-	A \textit{monoidal structure} on a category $ \mathcal{V}$ is given by a functor $\otimes: \mathcal{V}\times \mathcal{V} \longrightarrow \mathcal{V}$	
-	which is associative
-		\[
-		u \otimes (v\otimes w) \simeq (u\otimes v) \otimes w
-		\] 
-	and has a unit object $ k$ such that
-		\[
-		k \otimes v \simeq v \simeq v \otimes k.
-		\] 
-	It is furthermore \textit{symmetric} if 
-		\[
-		u \otimes v \simeq v \otimes u.
-		\] 
-\end{defn}
+No self-respecting wannabe category theorist would leave out a description of monads.
+In this section, a comprehensive overview of monads will be given, with the Kleisli and Eilenberg-Moore categories defined in detail.
+Much of this comes directly from Mac Lane, and will begin with a quick remark on composeability of functors and natural transformations.\\
 
-\begin{defn}
-	A monoidal structure is \textit{closed} if there is a functor
-	$\mathcal{V}(-,-):\mathcal{V}^{ \textsf{op}} \times \mathcal{V} \longrightarrow \mathcal{V}$
-	such that $ \mathcal{V}(a, -)$ is right adjoint to $ a \, \otimes \, -$ for each $ a$ in $ \mathcal{V}$.
-    In other words,
-        \[
-	    \mathcal{V}(a  \otimes  -, *) \approx \mathcal{V}(-, \mathcal{V}(a, *)).
-	    \]
-    In particular, there is a natural bijection $\mathcal{V}(a,v) \approx \mathcal{V}(k, \mathcal{V}(a,v)).$\\
+For a category $\mathbb{ A} $, and endofunctor $T:\mathbb{A} \to \mathbb{A}$ there are composites $T^2 = T \circ T$ and $T^3 = T^2 \circ T$. 
+If, additionally, there is a natural transformation $\mu: T^2\to T$ then, for each $ a $ in $\mathbb{ A} $, the natural transformations $T\mu, \mu T: T^3\to T^2 $ have, respectively components $(T\mu)_a= T\mu _a$, and $(\mu T)_a = \mu_{Ta} $ .
 
-\end{defn}
-
-Let's look at the data of this adjunction. 
-The unit and counit are $\lambda _{u}: u \longrightarrow \mathcal{V}(a,a \otimes u)$ and	$\epsilon _{v}: a \, \otimes \,  \mathcal{V}(a,v) \longrightarrow v$.
-The bijections are given by the procedure:
-
-	\begin{center}
-		$a\, \otimes \, u \xrightarrow{f} v \text{  is sent to  } u \xrightarrow{ \lambda_{u}}  \mathcal{V}(a, a\, \otimes \, u) \xrightarrow{ \mathcal{V}(a,f)} \mathcal{V}(a,v)$\\
-
-		$u \xrightarrow{g}  \mathcal{V}(a,v)  \text{  is sent to  } a\, \otimes \, u \xrightarrow{ a \, \otimes \, g} a \, \otimes \mathcal{V}(a,v) \xrightarrow{ \epsilon _{,v}} v$.
-	\end{center}
-
-
-Since $ \epsilon $ can be thought of as an evaluation, a form of composition $	\mathcal{V}(a,b) \otimes \mathcal{V}(b,c) \longrightarrow \mathcal{V}(a,c)$
-which is calculated at each $ a$ in $ \mathcal{V}$ as:
-	\begin{center}
-	$a \otimes ( \mathcal{V}(a,b) \otimes \mathcal{V}(b,c) ) \xrightarrow{ \simeq} 	(a \otimes  \mathcal{V}(a,b)) \otimes \mathcal{V}(b,c) 
-	 \xrightarrow{ \epsilon_b \otimes 1 _{ \mathcal{V}(b,c)}} b \otimes \mathcal{V}(b,c) \xrightarrow{ \epsilon'_c} c. $\\
-	\end{center}
-There is also a natural double-dual morphism $u \longrightarrow \mathcal{V}( \mathcal{V}(u,b),b)$ for any fixed object $ b$.\\
-
-%\begin{rem}
-%	In some texts, it is closed if $ \mathcal{V}(a,-)$ is right adjoint to $ -\otimes a$, but in Lawvere's paper it is not.
-%\end{rem}
-
-\begin{exa}
-	
-Today we are interested in the monoidal closed categories \textbf{2} and $\overline{ \mathbb{R}}_+$.
-    \textbf{2} is the category with two objects, $ \textsf{true}$ and $ \textsf{false}$, and three morphisms:
-	\begin{align*}
-		\textsf{false} &\vdash \textsf{true}\\
-		\textsf{false} &\vdash \textsf{true}\\
-		\textsf{true} &\vdash \textsf{true}
-	\end{align*}
-where $ \textsf{true}$ is the identity, $ \wedge$ is $ \otimes$, and $\implies$ is $ \textsf{Hom}$. 
-$ \wedge$ is symmetric and associative.
-Since 
-	\begin{center}
-		$ u \vdash a \implies (a \wedge u)$\\
-		$ a \wedge (a \implies v) \vdash v$
-	\end{center}
-then we have the bijections
-	\begin{center}
-	    $(a \wedge u \vdash v) \iff (u \vdash (a \implies v))$\\
-        $(a \vdash v) \iff ( \textsf{true} \vdash a \implies v)$\\
-        $(a \implies b) \wedge (b\implies c) \vdash a \implies c$\\
-        $u \vdash (u \implies b) \implies b.$
-	\end{center}
-This is a monoidal structure.\\
-
-\end{exa}
-
- \begin{defn}
-	A \textit{ $ \mathcal{V}$-category} $\textbf{A}$ consists of a class $  \textsf{ob}\textbf{A}$ of \textit{objects} and:
-    \begin{enumerate}
-        \item A \textit{hom-object} $  \textbf{A}(a,b) \in \textsf{ob}\mathcal{V}$ for each pair of objects of $ \textbf{A}$;
-        \item For each triple of objects, a \textit{composition law} $ \mu=\mu _{abc}: \textbf{A}(a,b) \otimes \textbf{A}(b,c) \longrightarrow \textbf{A}(a,c)  $;
-        \item An \textit{identity} $ j_a: I \longrightarrow \textbf{A}(a,a) $ for each object $a$
-    \end{enumerate} 
-    subject to the associativity and unity axioms expressed by the commutativity of:
-		% https://q.uiver.app/#q=WzAsMTAsWzAsMCwiKFxcdGV4dHNme0hvbX1fe1xcbWF0aGNhbHtBfX0oQyxEKVxcb3RpbWVzIFxcdGV4dHNme0hvbX1fe1xcbWF0aGNhbHtBfX0oQixDKSlcXG90aW1lcyBcXHRleHRzZntIb219X3tcXG1hdGhjYWx7QX19KEEsQikgIl0sWzIsMCwiXFx0ZXh0c2Z7SG9tfV97XFxtYXRoY2Fse0F9fShDLEQpXFxvdGltZXMgKFxcdGV4dHNme0hvbX1fe1xcbWF0aGNhbHtBfX0oQixDKVxcb3RpbWVzIFxcdGV4dHNme0hvbX1fe1xcbWF0aGNhbHtBfX0oQSxCKSkgIl0sWzAsMSwiXFx0ZXh0c2Z7SG9tfV97XFxtYXRoY2Fse0F9fShCLEQpXFxvdGltZXMgXFx0ZXh0c2Z7SG9tfV97XFxtYXRoY2Fse0F9fShBLEIpIl0sWzIsMSwiXFx0ZXh0c2Z7SG9tfV97XFxtYXRoY2Fse0F9fShDLEQpXFxvdGltZXMgXFx0ZXh0c2Z7SG9tfV97XFxtYXRoY2Fse0F9fShBLEMpIl0sWzEsMiwiXFx0ZXh0c2Z7SG9tfV97XFxtYXRoY2Fse0F9fShBLEQpKSJdLFswLDMsIlxcdGV4dHNme0hvbX1fe1xcbWF0aGNhbHtBfX0oQixCKVxcb3RpbWVzIFxcdGV4dHNme0hvbX1fe1xcbWF0aGNhbHtBfX0oQSxCKSkiXSxbMSwzLCJcXHRleHRzZntIb219X3tcXG1hdGhjYWx7QX19KEEsQikiXSxbMiwzLCJcXHRleHRzZntIb219X3tcXG1hdGhjYWx7QX19KEEsQilcXG90aW1lcyBcXHRleHRzZntIb219X3tcXG1hdGhjYWx7QX19KEEsQSkiXSxbMCw0LCJJXFxvdGltZXMgXFx0ZXh0c2Z7SG9tfV97XFxtYXRoY2Fse0F9fShBLEIpIl0sWzIsNCwiXFx0ZXh0c2Z7SG9tfV97XFxtYXRoY2Fse0F9fShBLEIpXFxvdGltZXMgSSJdLFswLDEsImEiXSxbMCwyLCJNXFxvdGltZXMgMSIsMl0sWzIsNCwiTSIsMl0sWzMsNCwiTSJdLFsxLDMsIjFcXG90aW1lcyBNIl0sWzksNywiMVxcb3RpbWVzIGoiXSxbOCw1LCJqXFxvdGltZXMgMSJdLFs4LDYsImwiLDJdLFs1LDYsIk0iXSxbNyw2LCJNIiwyXSxbOSw2LCJyIl1d
-		\[\begin{tikzcd}[column sep=tiny]
-			{(\textbf{A}(a,b)\otimes \textbf{A}(b,c))\otimes\textbf{A}(c,d) } && {\textbf{A}(a,b)\otimes (\textbf{A}(b,c)\otimes\textbf{A}(c,d)) } \\
-			{\textbf{A}(a,c)\otimes \textbf{A}(c,d)} && {\textbf{A}(a,b)\otimes \textbf{A}(b,d)} \\
-			& {\textbf{A}(a,d))} \\
-			{\textbf{A}(a,a)\otimes \textbf{A}(a,b)} & {\textbf{A}(a,b)} & {\textbf{A}(a,b)\otimes \textbf{A}(b,b)} \\
-			{I\otimes \textbf{A}(a,b)} && {\textbf{A}(a,b)\otimes I}
-			\arrow["{\simeq}", from=1-1, to=1-3]
-			\arrow["{\mu\otimes 1}"', from=1-1, to=2-1]
-			\arrow["{1\otimes \mu}", from=1-3, to=2-3]
-			\arrow["\mu"', from=2-1, to=3-2]
-			\arrow["\mu", from=2-3, to=3-2]
-			\arrow["\mu", from=4-1, to=4-2]
-			\arrow["\mu"', from=4-3, to=4-2]
-			\arrow["{j\otimes 1}", from=5-1, to=4-1]
-			\arrow["\simeq"', from=5-1, to=4-2]
-			\arrow["\simeq", from=5-3, to=4-2]
-			\arrow["{1\otimes j}"', from=5-3, to=4-3]
-		\end{tikzcd}\]
-	
-\end{defn}
-
-\begin{defn}
-	For $ \mathcal{V} $-categories $ \textbf{A}$ and $ \textbf{B}$, a \textit{ $ \mathcal{V}$-functor} $ T: \textbf{A} \longrightarrow  \textbf{B}$ consists of a function 
-	\[
-	T:\textsf{ob} \textbf{A} \longrightarrow \textsf{ ob} \textbf{B}	
-	\] 
-together with, for each pair $ a,b \in \textsf{ob} \textbf{A}$, a map 
-	\[
-		T _{ab}: \textbf{A}(a,b) \longrightarrow \textbf{B}(Ta,Tb)  
-	\] 
-subject to the compatibility with composition and the identities.
+\begin{defn} \cite{MaclCT}
+A \textit{monad} $T=( T,\eta, \mu ) $ in a category $\mathbb{A}$ consists of a functor $T:\mathbb{A}\longrightarrow\mathbb{A}$ and two natural transformations
+\begin{align*}
+\eta:1_\mathbb{A}\longrightarrow T, \quad \mu: T^2\longrightarrow T
+\end{align*}
+such that the following diagrams commute:
+\[\begin{tikzcd}
+{T^3} & {T^2} & 1T & {T^2} & T1 & (1)\\
+{T^2} & T & T & T & T
+\arrow["{T\mu}", from=1-1, to=1-2]
+\arrow["{\mu T}"', from=1-1, to=2-1]
+\arrow["\mu", from=1-2, to=2-2]
+\arrow["{\eta T}", from=1-3, to=1-4]
+\arrow["{||}"{description}, draw=none, from=1-3, to=2-3]
+\arrow["\mu"', from=1-4, to=2-4]
+\arrow["{T \eta}"', from=1-5, to=1-4]
+\arrow["{||}"{description}, draw=none, from=1-5, to=2-5]
+\arrow["\mu"', from=2-1, to=2-2]
+\arrow["{=}"{description}, draw=none, from=2-3, to=2-4]
+\arrow["{=}"{description}, draw=none, from=2-4, to=2-5]
+\end{tikzcd}\]
 \end{defn}
 
 
-\begin{defn}
-    A functor $ \mathcal{V} \xrightarrow{\phi} \mathcal{W}$ between monoidal structures is \textit{closed} if it preserves the monoidal structure of $ \mathcal{V}$ (the identity, $\otimes$).
-\end{defn}
 
-\begin{thm} Our results:
-    \begin{enumerate}
-        \item If $\mathcal{V} \xrightarrow{\phi} \mathcal{W}$ is a closed functor and \textbf{A} a $ \mathcal{V}$-category, then $ (\phi \textbf{A})(a,b) = \phi( \textbf{A}(a,b))$ defines a $\mathcal{W}$-category $\phi \textbf{A}$ with the same objects as \textbf{A}.
-        \item If $ \textbf{A} \xrightarrow{T} \textbf{B}$ is a $\mathcal{V}$-functor, then we obtain a $ \mathcal{W}$ functor $\phi \textbf{A} \xrightarrow{\phi T} \phi \textbf{B}$.
-        \item If $ \mathcal{V}$ is small and $ \mathcal{V} \xrightarrow{\phi} \mathcal{W}$ is a closed functor, then $ \phi \mathcal{V}$ is a $\mathcal{W}$-category. 
-    \end{enumerate}
-\end{thm}
-
-\section{Enriched Adjoint Triangles}
-
-For a complete, cocomplete and \hl{symmetric} monoidal \hl{closed} category $ \mathcal{V}$. 
-Assume $ L: \mathbb{B} \longrightarrow  \mathbb{C}$ is a \hl{$ \mathcal{V}$-functor} and $ (L \vdash U,\eta,\epsilon)$ is a \hl{$ \mathcal{V}$-adjunction}.
-We denote by 
-	\[
-	\chi: \mathbb{C}(L-,-) \cong \mathbb{B}(-,U-)
-	\] 
-its associated \hl{ $ \mathcal{V}$-natural} isomorphism. 
-So for every object $ X$ in $ \mathbb{B}$, and every object $ Z$ in $ \mathbb{C}$,
-    \[
-    \chi _{(X,Z)}= \mathbb{B}(\eta_X, UZ)\circ U _{LX,Z}
-    \] 
-
-\begin{thm}\label{thm:enrichedadjointtriangle}
-	Let $ (L \vdash U,\eta,\epsilon)$, $ (E \vdash R,\rho,\mu)$ be $ \mathcal{V}$-adjunctions such that 
-		% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG1hdGhiYntBfSJdLFsyLDAsIlxcbWF0aGJie0J9Il0sWzEsMSwiXFxtYXRoYmJ7Q30iXSxbMCwxLCJKIl0sWzEsMiwiTCIsMCx7Im9mZnNldCI6LTJ9XSxbMCwyLCJFIiwyLHsib2Zmc2V0IjoyfV0sWzIsMSwiVSIsMCx7Im9mZnNldCI6LTF9XSxbMiwwLCJSIiwyLHsib2Zmc2V0IjoxfV0sWzQsNiwiIiwwLHsibGV2ZWwiOjEsInN0eWxlIjp7Im5hbWUiOiJhZGp1bmN0aW9uIn19XSxbNSw3LCIiLDIseyJsZXZlbCI6MSwic3R5bGUiOnsibmFtZSI6ImFkanVuY3Rpb24ifX1dXQ==
-		\[\begin{tikzcd}
-			{\mathbb{A}} && {\mathbb{B}} \\
-			& {\mathbb{C}}
-			\arrow["J", from=1-1, to=1-3]
-			\arrow[""{name=0, anchor=center, inner sep=0}, "E"', shift right=2, from=1-1, to=2-2]
-			\arrow[""{name=1, anchor=center, inner sep=0}, "L", shift left=2, from=1-3, to=2-2]
-			\arrow[""{name=2, anchor=center, inner sep=0}, "R"', shift right, from=2-2, to=1-1]
-			\arrow[""{name=3, anchor=center, inner sep=0}, "U", shift left, from=2-2, to=1-3]
-			\arrow["\dashv"{anchor=center, rotate=45}, draw=none, from=0, to=2]
-			\arrow["\dashv"{anchor=center, rotate=135}, draw=none, from=1, to=3]
-		\end{tikzcd}\]
-	is a commutative diagram of $ \mathcal{V}$-functors. 
-	Assume that, for each pair of objects $ (A \in \mathbb{A}, Y \in \mathbb{B})$, the induced diagram
-
-		% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG1hdGhiYntCfShKQSxZKSJdLFsxLDAsIlxcbWF0aGJie0N9KEVBLExZKSJdLFszLDAsIlxcbWF0aGJie0N9KEVBLExVTFkpIl0sWzAsMSwiTF97SkEsWX0iXSxbMSwyLCJMX3tKQSxVTFl9XFxjaXJjIFxcY2hpX3soSkEsTFkpfSIsMCx7Im9mZnNldCI6LTJ9XSxbMSwyLCJcXG1hdGhiYntDfShFQSxMKFxcZXRhX1kpKSIsMix7Im9mZnNldCI6Mn1dXQ==
-		\[\begin{tikzcd}
-			{\mathbb{B}(JA,Y)} & {\mathbb{C}(EA,LY)} && {\mathbb{C}(EA,LULY)}
-			\arrow["{L_{JA,Y}}", from=1-1, to=1-2]
-			\arrow["{L_{JA,ULY}\circ \chi_{(JA,LY)}}", shift left=2, from=1-2, to=1-4]
-			\arrow["{\mathbb{C}(EA,L(\eta_Y))}"', shift right=2, from=1-2, to=1-4]
-		\end{tikzcd}\]
-	is an equaliser in $ \mathcal{V}$.
-	The $ \mathcal{V}$-functor $ J$ has a right $ \mathcal{V}$ adjoint $ G$ if and only if, for each object $ Y$ of $ \mathbb{B}$, the $ \mathcal{V}$-equaliser of 
-		% https://q.uiver.app/#q=WzAsMixbMCwwLCJSTFkiXSxbMywwLCJSTFVMWSJdLFswLDEsIlJMKFUoXFxtdV97TFl9KVxcZXRhX3tKUkxZfSlcXHJob197UkxZfSIsMCx7Im9mZnNldCI6LTJ9XSxbMCwxLCJSTChcXGV0YV9ZKSIsMix7Im9mZnNldCI6Mn1dXQ==
-		\[\begin{tikzcd}
-			RLY &&& RLULY
-			\arrow["{RL(U(\mu_{LY})\eta_{JRLY})\rho_{RLY}}", shift left=2, from=1-1, to=1-4]
-			\arrow["{RL(\eta_Y)}"', shift right=2, from=1-1, to=1-4]
-		\end{tikzcd}\]	
-	exists in the $ \mathcal{V}$-category $ \mathbb{A}$.
-	In this case, this equaliser gives the value of $ GY$.
-
-\end{thm}
-
-\begin{proof}
-	Suppose $J$ has a right adjoint $ G$.
-	Then take any pair of objects $ (A\in \mathbb{A}, Y \in \mathbb{B})$.
-	We have the induced diagram 
-		\[\begin{tikzcd}
-				{\mathbb{B}(JA,Y)} & {\mathbb{C}(EA,LY)} && {\mathbb{C}(EA,LULY)}
-				\arrow["{L_{JA,Y}}", from=1-1, to=1-2]
-				\arrow["{L_{JA,ULY}\circ \chi_{(JA,LY)}}", shift left=2, from=1-2, to=1-4]
-				\arrow["{\mathbb{C}(EA,L(\eta_Y))}"', shift right=2, from=1-2, to=1-4]
-			\end{tikzcd}\]
-	which is an equaliser in $ \mathcal{V}$.
-	Then under the associated $ \mathcal{V}$-natural isomorphism $ \chi: \mathbb{C}(E-,-) \cong \mathbb{A}(-,R-)$, we have:
-		% https://q.uiver.app/#q=WzAsNixbMCwwLCJcXG1hdGhiYntCfShKQSxZKSJdLFsxLDAsIlxcbWF0aGJie0N9KEVBLExZKSJdLFs0LDAsIlxcbWF0aGJie0N9KEVBLExVTFkpIl0sWzEsMiwiXFxtYXRoYmJ7QX0oQSxSTFkpIl0sWzQsMiwiXFxtYXRoYmJ7QX0oQSxSTFVMWSkiXSxbMCwyLCJcXG1hdGhiYntCfShKQSxZKSJdLFswLDEsIkxfe0pBLFl9Il0sWzEsMiwiTF97SkEsVUxZfVxcY2lyYyBcXGNoaV97KEpBLExZKX0iLDAseyJvZmZzZXQiOi0xfV0sWzEsMiwiXFxtYXRoYmJ7Q30oRUEsTChcXGV0YV9ZKSkiLDIseyJvZmZzZXQiOjF9XSxbMSwzLCJcXGNoaV97KEEsTFkpfSJdLFsyLDQsIlxcY2hpX3soQSxMVUxZKX0iXSxbMCw1LCIiLDIseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsNSwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIlxcbWF0aGJie0F9KEEsIHJfWSkiLDAseyJvZmZzZXQiOi0xfV0sWzMsNCwiXFxtYXRoYmJ7QX0oQSxxX1kpIiwyLHsib2Zmc2V0IjoxfV0sWzUsM11d
-		\[\begin{tikzcd}
-			{\mathbb{B}(JA,Y)} & {\mathbb{C}(EA,LY)} &&& {\mathbb{C}(EA,LULY)} \\
-			\\
-			{\mathbb{B}(JA,Y)} & {\mathbb{A}(A,RLY)} &&& {\mathbb{A}(A,RLULY)}
-			\arrow["{L_{JA,Y}}", from=1-1, to=1-2]
-			\arrow[shift left, no head, from=1-1, to=3-1]
-			\arrow[no head, from=1-1, to=3-1]
-			\arrow["{L_{JA,ULY}\circ \chi_{(JA,LY)}}", shift left, from=1-2, to=1-5]
-			\arrow["{\mathbb{C}(EA,L(\eta_Y))}"', shift right, from=1-2, to=1-5]
-			\arrow["{\chi_{(A,LY)}}", from=1-2, to=3-2]
-			\arrow["{\chi_{(A,LULY)}}", from=1-5, to=3-5]
-			\arrow[from=3-1, to=3-2]
-			\arrow["{\mathbb{A}(A, r_Y)}", shift left, from=3-2, to=3-5]
-			\arrow["{\mathbb{A}(A,q_Y)}"', shift right, from=3-2, to=3-5]
-		\end{tikzcd}\]
-	in which $ q_Y= RL(\eta_Y)$ and $ r_Y = $
-
-\end{proof}
-
+\printbibliography
 
 \end{document}
