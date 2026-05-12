@@ -39,7 +39,7 @@
 \newtheorem{exa}[thm]{Example}
 
 \title{On Biadjoint Triangles}
-\author{K}
+\author{KB}
 \date{\today}
 
 \begin{document}
@@ -100,7 +100,7 @@ This is also where we recover the famous ``a monad is just a monoid in \dots"\\
 \begin{defn}
 	Let $T=(T, \eta, \mu)$ be a monad on $ \mathbb{X}$.
 	A \textcolor{marlight}{ $ T $-algebra} is a pair $(x,\xi)$ in which $x$ is an object in $ \mathbb{X}$ and $\xi: Tx \to x$ is a morphism in $ \mathbb{X} $ making the diagram
-		\begin{equation}
+		\begin{equation}\label{def:t-algebra}
 			% https://q.uiver.app/#q=WzAsNSxbMCwwLCJUXjIoWCkiXSxbMCwxLCJUKFgpIl0sWzEsMCwiVChYKSJdLFsyLDAsIlgiXSxbMSwxLCJYIl0sWzAsMiwiXFxtdV9YIl0sWzAsMSwiVChcXHhpKSIsMl0sWzMsMiwiXFxldGFfWCIsMl0sWzIsNCwiXFx4aSIsMl0sWzEsNCwiXFx4aSIsMl0sWzMsNCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIiIsMCx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
 			\begin{tikzcd}
 				{T^2x} & {Tx} & x \\
@@ -117,7 +117,7 @@ This is also where we recover the famous ``a monad is just a monoid in \dots"\\
 			
 	commute. A \textcolor{marlight}{morphism of $T$-algebras} $h:(x,\xi) \to (x',\xi')$ is a morphism $h:x \to  x'$ in $ \mathbb{X}$ making the diagram below commute:
 		\begin{equation}
-				% https://q.uiver.app/#q=WzAsNCxbMCwwLCJUKFgpIl0sWzEsMCwiVChYJykiXSxbMCwxLCJYIl0sWzEsMSwiWCciXSxbMCwxLCJUKGgpIl0sWzAsMiwiXFx4aSIsMl0sWzEsMywiXFx4aSciXSxbMiwzLCJoIiwyXV0=
+			% https://q.uiver.app/#q=WzAsNCxbMCwwLCJUKFgpIl0sWzEsMCwiVChYJykiXSxbMCwxLCJYIl0sWzEsMSwiWCciXSxbMCwxLCJUKGgpIl0sWzAsMiwiXFx4aSIsMl0sWzEsMywiXFx4aSciXSxbMiwzLCJoIiwyXV0=
 			\begin{tikzcd}
 				{Tx} & {Tx'} \\
 				x & {x'}
@@ -128,6 +128,10 @@ This is also where we recover the famous ``a monad is just a monoid in \dots"\\
 			\end{tikzcd}
 		\end{equation}
 
+\end{defn}
+
+\begin{defn}
+	For a monad $ T = (T, \eta, \mu) $ on $\mathbb{X} $, the \textcolor{marlight}{Eilenberg-Moore category} of $ T $, denoted by \textcolor{marlight}{$\mathbb{X}^T $}, is the category of $ T $-algebras with $ T $-algebra morphisms.
 \end{defn}
 
 
@@ -158,9 +162,9 @@ This is also where we recover the famous ``a monad is just a monoid in \dots"\\
 	The left square commutes because of the naturality of $  \epsilon:FU \to 1_{ \mathbb{A}} $ applied to $ \epsilon_{Fx}:FUFx\to Fx $, which is preserved under $  U $.
 	The right square commutes because of the triangle identities for the adjunction $ (F,U,\eta, \epsilon): \mathbb{ X} \to \mathbb{A} $.
 	The identities are recalled:
-		\begin{equation}
+		\begin{equation}\label{thm:triangle-identities-adjunction}
 			% https://q.uiver.app/#q=WzAsNixbMCwwLCJGIl0sWzEsMCwiRlVGIl0sWzEsMSwiRiJdLFsyLDAsIlVGVSJdLFszLDAsIlUiXSxbMiwxLCJVIl0sWzAsMSwiRlxcZXRhIl0sWzEsMiwiXFxlcHNpbG9uIEYiXSxbMCwyLCIiLDIseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDMsIlxcZXRhIFUiLDJdLFszLDUsIlUgXFxlcHNpbG9uIiwyXSxbNCw1LCIiLDAseyJvZmZzZXQiOjEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw1LCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
-			\begin{tikzcd}\label{thm:triangle-identities-adjunction}
+			\begin{tikzcd}
 				F & FUF & UFU & U \\
 				& F & U
 				\arrow["{F\eta}", from=1-1, to=1-2]
@@ -173,8 +177,8 @@ This is also where we recover the famous ``a monad is just a monoid in \dots"\\
 				\arrow[no head, from=1-4, to=2-3]
 			\end{tikzcd}
 		\end{equation}
-	This is shown by first considering the bottom triangle in \Cref{thm:proof-of-adj-monad}, which is just the $ x $ component of the left triangle of \Cref{thm:triangle-identities-adjunction} under $ U $, and so it commutes.
-	The top triangle in \Cref{thm:proof-of-adj-monad} is the $ Fx $ component of the right triangle in \Cref{thm:proof-of-adj-monad}.
+	This is shown by first considering the bottom triangle in \Cref{thm:proof-of-adj-monad}, which is just the $ x $-component of the left triangle of \Cref{thm:triangle-identities-adjunction} under $ U $, and so it commutes.
+	The top triangle in \Cref{thm:proof-of-adj-monad} is the $ Fx $-component of the right triangle in \Cref{thm:proof-of-adj-monad}.
 	This shows that $  (UF, \eta, U \epsilon F) $ is a monad on $ \mathbb{X} $.
 	This monad is called the \textcolor{marlight}{monad defined by the adjunction} $ (F,U, \eta, \epsilon): \mathbb{X}\to \mathbb{A} $.
 \end{proof}
@@ -183,33 +187,80 @@ Then, naturally, the question arises of whether every monad induces an adjunctio
 The answer is yes, and is discussed in the next theorem.
 
 \begin{thm}
-	Every monad $  T= (T,\eta, \mu) $ on $ \mathbb{X} $ determines an adjunction $ (F^T, U^T, \eta^T, \epsilon^T): \mathbb{X} \longrightarrow \mathbb{X}^T $
-\end{thm}
-
-
-
-
-To each monad $T$ we associate structures call $T$-algebras defined as follows.
-
-
-In this section, we are interested in a relationship between monads and adjunctions: that being every monad produces an adjunction and \textit{vice versa}.
-
-
-\begin{thm}
-	Every monad $T=(T,\eta, \mu)$ on a category $ \mathbb{X}$ determines an adjunction $(F^T,U^T, \eta^T, \epsilon ^T): \mathbb{X} \longrightarrow \mathbb{ \mathbb{X}^{T}}$ from $ \mathbb{X}$ to the category of its $T$-algebras, $ \mathbb{X}^{T}$.
+	Every monad $T=(T,\eta, \mu)$ on $ \mathbb{X}$ determines an adjunction $(F^T,U^T, \eta^T, \epsilon ^T): \mathbb{X} \to \mathbb{ X}^T$ from $ \mathbb{X}$ to the category of its $T$-algebras, $ \mathbb{X}^{T}$.
 	The monad defined by this adjunction is the same monad $T=(T,\eta, \epsilon )$. 
 	
 \end{thm}
 
 \begin{proof}
-	We define
-	\begin{enumerate}
-		\item the right adjoint $U^{T}: \mathbb{X}^{T} \longrightarrow \mathbb{X}$ to be the forgetful functor, defined by $ U^{T}(X,\xi) = X$;
-		\item the left adjoint $F^{T}: \mathbb{X} \longrightarrow \mathbb{X}^{T}$ to be the functor defined by $F^T(X)= (T(X), \mu_{X})$;
-		\item the unit $\eta^{T}: 1_{ \mathbb{X}} \longrightarrow U^{T}F^{T}$ to be the same $\eta$ of the monad;
-		\item the counit $ \epsilon^{ T}: F^{T}U^{T} \longrightarrow 1_{ \mathbb{X}^{T}} $ to be defined by $ \epsilon^{ T}_{(T(X),\mu _X)} = \mu_X$. 
+	Define
+		\begin{enumerate}
+			\item the right adjoint $U^{T}: \mathbb{X}^{T} \to \mathbb{X}$ to be the forgetful functor, $ U^{T}(x,\xi) := x$;
+			\item the left adjoint $F^{T}: \mathbb{X} \to \mathbb{X}^{T}$ to be the free functor, $F^Tx:= (Tx, \mu_{x})$;
+			\item the unit $\eta^{T}: 1_{ \mathbb{X}} \to U^{T}F^{T}$ to be the same $\eta$ of the monad;
+			% TODO: very dodgy definition
+			\item the counit $ \epsilon^{ T}: F^{T}U^{T} \to 1_{ \mathbb{X}^{T}} $ to be $ \epsilon^{ T}_{(Tx,\mu _x)} := \mu_x$. 
+			
+		\end{enumerate}		
+	Now it is checked that this is indeed the desired adjunction.
+	Firstly, note that $ (Tx,\mu_x) $ is a $ T $-algebra.
+	That is, the diagram from \Cref{def:t-algebra} commutes:
+		% https://q.uiver.app/#q=WzAsNSxbMCwwLCJUXjN4Il0sWzAsMSwiVF4yeCJdLFsxLDAsIlReMngiXSxbMiwwLCJUeCJdLFsxLDEsIlR4Il0sWzAsMiwiXFxtdV97VHh9Il0sWzAsMSwiVChcXHhpKSIsMl0sWzMsMiwiXFxldGFfe1R4fSIsMl0sWzIsNCwiXFxtdV94IiwyXSxbMSw0LCJcXG11X3giLDJdLFszLDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMyw0LCIiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+		\[\begin{tikzcd}
+			{T^3x} & {T^2x} & Tx \\
+			{T^2x} & Tx
+			\arrow["{\mu_{Tx}}", from=1-1, to=1-2]
+			\arrow["{T\mu_x}"', from=1-1, to=2-1]
+			\arrow["{\mu_x}"', from=1-2, to=2-2]
+			\arrow["{\eta_{Tx}}"', from=1-3, to=1-2]
+			\arrow[no head, from=1-3, to=2-2]
+			\arrow[shift left, no head, from=1-3, to=2-2]
+			\arrow["{\mu_x}"', from=2-1, to=2-2]
+		\end{tikzcd}\]
+	But this is just the $ x $-component of \Cref{thm:monad-identities}, which commutes because $ T $ is a monad.\\
+	
+	Now to check naturality of $\eta^T$ and $\epsilon^T$.
+	The naturality of $ \eta^T $ is just the naturality of $ \eta $.
+	This is shown by taking $ x $ an object in $\mathbb{X} $, then the $ x $-component of $ \eta^T $ is the morphism in $ \mathbb{X} $, $ \eta^T_x: x \to U^TF^Tx = U^T(Tx, \mu_x)=Tx $, which is the same as $ \eta_x $.
+	Now for $ \epsilon^T $: take $ (x, \xi) $ an object in $\mathbb{X}^T $. Then $ F^TU^T(x,\xi) = F^Tx = (Tx, \mu_x) $.
+	Then the $ (x,\xi) $-component of $\epsilon^T$ is $ \epsilon^T_{(x,\xi)}:(Tx,\mu_x) \to (x,\xi) $.
+	Taking a morphism of $ h:(x,\xi) \to (x',\xi') $ in $\mathbb{X}^T $ gives a naturality square:
+		\begin{equation}\label{thm:naturality-of-epsilon-T}
+			% https://q.uiver.app/#q=WzAsNixbMCwwLCIoeCxcXHhpKSJdLFswLDEsIih4JyxcXHhpJykiXSxbMSwwLCIoVHgsIFxcbXVfeCkiXSxbMSwxLCIoVHgnLFxcbXVfe3gnfSkiXSxbMiwwLCIoeCxcXHhpKSJdLFsyLDEsIih4JyxcXHhpJykiXSxbMCwxLCJoIiwyXSxbMiwzLCJGXlRVXlRoIiwyXSxbNCw1LCJoIl0sWzIsNCwiXFxtdV94Il0sWzMsNSwiXFxtdV94JyIsMl1d
+			\begin{tikzcd}
+				{(x,\xi)} & {(Tx, \mu_x)} & {(x,\xi)} \\
+				{(x',\xi')} & {(Tx',\mu_{x'})} & {(x',\xi')}
+				\arrow["h"', from=1-1, to=2-1]
+				\arrow["{\mu_x}", from=1-2, to=1-3]
+				\arrow["{F^TU^Th}"', from=1-2, to=2-2]
+				\arrow["h", from=1-3, to=2-3]
+				\arrow["{\mu_x'}"', from=2-2, to=2-3]
+			\end{tikzcd}
+		\end{equation}
 		
-	\end{enumerate}		
+	% TODO: must i elaborate on this?
+	For some morphism $ f: x\to x' $ in $\mathbb{X} $, $ F^Tf: (Tx, \mu_x) \to (Tx', \mu_{x'}) $ must be a morphism of $ T $-algebras, which means $ F^Tf: Tx \to Tx' $ must be defined as $ F^Tf := Tf $.
+	Then $ F^TU^Th = Th $. 
+	So $ F^TU^Th $ in \Cref{thm:naturality-of-epsilon-T} becomes $ Th $, and the square thus commutes by naturality of $ \mu $, and becuase $ h $ is a morphism of $ T $-algebras.
+	To check that there is an adjunction is to check the triangles in \Cref{thm:triangle-identities-adjunction} commute.
+	For $ (x,\xi) $ an object in $\mathbb{X}^T $ and $ x $ and object in $ \mathbb{X} $, the left triangle is the $ (x,\xi) $-component of the left triangle of \Cref{thm:naturality-of-epsilon-T}, and the right is the $ x $-component of the right triangle of \Cref{thm:naturality-of-epsilon-T}:
+		% https://q.uiver.app/#q=WzAsNixbMCwwLCJUeCJdLFsxLDAsIlReMngiXSxbMSwxLCJUeCJdLFsyLDAsIlR4Il0sWzMsMCwieCJdLFsyLDEsIngiXSxbMCwxLCJUXFxldGFfeCJdLFswLDIsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwyLCIiLDIseyJvZmZzZXQiOjEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCJcXG11X3giXSxbNCwzLCJcXGV0YV94IiwyXSxbMyw1LCJcXHhpIiwyXSxbNCw1LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsNSwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+		\[\begin{tikzcd}
+			Tx & {T^2x} & Tx & x \\
+			& Tx & x
+			\arrow["{T\eta_x}", from=1-1, to=1-2]
+			\arrow[no head, from=1-1, to=2-2]
+			\arrow[shift right, no head, from=1-1, to=2-2]
+			\arrow["{\mu_x}", from=1-2, to=2-2]
+			\arrow["\xi"', from=1-3, to=2-3]
+			\arrow["{\eta_x}"', from=1-4, to=1-3]
+			\arrow[no head, from=1-4, to=2-3]
+			\arrow[shift left, no head, from=1-4, to=2-3]
+		\end{tikzcd}\]
+	The left and right traingles commute respectively from the commutativity of the monad diagram \Cref{thm:monad-identities} and the $ T $-algebra diagram \Cref{def:t-algebra}.\\
+	
+	Lastly, notice that for an object $ x $ in $\mathbb{X} $, $ U^TF^Tx = Tx $, $ \eta^T = \eta $ and $ U^T\epsilon^TF^Tx=\mu_x $, and so the monad defined by this adjunction is $ T=(T,, \eta, \mu) $, as desired.		
+	
 \end{proof}
 
 So we have that a monad determines an adjunction, which, in return determines the same monad again. The reverse is not always true: an adjunction determines a monad which does not always determine the same adjunction.
@@ -217,42 +268,45 @@ When an adjunction induces a monad that induces the same adjunction back, we cal
 We get a sense of how monadic an adjunction is (or measure its \textit{monadicity} with the following construction.
 
 \begin{thm}\label{thm:kiesli}
-	Let $ (F,U,\eta,\epsilon):\mathbb{X}\longrightarrow \mathbb{A}$ be an adjunction
+	Let $ (F,U,\eta,\epsilon):\mathbb{X}\to \mathbb{A}$ be an adjunction
 	and $ T=(UF,\eta, U \epsilon F)$ be the monad defined by the adjunction. 
 	Then there is a unique functor $K: \mathbb{A} \longrightarrow  \mathbb{X}^T $ with $U^TK= U$ and $KF=F^T$.
 \end{thm}
 
+% TODO: maybe actually prove this
+% TODO: add stuff about desceeeeeent
+% TODO: make a bibliography
 \begin{proof}
-	We define $K: \mathbb{A} \longrightarrow \mathbb{X}^{T} $ by $K(A) = (U(A), U( \epsilon _A))$, and on morphisms $K(f)=U(f)$.
+	Define $K: \mathbb{A} \to \mathbb{X}^{T} $ by $Ka := (Ua, U \epsilon _a)$, and on morphisms $Kf:=Uf$.
 \end{proof}
 
-There is one last detail that will make our diagram complete: the functor $K$ as defined above has a left adjoint, the functor $L: \mathbb{X}^{T} \longrightarrow \mathbb{A}$. 
+There is one last detail that will make our diagram complete: the functor $K$ as defined above has a left adjoint, the functor $L: \mathbb{X}^{T} \to \mathbb{A}$. 
 
 \begin{thm}
-	There is an adjunction $(L,K,\overline{\eta}, \overline{ \epsilon}): \mathbb{X}^{T} \longrightarrow \mathbb{A}$.
+	There is an adjunction $(L,K,\overline{\eta}, \overline{ \epsilon}): \mathbb{X}^{T} \to \mathbb{A}$.
 \end{thm}
 
 \begin{proof}
 	We define
 	\begin{enumerate}
-		\item the left adjoint $L: \mathbb{X}^{T} \longrightarrow \mathbb{A}$, where $L(X,\xi)$ is defined as the coequaliser of
+		\item the left adjoint $L: \mathbb{X}^{T} \to \mathbb{A}$, where $L(x,\xi)$ is defined as the coequaliser of
 		\[\begin{tikzcd}
-			{FUF(X)} & {F(X)} & {L(X,\xi)}
-			\arrow["{\epsilon_{F(X)}}", shift left, from=1-1, to=1-2]
-			\arrow["{F(\xi)}"', shift right, from=1-1, to=1-2]
-			\arrow["{\pi_{(X, \xi)}}", from=1-2, to=1-3]
+			{FUFx} & {Fx} & {L(x,\xi)}
+			\arrow["{\epsilon_{Fx}}", shift left, from=1-1, to=1-2]
+			\arrow["{F\xi}"', shift right, from=1-1, to=1-2]
+			\arrow["{\pi_{(x, \xi)}}", from=1-2, to=1-3]
 		\end{tikzcd}\]
-		\item the right adjoint $K: \mathbb{A} \longrightarrow  \mathbb{X}^{T}$, defined by $K(A)=(U(A), U( \epsilon_A))$ on objects and $K(f)=U(f)$ on morphisms;
-		\item the unit $\overline{\eta}: 1_{ \mathbb{X}^{T}} \longrightarrow  KL$ defined by $\overline{\eta}_{(X,\xi)}=U(\pi_{(X,\xi)})\eta_X$;
-		\item the counit $\overline{ \epsilon}: LK \longrightarrow 1_{ \mathbb{A}}$ is defined for each $ \overline{ \epsilon}_A$ as the unique morphism making the diagram
+		\item the right adjoint $K: \mathbb{A} \to  \mathbb{X}^{T}$, defined by $Ka:=(Ua, U \epsilon_a)$ on objects and $Kf:=Uf$ on morphisms;
+		\item the unit $\overline{\eta}: 1_{ \mathbb{X}^{T}} \to  KL$ defined by $\overline{\eta}_{(x,\xi)}=U\pi_{(x,\xi)}\eta_x$;
+		\item the counit $\overline{ \epsilon}: LK \to 1_{ \mathbb{A}}$ is defined for each $ \overline{ \epsilon}_a$ as the unique morphism making the diagram
 		\[\begin{tikzcd}
-			{FUFU(A)} & {FU(A)} & {L(U(A), U(\epsilon_A))}\\ 
-			& & {A}
-			\arrow["{\epsilon_{FU(A)}}", shift left, from=1-1, to=1-2]
-			\arrow["{FU( \epsilon_A)}"', shift right, from=1-1, to=1-2]
-			\arrow["{\pi_{(U(A), U( \epsilon_A))}}", from=1-2, to=1-3]
-			\arrow["{ \epsilon_A}"', from=1-2, to=2-3]
-			\arrow["{\overline{ \epsilon}_A}", from=1-3, to=2-3]
+			{FUFUa} & {FUa} & {(LUa, U\epsilon_a)}\\ 
+			& & {a}
+			\arrow["{\epsilon_{FUa}}", shift left, from=1-1, to=1-2]
+			\arrow["{FU\epsilon_a}"', shift right, from=1-1, to=1-2]
+			\arrow["{\pi_{(Ua, U \epsilon_a)}}", from=1-2, to=1-3]
+			\arrow["{ \epsilon_a}"', from=1-2, to=2-3]
+			\arrow["{\overline{ \epsilon}_a}", from=1-3, to=2-3]
 		\end{tikzcd}\]
 		commute.
 		
