@@ -6,6 +6,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{extarrows}
 \usepackage[left=3cm, right=3cm, top=4cm, bottom=4cm]{geometry}
 \usepackage{comment}
 \usetikzlibrary{cd}
@@ -66,10 +67,10 @@ Much of this comes directly from Mac Lane, and will begin with a quick remark on
 For a category $\mathbb{X} $ and endofunctor $T:\mathbb{X} \to \mathbb{X}$, there are composite endofunctors $T^2 = T \circ T$ and $T^3 = T^2 \circ T$. 
 If, additionally, there is a natural transformation $\mu: T^2\to T$, then, for each object $ x $ in $\mathbb{ X} $, the natural transformations $T\mu, \, \mu T: T^3\to T^2 $ have, respectively, components $(T\mu)_x= T\mu _x$, and $(\mu T)_x = \mu_{Tx} $ .
 
-\begin{defn}\label{thm:monad-defn} \cite{MaclCT}
+\begin{defn}\label{def:monad-defn} \cite{MaclCT}
 	A \textcolor{marlight}{monad} $T=( T,\eta, \mu ) $ on a category $\mathbb{X}$ is a triple in which $T:\mathbb{X}\to \mathbb{X}$ is an endofunctor on $ \mathbb{X} $ and $ \eta, \mu $ are two natural transformations
 	\begin{equation}
-		\eta:1_\mathbb{X}\longrightarrow T, \quad \mu: T^2\longrightarrow T
+		1_\mathbb{X}\xlongrightarrow{\eta} T \xlongleftarrow{\mu} T^2
 	\end{equation}
 	such that the following diagram commutes:
 	\begin{equation}\label{thm:monad-identities}
@@ -90,7 +91,8 @@ If, additionally, there is a natural transformation $\mu: T^2\to T$, then, for e
 	\end{equation}	
 \end{defn}
 
-Replace in \Cref{thm:monad-defn} the endofunctor $ T: \mathbb{X} \to \mathbb{X} $ with a set $ M $, $ T^2$ and $ T ^3 $ with the cartesian product $ M\times M $ and $  M\times M \times M $ respectively, and lastly the natural transformations $ \eta: 1_{ \mathbb{X}} \to T $ with $ \eta: 1 \to M $ and $ \mu: T^2 \to T $ with the binary operation $ \mu: M\times M \to M $.
+% TODO: Change cref from Theorem to Definition
+Replace in \Cref{def:monad-defn} the endofunctor $ T: \mathbb{X} \to \mathbb{X} $ with a set $ M $, $ T^2$ and $ T ^3 $ with the cartesian product $ M\times M $ and $  M\times M \times M $ respectively, and lastly the natural transformations $ \eta: 1_{ \mathbb{X}} \to T $ with $ \eta: 1 \to M $ and $ \mu: T^2 \to T $ with the binary operation $ \mu: M\times M \to M $.
 Then the diagram in \Cref{thm:monad-identities} expresses the usual axioms of a monoid.
 This is what motivates the naming of the natural transformations $ \eta $ as the \textcolor{marlight}{identity} and $ \mu $ as the \textcolor{marlight}{multiplication} of a monad $ (T, \eta, \mu) $.
 This is also where we recover the famous ``a monad is just a monoid in \dots"\\
@@ -131,12 +133,12 @@ This is also where we recover the famous ``a monad is just a monoid in \dots"\\
 \end{defn}
 
 \begin{defn}
-	For a monad $ T = (T, \eta, \mu) $ on $\mathbb{X} $, the \textcolor{marlight}{Eilenberg-Moore category} of $ T $, denoted by \textcolor{marlight}{$\mathbb{X}^T $}, is the category of $ T $-algebras with $ T $-algebra morphisms.
+	For a monad $ T = (T, \eta, \mu) $ on $\mathbb{X} $, the \textcolor{marlight}{Eilenberg-Moore category} of  \textcolor{marlight}{$ T $-algebras}, denoted by \textcolor{marlight}{$T $-\textsf{Alg}}, is the category of $ T $-algebras with $ T $-algebra morphisms.
 \end{defn}
 
 
 \begin{thm}
-	Every adjunction $ (F,U,\eta,\epsilon):\mathbb{X} \to \mathbb{A}$ determines a monad $ (UF, \eta, U \epsilon F) $ on $ \mathbb{X} $.
+	Every adjunction $ (F \dashv U,\eta,\epsilon):\mathbb{X} \to \mathbb{A}$ determines a monad $ (UF, \eta, U \epsilon F) $ on $ \mathbb{X} $.
 	
 \end{thm}
 
@@ -160,7 +162,7 @@ This is also where we recover the famous ``a monad is just a monoid in \dots"\\
 			\end{tikzcd}
 		\end{equation}
 	The left square commutes because of the naturality of $  \epsilon:FU \to 1_{ \mathbb{A}} $ applied to $ \epsilon_{Fx}:FUFx\to Fx $, which is preserved under $  U $.
-	The right square commutes because of the triangle identities for the adjunction $ (F,U,\eta, \epsilon): \mathbb{ X} \to \mathbb{A} $.
+	The right square commutes because of the triangle identities for the adjunction $ (F \dashv U,\eta, \epsilon): \mathbb{ X} \to \mathbb{A} $.
 	The identities are recalled:
 		\begin{equation}\label{thm:triangle-identities-adjunction}
 			% https://q.uiver.app/#q=WzAsNixbMCwwLCJGIl0sWzEsMCwiRlVGIl0sWzEsMSwiRiJdLFsyLDAsIlVGVSJdLFszLDAsIlUiXSxbMiwxLCJVIl0sWzAsMSwiRlxcZXRhIl0sWzEsMiwiXFxlcHNpbG9uIEYiXSxbMCwyLCIiLDIseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiIiwxLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDMsIlxcZXRhIFUiLDJdLFszLDUsIlUgXFxlcHNpbG9uIiwyXSxbNCw1LCIiLDAseyJvZmZzZXQiOjEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw1LCIiLDEseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
@@ -180,14 +182,14 @@ This is also where we recover the famous ``a monad is just a monoid in \dots"\\
 	This is shown by first considering the bottom triangle in \Cref{thm:proof-of-adj-monad}, which is just the $ x $-component of the left triangle of \Cref{thm:triangle-identities-adjunction} under $ U $, and so it commutes.
 	The top triangle in \Cref{thm:proof-of-adj-monad} is the $ Fx $-component of the right triangle in \Cref{thm:proof-of-adj-monad}.
 	This shows that $  (UF, \eta, U \epsilon F) $ is a monad on $ \mathbb{X} $.
-	This monad is called the \textcolor{marlight}{monad defined by the adjunction} $ (F,U, \eta, \epsilon): \mathbb{X}\to \mathbb{A} $.
+	This monad is called the \textcolor{marlight}{monad defined by the adjunction} $ (F \dashv U, \eta, \epsilon): \mathbb{X}\to \mathbb{A} $.
 \end{proof}
 
 Then, naturally, the question arises of whether every monad induces an adjunction.
-The answer is yes, and is discussed in the next theorem.
+The answer is \textit{yes}, and is discussed in the next theorem.
 
 \begin{thm}
-	Every monad $T=(T,\eta, \mu)$ on $ \mathbb{X}$ determines an adjunction $(F^T,U^T, \eta^T, \epsilon ^T): \mathbb{X} \to \mathbb{ X}^T$ from $ \mathbb{X}$ to the category of its $T$-algebras, $ \mathbb{X}^{T}$.
+	Every monad $T=(T,\eta, \mu)$ on $ \mathbb{X}$ determines an adjunction $(F^T \dashv U^T, \eta^T, \epsilon ^T): \mathbb{X} \to T $-\textsf{Alg}.
 	The monad defined by this adjunction is the same monad $T=(T,\eta, \epsilon )$. 
 	
 \end{thm}
@@ -195,11 +197,11 @@ The answer is yes, and is discussed in the next theorem.
 \begin{proof}
 	Define
 		\begin{enumerate}
-			\item the right adjoint $U^{T}: \mathbb{X}^{T} \to \mathbb{X}$ to be the forgetful functor, $ U^{T}(x,\xi) := x$;
-			\item the left adjoint $F^{T}: \mathbb{X} \to \mathbb{X}^{T}$ to be the free functor, $F^Tx:= (Tx, \mu_{x})$;
+			\item the right adjoint $U^{T}: T \textsf{-Alg} \to \mathbb{X}$ to be the forgetful functor, $ U^{T}(x,\xi) := x$;
+			\item the left adjoint $F^{T}: \mathbb{X} \to T\textsf{-Alg}$ to be the free functor, $F^Tx:= (Tx, \mu_{x})$;
 			\item the unit $\eta^{T}: 1_{ \mathbb{X}} \to U^{T}F^{T}$ to be the same $\eta$ of the monad;
 			% TODO: very dodgy definition
-			\item the counit $ \epsilon^{ T}: F^{T}U^{T} \to 1_{ \mathbb{X}^{T}} $ to be $ \epsilon^{ T}_{(Tx,\mu _x)} := \mu_x$. 
+			\item the counit $ \epsilon^{ T}: F^{T}U^{T} \to 1_{ T\textsf{-Alg}} $ to be $ \epsilon^{ T}_{(Tx,\mu _x)} := \mu_x$. 
 			
 		\end{enumerate}		
 	Now it is checked that this is indeed the desired adjunction.
@@ -222,9 +224,9 @@ The answer is yes, and is discussed in the next theorem.
 	Now to check naturality of $\eta^T$ and $\epsilon^T$.
 	The naturality of $ \eta^T $ is just the naturality of $ \eta $.
 	This is shown by taking $ x $ an object in $\mathbb{X} $, then the $ x $-component of $ \eta^T $ is the morphism in $ \mathbb{X} $, $ \eta^T_x: x \to U^TF^Tx = U^T(Tx, \mu_x)=Tx $, which is the same as $ \eta_x $.
-	Now for $ \epsilon^T $: take $ (x, \xi) $ an object in $\mathbb{X}^T $. Then $ F^TU^T(x,\xi) = F^Tx = (Tx, \mu_x) $.
+	Now for $ \epsilon^T $: take $ (x, \xi) $ an object in $ T\textsf{-Alg} $. Then $ F^TU^T(x,\xi) = F^Tx = (Tx, \mu_x) $.
 	Then the $ (x,\xi) $-component of $\epsilon^T$ is $ \epsilon^T_{(x,\xi)}:(Tx,\mu_x) \to (x,\xi) $.
-	Taking a morphism of $ h:(x,\xi) \to (x',\xi') $ in $\mathbb{X}^T $ gives a naturality square:
+	Taking a morphism of $ h:(x,\xi) \to (x',\xi') $ in $ T\textsf{-Alg} $ gives a naturality square:
 		\begin{equation}\label{thm:naturality-of-epsilon-T}
 			% https://q.uiver.app/#q=WzAsNixbMCwwLCIoeCxcXHhpKSJdLFswLDEsIih4JyxcXHhpJykiXSxbMSwwLCIoVHgsIFxcbXVfeCkiXSxbMSwxLCIoVHgnLFxcbXVfe3gnfSkiXSxbMiwwLCIoeCxcXHhpKSJdLFsyLDEsIih4JyxcXHhpJykiXSxbMCwxLCJoIiwyXSxbMiwzLCJGXlRVXlRoIiwyXSxbNCw1LCJoIl0sWzIsNCwiXFxtdV94Il0sWzMsNSwiXFxtdV94JyIsMl1d
 			\begin{tikzcd}
@@ -243,7 +245,7 @@ The answer is yes, and is discussed in the next theorem.
 	Then $ F^TU^Th = Th $. 
 	So $ F^TU^Th $ in \Cref{thm:naturality-of-epsilon-T} becomes $ Th $, and the square thus commutes by naturality of $ \mu $, and becuase $ h $ is a morphism of $ T $-algebras.
 	To check that there is an adjunction is to check the triangles in \Cref{thm:triangle-identities-adjunction} commute.
-	For $ (x,\xi) $ an object in $\mathbb{X}^T $ and $ x $ and object in $ \mathbb{X} $, the left triangle is the $ (x,\xi) $-component of the left triangle of \Cref{thm:naturality-of-epsilon-T}, and the right is the $ x $-component of the right triangle of \Cref{thm:naturality-of-epsilon-T}:
+	For $ (x,\xi) $ an object in $ T\textsf{-Alg} $ and $ x $ and object in $ \mathbb{X} $, the left triangle is the $ (x,\xi) $-component of the left triangle of \Cref{thm:naturality-of-epsilon-T}, and the right is the $ x $-component of the right triangle of \Cref{thm:naturality-of-epsilon-T}:
 		% https://q.uiver.app/#q=WzAsNixbMCwwLCJUeCJdLFsxLDAsIlReMngiXSxbMSwxLCJUeCJdLFsyLDAsIlR4Il0sWzMsMCwieCJdLFsyLDEsIngiXSxbMCwxLCJUXFxldGFfeCJdLFswLDIsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwyLCIiLDIseyJvZmZzZXQiOjEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCJcXG11X3giXSxbNCwzLCJcXGV0YV94IiwyXSxbMyw1LCJcXHhpIiwyXSxbNCw1LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsNSwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
 		\[\begin{tikzcd}
 			Tx & {T^2x} & Tx & x \\
@@ -259,7 +261,7 @@ The answer is yes, and is discussed in the next theorem.
 		\end{tikzcd}\]
 	The left and right traingles commute respectively from the commutativity of the monad diagram \Cref{thm:monad-identities} and the $ T $-algebra diagram \Cref{def:t-algebra}.\\
 	
-	Lastly, notice that for an object $ x $ in $\mathbb{X} $, $ U^TF^Tx = Tx $, $ \eta^T = \eta $ and $ U^T\epsilon^TF^Tx=\mu_x $, and so the monad defined by this adjunction is $ T=(T,, \eta, \mu) $, as desired.		
+	Lastly, notice that for an object $ x $ in $\mathbb{X} $, $ U^TF^Tx = Tx $, $ \eta^T = \eta $ and $ U^T\epsilon^TF^Tx=\mu_x $, and so the monad defined by this adjunction is $ T=(T, \eta, \mu) $, as desired.		
 	
 \end{proof}
 
@@ -268,36 +270,37 @@ When an adjunction induces a monad that induces the same adjunction back, we cal
 We get a sense of how monadic an adjunction is (or measure its \textit{monadicity} with the following construction.
 
 \begin{thm}\label{thm:kiesli}
-	Let $ (F,U,\eta,\epsilon):\mathbb{X}\to \mathbb{A}$ be an adjunction
+	Let $ (F \dashv U,\eta,\epsilon):\mathbb{X}\to \mathbb{A}$ be an adjunction
 	and $ T=(UF,\eta, U \epsilon F)$ be the monad defined by the adjunction. 
-	Then there is a unique functor $K: \mathbb{A} \longrightarrow  \mathbb{X}^T $ with $U^TK= U$ and $KF=F^T$.
+	Then there is a unique functor $K: \mathbb{A} \to  T\textsf{-Alg} $ with $U^TK= U$ and $KF=F^T$.
 \end{thm}
 
 % TODO: maybe actually prove this
 % TODO: add stuff about desceeeeeent
 % TODO: make a bibliography
 \begin{proof}
-	Define $K: \mathbb{A} \to \mathbb{X}^{T} $ by $Ka := (Ua, U \epsilon _a)$, and on morphisms $Kf:=Uf$.
+	Define $K: \mathbb{A} \to T\textsf{-Alg}$ by $Ka := (Ua, U \epsilon _a)$, and on morphisms $Kf:=Uf$.
 \end{proof}
 
-There is one last detail that will make our diagram complete: the functor $K$ as defined above has a left adjoint, the functor $L: \mathbb{X}^{T} \to \mathbb{A}$. 
+There is another arrow that will make the triangle complete: the functor $K$ as defined above has a left adjoint, the functor $L: T\textsf{-Alg} \to \mathbb{A}$. 
 
 \begin{thm}
-	There is an adjunction $(L,K,\overline{\eta}, \overline{ \epsilon}): \mathbb{X}^{T} \to \mathbb{A}$.
+	There is an adjunction $(L \dashv K, \overline{\eta}, \overline{ \epsilon}): T\textsf{-Alg} \to \mathbb{A}$.
 \end{thm}
 
+% TODO: Finish this proof
 \begin{proof}
 	We define
 	\begin{enumerate}
-		\item the left adjoint $L: \mathbb{X}^{T} \to \mathbb{A}$, where $L(x,\xi)$ is defined as the coequaliser of
+		\item the left adjoint $L: T\textsf{-Alg} \to \mathbb{A}$, where $L(x,\xi)$ is defined as the coequaliser of
 		\[\begin{tikzcd}
 			{FUFx} & {Fx} & {L(x,\xi)}
 			\arrow["{\epsilon_{Fx}}", shift left, from=1-1, to=1-2]
 			\arrow["{F\xi}"', shift right, from=1-1, to=1-2]
 			\arrow["{\pi_{(x, \xi)}}", from=1-2, to=1-3]
 		\end{tikzcd}\]
-		\item the right adjoint $K: \mathbb{A} \to  \mathbb{X}^{T}$, defined by $Ka:=(Ua, U \epsilon_a)$ on objects and $Kf:=Uf$ on morphisms;
-		\item the unit $\overline{\eta}: 1_{ \mathbb{X}^{T}} \to  KL$ defined by $\overline{\eta}_{(x,\xi)}=U\pi_{(x,\xi)}\eta_x$;
+		\item the right adjoint $K: \mathbb{A} \to  T\textsf{-Alg}$, defined by $Ka:=(Ua, U \epsilon_a)$ on objects and $Kf:=Uf$ on morphisms;
+		\item the unit $\overline{\eta}: 1_{ T\textsf{-Alg}} \to  KL$ defined by $\overline{\eta}_{(x,\xi)}=U\pi_{(x,\xi)}\eta_x$;
 		\item the counit $\overline{ \epsilon}: LK \to 1_{ \mathbb{A}}$ is defined for each $ \overline{ \epsilon}_a$ as the unique morphism making the diagram
 		\[\begin{tikzcd}
 			{FUFUa} & {FUa} & {(LUa, U\epsilon_a)}\\ 
@@ -319,7 +322,7 @@ Now our picture is complete, and looks like below, with the $F$- and $U$-triangl
 \[\begin{tikzcd}
 	&& {\mathbb{X}} \\
 	{\mathbb{A}} \\
-	&& { \mathbb{X}^T}
+	&& { T\textsf{-Alg}}
 	\arrow[""{name=0, anchor=center, inner sep=0}, "F", shift left=2, from=1-3, to=2-1]
 	\arrow[""{name=1, anchor=center, inner sep=0}, "{F^T}"', shift right, from=1-3, to=3-3]
 	\arrow[""{name=2, anchor=center, inner sep=0}, "U", shift left, from=2-1, to=1-3]
@@ -332,159 +335,64 @@ Now our picture is complete, and looks like below, with the $F$- and $U$-triangl
 \end{tikzcd}\]	
 \\
 
-\begin{defn} Let $ (F,U,\eta,\epsilon):\mathbb{X}\longrightarrow \mathbb{A}$ be an adjunction and $T= (T, \eta, \mu)$ be its associated monad. Then \begin{enumerate}
-		\item the functor $ K: \mathbb{A} \longrightarrow \mathbb{X}^{T}$ as defined in the previous result is called the \textit{comparison functor};
+\begin{defn} Let $ (F \dashv U,\eta,\epsilon):\mathbb{X}\longrightarrow \mathbb{A}$ be an adjunction and $T= (T, \eta, \mu)$ be its associated monad. Then \begin{enumerate}
+		\item the functor $ K: \mathbb{A} \longrightarrow T\textsf{-Alg}$ as defined in the previous result is called the \textit{comparison functor};
 		\item the functor $ U: \mathbb{A} \longrightarrow \mathbb{X}$ is said to be \textit{monadic} when the comparison functor is an equivalence.
 	\end{enumerate}
 	
 \end{defn}
 
+% TODO: Remove uses of we and us and our
+% Remove repetitve use of "For a monad on a category "...
 
+Monadic functors are very useful, because they recall the adjunction from which they came. 
+Moreover, monadicity means that, in some sense, a category is algebraic because it is equivalent to a category of algebras.\\ 
 
-Monadic functors are very useful, because we can recover from them the adjunction that induces them. 
-Moreover, monadicity means that, in some sense, a category is algebraic because it is equivalent to a category of algebras.\\
+% TODO: Preamble to use of K construction
+As with any free-forgetful adjunction to a category of algebras, it is useful to know what the free algebras of the category are.
+In the case of the adjunction
 
-
-\subsection{Beck's Monadicity Theorem}
-
-\begin{thm}\label{thm:beck}{\textit{Beck's Monadicity Theorem}}
-	Let $ (F,U,\eta,\epsilon):\mathbb{X}\longrightarrow \mathbb{A}$ be an adjunction, and $T=(T,\eta, \mu)$ be its associated monad.
-	The following conditions are equivalent:
-	\begin{enumerate}
-		\item the functor $ U: \mathbb{A} \longrightarrow \mathbb{X}$ is monadic;
-		\item the functor $U$ preserves coequaliser diagrams of the form:
-		% https://q.uiver.app/#q=WzAsMyxbMCwwLCJGVUYoWCkiXSxbMSwwLCJGKFgpIl0sWzIsMCwiTChYLFxceGkpIl0sWzAsMSwiXFxlcHNpbG9uX3tGKFgpfSIsMCx7Im9mZnNldCI6LTF9XSxbMCwxLCJGKFxceGkpIiwyLHsib2Zmc2V0IjoxfV0sWzEsMiwiXFxwaV97KFgsIFxceGkpfSJdXQ==
-		\[\begin{tikzcd}
-			{FUF(X)} & {F(X)} & {L(X,\xi)}
-			\arrow["{\epsilon_{F(X)}}", shift left, from=1-1, to=1-2]
-			\arrow["{F(\xi)}"', shift right, from=1-1, to=1-2]
-			\arrow["{\pi_{(X, \xi)}}", from=1-2, to=1-3]
-		\end{tikzcd}\]
-		for every $T$-algebra $(X, \xi)$, and for every object $ A$ in $ \mathbb{A}$, the diagram
-		\[\begin{tikzcd}
-			{FUFU(A)} & {FU(A)} & {A}
-			\arrow["{\epsilon_{FU(A)}}", shift left, from=1-1, to=1-2]
-			\arrow["{FU(\epsilon_A)}"', shift right, from=1-1, to=1-2]
-			\arrow["{ \epsilon_A}", from=1-2, to=1-3]
-		\end{tikzcd}\]
-		is a coequaliser;
-		\item $U$ preserves coequaliser diagrams of the form:
-		\[\begin{tikzcd}
-			{FUF(X)} & {F(X)} & {L(X,\xi)}
-			\arrow["{\epsilon_{F(X)}}", shift left, from=1-1, to=1-2]
-			\arrow["{F(\xi)}"', shift right, from=1-1, to=1-2]
-			\arrow["{\pi_{(X, \xi)}}", from=1-2, to=1-3]
-		\end{tikzcd}\]
-		for every $T$-algebra $(X,\xi)$, and $U$ reflects isos;
-		\item every diagram 
-		\begin{tikzcd}
-			{A} & {B} 
-			\arrow["{f}", shift left, from=1-1, to=1-2]
-			\arrow["{g}"', shift right, from=1-1, to=1-2]
-		\end{tikzcd}
-		in $ \mathbb{A}$ - where
-		\begin{tikzcd}
-			{U(A)} & {U(B)} 
-			\arrow["{U(f)}", shift left, from=1-1, to=1-2]
-			\arrow["{U(g)}"', shift right, from=1-1, to=1-2]
-		\end{tikzcd}
-		has an absolute coequaliser -  	
-		has a coequaliser preserved by $U$, and $U$ reflects isos.
-		
-	\end{enumerate}
 	
+% CONT
+\begin{defn}\label{defn:kleisli=category-defn}
+	
+\end{defn}
+
+\begin{thm}
+	there is an adhybc
 \end{thm}
 
-\begin{proof} Since it has been extensively covered that $(1)\iff (2) \iff(3)$, we will only prove $ (1)\implies (4)$.
-	Let $ \mathcal{D}$ be a diagram in $ \mathbb{A}$ such that $ U( \mathcal{D}) =$ 
-	\begin{tikzcd}
-		{X} & {X'}
-		\arrow["u", shift left, from=1-1, to=1-2]
-		\arrow["v"', shift right, from=1-1, to=1-2]
-	\end{tikzcd}
-	with in $ \mathbb{X}$. Suppose $ U( \mathcal{D})$ has an absolute coequaliser $q$.
-	
-	% https://q.uiver.app/#q=WzAsNSxbMCwwLCJUKFgpIl0sWzEsMCwiVChYJykiXSxbMCwxLCJYIl0sWzEsMSwiWCciXSxbMiwxLCJRIl0sWzAsMiwiXFx4aSIsMl0sWzEsMywiXFx4aSciXSxbMCwxLCJUKHUpIiwwLHsib2Zmc2V0IjotMX1dLFswLDEsIlQodikiLDIseyJvZmZzZXQiOjF9XSxbMiwzLCJ1IiwwLHsib2Zmc2V0IjotMX1dLFsyLDMsInYiLDIseyJvZmZzZXQiOjF9XSxbMyw0LCJxIiwyXV0=
+
+\subsection{The Adjoint Triangle Theorem}
+
+\begin{defn}\label{def:adjoint-triangle}\cite{DubuAT} 
+Given a functor $\mathbb{A} \xrightarrow{J} \mathbb{B}$, an \textit{adjoint triangle} for $ J$ consists of a category $ \mathbb{C}$, and adjunctions $(E \dashv R, \rho, \mu): \mathbb{A} \to \mathbb{C}$ and  $(L \dashv U, \eta, \varepsilon): \mathbb{B} \to \mathbb{C}$ such that $ JR=U$, displayed in the diagram:
+	% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG1hdGhiYntBfSJdLFsyLDAsIlxcbWF0aGJie0J9Il0sWzEsMSwiXFxtYXRoYmJ7Q30iXSxbMCwxLCJKIl0sWzEsMiwiTCIsMCx7Im9mZnNldCI6LTF9XSxbMCwyLCJFIiwyLHsib2Zmc2V0IjoxfV0sWzIsMSwiVSIsMCx7Im9mZnNldCI6LTJ9XSxbMiwwLCJSIiwyLHsib2Zmc2V0IjoyfV0sWzQsNiwiIiwwLHsibGV2ZWwiOjEsInN0eWxlIjp7Im5hbWUiOiJhZGp1bmN0aW9uIn19XSxbNSw3LCIiLDIseyJsZXZlbCI6MSwic3R5bGUiOnsibmFtZSI6ImFkanVuY3Rpb24ifX1dXQ==
 	\[\begin{tikzcd}
-		{T(X)} & {T(X')} & \\
-		X & {X'} & Q
-		\arrow["{T(u)}", shift left, from=1-1, to=1-2]
-		\arrow["{T(v)}"', shift right, from=1-1, to=1-2]
-		\arrow["\xi"', from=1-1, to=2-1]
-		\arrow["{\xi'}", from=1-2, to=2-2]
-		\arrow["u", shift left, from=2-1, to=2-2]
-		\arrow["v"', shift right, from=2-1, to=2-2]
-		\arrow["q"', from=2-2, to=2-3]
-	\end{tikzcd}\]	
-	Since $ q$ is an absolute coequaliser of $ u$ and $ v$ in $ \mathbb{X}$, then $ T(q)$ is a coequaliser of $ T(u)$ and $ T(v)$ in $ \mathbb{A}$. 
-	Since the $u$- and $ v$-diagrams commute, then $ q\xi'$ also coequalises $ T(u)$ and $ T(v)$. 
-	Then there is a unique morphism $k: T(Q) \longrightarrow Q$ such that $ kT(q) = q \xi'$.
-	Since this square commutes, then $ q$ is also a morphism in $ \mathbb{X}^{T}$.
-	Now we want to show that $ q$ is the coequaliser of $ u$ and $ v$ in $ \mathbb{X}^{ T}$.
-	Let $ q:(X',\xi') \longrightarrow (Q', k')$ be a morphism of $ T$-algebras such that $ q'u = q'v$ in $ \mathbb{X}^{T}$.
-	Then $ q'u=q'v $ in $ \mathbb{X}$, and $ T(q')T(u)=T(q')T(v)$ in $ \mathbb{X}$, which, respectively, induce $l$ and $ T(l)$ in the diagram below, by universal property of the coequalisers.
-	
-	% https://q.uiver.app/#q=WzAsOCxbMCwwLCJUKFgpIl0sWzIsMCwiVChYJykiXSxbMCwyLCJYIl0sWzIsMiwiWCciXSxbMywyLCJRIl0sWzMsMCwiVChRKSJdLFs0LDEsIlQoUScpIl0sWzQsMywiUSciXSxbMCwyLCJcXHhpIiwyXSxbMSwzLCJcXHhpJyJdLFswLDEsIlQodSkiLDAseyJvZmZzZXQiOi0xfV0sWzAsMSwiVCh2KSIsMix7Im9mZnNldCI6MX1dLFsyLDMsInUiLDAseyJvZmZzZXQiOi0xfV0sWzIsMywidiIsMix7Im9mZnNldCI6MX1dLFszLDQsInEiXSxbMSw1LCJUKHEpIl0sWzEsNiwiVChxJykiLDIseyJsYWJlbF9wb3NpdGlvbiI6MzB9XSxbMyw3LCJxJyIsMl0sWzUsNCwiayIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs2LDcsImsnIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzUsNiwiVChsKSJdLFs0LDcsImwiXV0=
-	\[\begin{tikzcd}
-		{T(X)} && {T(X')} & {T(Q)} & \\
-		&&&& {T(Q')} \\
-		X && {X'} & Q \\
-		&&&& {Q'}
-		\arrow["{T(u)}", shift left, from=1-1, to=1-3]
-		\arrow["{T(v)}"', shift right, from=1-1, to=1-3]
-		\arrow["\xi"', from=1-1, to=3-1]
-		\arrow["{T(q)}", from=1-3, to=1-4]
-		\arrow["{T(q')}"'{pos=0.3}, from=1-3, to=2-5]
-		\arrow["{\xi'}", from=1-3, to=3-3]
-		\arrow["{T(l)}", dashed, from=1-4, to=2-5]
-		\arrow["k", dashed, from=1-4, to=3-4]
-		\arrow["{k'}", from=2-5, to=4-5]
-		\arrow["u", shift left, from=3-1, to=3-3]
-		\arrow["v"', shift right, from=3-1, to=3-3]
-		\arrow["q", from=3-3, to=3-4]
-		\arrow["{q'}"', from=3-3, to=4-5]
-		\arrow["l", dashed, from=3-4, to=4-5]
+		{\mathbb{A}} && {\mathbb{B}} \\
+		& {\mathbb{C}}
+		\arrow["J", from=1-1, to=1-3]
+		\arrow[""{name=0, anchor=center, inner sep=0}, "E"', shift right, from=1-1, to=2-2]
+		\arrow[""{name=1, anchor=center, inner sep=0}, "L", shift left, from=1-3, to=2-2]
+		\arrow[""{name=2, anchor=center, inner sep=0}, "R"', shift right=2, from=2-2, to=1-1]
+		\arrow[""{name=3, anchor=center, inner sep=0}, "U", shift left=2, from=2-2, to=1-3]
+		\arrow["\dashv"{anchor=center, rotate=45}, draw=none, from=0, to=2]
+		\arrow["\dashv"{anchor=center, rotate=135}, draw=none, from=1, to=3]
 	\end{tikzcd}\]
-	Now we just need to show that $l$ is also a morphism of $T$-algebras, which is to show that $k'T(l)=lk$. 
-	Consider a segment of the diagram:
-	% https://q.uiver.app/#q=WzAsNixbMCwwLCJUKFgnKSJdLFswLDEsIlgnIl0sWzEsMCwiVChRKSJdLFsxLDEsIlEiXSxbMiwwLCJUKFEnKSJdLFsyLDEsIlEnIl0sWzAsMiwiVChxKSJdLFsxLDMsInEiLDJdLFswLDEsIlxceGknIiwyXSxbMiwzLCJrIl0sWzIsNCwiVChsKSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFszLDUsImwiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNCw1LCJrJyJdXQ==
+
+
+\begin{lem}
+In the notation above, given an adjoint triangle for a functor $J$, there is a natural transformation $LJ\xrightarrow{\Theta} E$ which makes the following diagram commute:
+	% https://q.uiver.app/#q=WzAsNCxbMiwwLCJKUkUiXSxbMCwwLCJKUkxKIl0sWzAsMSwiVUxKIl0sWzIsMSwiSiJdLFsxLDAsIkpSXFxUaGV0YSJdLFsxLDIsIjFMSiIsMl0sWzMsMiwiXFxldGEgSiIsMl0sWzMsMCwiSlxccmhvIiwyXV0=
 	\[\begin{tikzcd}
-		{T(X')} & {T(Q)} & {T(Q')} \\
-		{X'} & Q & {Q'}
-		\arrow["{T(q)}", from=1-1, to=1-2]
-		\arrow["{\xi'}"', from=1-1, to=2-1]
-		\arrow["{T(l)}", dashed, from=1-2, to=1-3]
-		\arrow["k", from=1-2, to=2-2]
-		\arrow["{k'}", from=1-3, to=2-3]
-		\arrow["q"', from=2-1, to=2-2]
-		\arrow["l"', dashed, from=2-2, to=2-3]
+		JRLJ && JRE \\
+		ULJ && J
+		\arrow["{JR\Theta}", from=1-1, to=1-3]
+		\arrow["1LJ"', from=1-1, to=2-1]
+		\arrow["{J\rho}"', from=2-3, to=1-3]
+		\arrow["{\eta J}"', from=2-3, to=2-1]
 	\end{tikzcd}\]
-	
-	The outer square commutes because $ k' T(l)T(q)=k' T(q')=q'\xi'= lq \xi'$. 
-	The left square also commutes by assumption, and T(q) is an epi since it is a coequaliser.
-	Then by a pasting lemma, the right square commutes, too.
-	Then $ l$ is indeed a $T$-algebra morphism, which shows that $ q$ is the coequaliser of $ u,v$ in $ \mathbb{X}^{T}$.
-	From $ (1)$, $ \mathbb{X}^{T}\sim \mathbb{A}$, which means there is also a coequaliser of the diagram $ \mathcal{D}$ in $ \mathbb{A}$, which is trivially preserved by $ U$.
-\end{proof}
-
-
-Now we want a simpler way to check monadicity, which will become useful in the next example.
-
-\begin{thm}\label{thm:crude}{ \textit{Crude Monadicity Theorem}}
-	Let $ U: \mathbb{A} \longrightarrow \mathbb{X}$ be a functor. $ U$ is monadic if
-	\begin{enumerate}
-		\item $ U$ has a left adjoint;
-		\item $ \mathbb{A}$ has, and $ U$ preserves, reflexive coequalisers;
-		\item $ U$ reflects isomorphisms.
-	\end{enumerate}
-	
-\end{thm}
-
-\begin{proof}
-	Let us only prove the second point. 
-\end{proof}
-
-
+\end{lem}
 
 \printbibliography
 

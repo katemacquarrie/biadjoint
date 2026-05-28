@@ -19,13 +19,36 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global/global}
+    \entry{DubuAT}{inproceedings}{}{}
+      \name{author}{1}{}{%
+        {{hash=fc10f5818b0c113735676eddba170ce4}{%
+           family={Dubuc},
+           familyi={D\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Verlag}%
+      }
+      \strng{namehash}{fc10f5818b0c113735676eddba170ce4}
+      \strng{fullhash}{fc10f5818b0c113735676eddba170ce4}
+      \strng{fullhashraw}{fc10f5818b0c113735676eddba170ce4}
+      \strng{bibnamehash}{fc10f5818b0c113735676eddba170ce4}
+      \strng{authorbibnamehash}{fc10f5818b0c113735676eddba170ce4}
+      \strng{authornamehash}{fc10f5818b0c113735676eddba170ce4}
+      \strng{authorfullhash}{fc10f5818b0c113735676eddba170ce4}
+      \strng{authorfullhashraw}{fc10f5818b0c113735676eddba170ce4}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Reports of the Midwest Category Seminar II}
+      \field{series}{Lecture Notes in Mathematics, vol 61., pp. 69-91}
+      \field{title}{Adjoint Triangles}
+      \field{year}{1968}
+    \endentry
     \entry{MaclCT}{book}{}{}
-      \name{author}{2}{}{%
-        {{hash=1861f87a0d5dc55631b5c36e38a79fbf}{%
-           family={Eilenberg},
-           familyi={E\bibinitperiod},
-           given={S.},
-           giveni={S\bibinitperiod}}}%
+      \name{author}{1}{}{%
         {{hash=5d8b81303d503b7a7923a1cf82523f52}{%
            family={Lane},
            familyi={L\bibinitperiod},
@@ -35,16 +58,16 @@
       \list{publisher}{1}{%
         {Springer}%
       }
-      \strng{namehash}{393171d0faefcbd98b5227e8e88fd78f}
-      \strng{fullhash}{393171d0faefcbd98b5227e8e88fd78f}
-      \strng{fullhashraw}{393171d0faefcbd98b5227e8e88fd78f}
-      \strng{bibnamehash}{393171d0faefcbd98b5227e8e88fd78f}
-      \strng{authorbibnamehash}{393171d0faefcbd98b5227e8e88fd78f}
-      \strng{authornamehash}{393171d0faefcbd98b5227e8e88fd78f}
-      \strng{authorfullhash}{393171d0faefcbd98b5227e8e88fd78f}
-      \strng{authorfullhashraw}{393171d0faefcbd98b5227e8e88fd78f}
-      \field{sortinit}{E}
-      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \strng{namehash}{5d8b81303d503b7a7923a1cf82523f52}
+      \strng{fullhash}{5d8b81303d503b7a7923a1cf82523f52}
+      \strng{fullhashraw}{5d8b81303d503b7a7923a1cf82523f52}
+      \strng{bibnamehash}{5d8b81303d503b7a7923a1cf82523f52}
+      \strng{authorbibnamehash}{5d8b81303d503b7a7923a1cf82523f52}
+      \strng{authornamehash}{5d8b81303d503b7a7923a1cf82523f52}
+      \strng{authorfullhash}{5d8b81303d503b7a7923a1cf82523f52}
+      \strng{authorfullhashraw}{5d8b81303d503b7a7923a1cf82523f52}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Categories for the Working Mathematician}

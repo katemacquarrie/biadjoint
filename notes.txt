@@ -1,0 +1,53 @@
+#-----Adjoint triangles-----#
+Working out the dual version of Dubuc's Adjoint Triangles with Fernandos labels
+
+% https://q.uiver.app/#q=WzAsMzAsWzAsMSwiXFxtYXRoYmJ7QX0iXSxbMiwxLCJcXG1hdGhiYntCfSJdLFsxLDIsIlxcbWF0aGJie0N9Il0sWzMsMCwiRiJdLFs1LDAsIlJGJyJdLFszLDEsIkZVUiJdLFs1LDEsIlJGJ1VSIl0sWzUsMiwiUkYnVSciXSxbMywyLCJSIl0sWzAsNCwiXFxtYXRoYmJ7QX0iXSxbMiw0LCJcXG1hdGhiYntCfSJdLFsxLDUsIlxcbWF0aGJie0N9Il0sWzEsMCwiVVIgPSBVJyJdLFsxLDMsIkpVPVUnIl0sWzMsNCwiSlVGIl0sWzUsNCwiSlVGJ0oiXSxbMyw1LCJKIl0sWzUsNSwiVSdGJ0oiXSxbMywzLCJGJ0oiXSxbNSwzLCJGIl0sWzIsNywiXFxtYXRoYmJ7QX0iXSxbMCw3LCJcXG1hdGhiYntCfSJdLFsxLDgsIlxcbWF0aGJie0N9Il0sWzEsNiwiSlI9VSJdLFszLDYsIkxKIl0sWzUsNiwiRSJdLFszLDcsIkpSRSJdLFs1LDcsIkpSTEoiXSxbNSw4LCJVTEoiXSxbMyw4LCJKIl0sWzIsMSwiRiIsMCx7Im9mZnNldCI6LTF9XSxbMSwyLCJVIiwwLHsib2Zmc2V0IjotMn1dLFsyLDAsIkYnIiwyLHsib2Zmc2V0IjoxfV0sWzAsMiwiVSciLDIseyJvZmZzZXQiOjJ9XSxbMCwxLCJSIl0sWzYsNywiUkYnMSJdLFs1LDgsIlxcdmFyZXBzaWxvbl9SIiwyXSxbNSw2LCJcXFRoZXRhIFVSIl0sWzMsNCwiXFxUaGV0YSJdLFs3LDgsIlJcXHZhcmVwc2lsb24nIl0sWzEwLDksIkoiLDJdLFsxMSwxMCwiVSIsMix7Im9mZnNldCI6MX1dLFsxMCwxMSwiRiIsMix7Im9mZnNldCI6Mn1dLFs5LDExLCJGJyIsMCx7Im9mZnNldCI6LTJ9XSxbMTEsOSwiVSciLDAseyJvZmZzZXQiOi0yfV0sWzE3LDE1LCIxRidKIiwyXSxbMTYsMTcsIlxcZXRhJ0oiLDJdLFsxNSwxNCwiSlVcXFRoZXRhIiwyXSxbMTgsMTksIlxcVGhldGEiXSxbMTYsMTQsIkpcXGV0YSJdLFsyMCwyMSwiSiIsMl0sWzIxLDIyLCJMIiwwLHsib2Zmc2V0IjotMX1dLFsyMCwyMiwiRSIsMix7Im9mZnNldCI6MX1dLFsyMiwyMSwiVSIsMCx7Im9mZnNldCI6LTJ9XSxbMjIsMjAsIlIiLDIseyJvZmZzZXQiOjJ9XSxbMjQsMjUsIlxcVGhldGEiXSxbMjcsMjYsIkpSXFxUaGV0YSIsMl0sWzI3LDI4LCIxTEoiXSxbMjksMjgsIlxcZXRhIEoiLDJdLFsyOSwyNiwiSlxccmhvIl0sWzMwLDMxLCIiLDIseyJsZXZlbCI6MSwic3R5bGUiOnsibmFtZSI6ImFkanVuY3Rpb24ifX1dLFszMiwzMywiIiwwLHsibGV2ZWwiOjEsInN0eWxlIjp7Im5hbWUiOiJhZGp1bmN0aW9uIn19XSxbNDIsNDEsIiIsMix7ImxldmVsIjoxLCJzdHlsZSI6eyJuYW1lIjoiYWRqdW5jdGlvbiJ9fV0sWzQzLDQ0LCIiLDAseyJsZXZlbCI6MSwic3R5bGUiOnsibmFtZSI6ImFkanVuY3Rpb24ifX1dLFs1MSw1MywiIiwwLHsibGV2ZWwiOjEsInN0eWxlIjp7Im5hbWUiOiJhZGp1bmN0aW9uIn19XSxbNTIsNTQsIiIsMix7ImxldmVsIjoxLCJzdHlsZSI6eyJuYW1lIjoiYWRqdW5jdGlvbiJ9fV1d
+\[\begin{tikzcd}
+& {UR = U'} && F && {RF'} \\
+{\mathbb{A}} && {\mathbb{B}} & FUR && {RF'UR} \\
+& {\mathbb{C}} && R && {RF'U'} \\
+& {JU=U'} && {F'J} && F \\
+{\mathbb{A}} && {\mathbb{B}} & JUF && {JUF'J} \\
+& {\mathbb{C}} && J && {U'F'J} \\
+& {JR=U} && LJ && E \\
+{\mathbb{B}} && {\mathbb{A}} & JRE && JRLJ \\
+& {\mathbb{C}} && J && ULJ
+\arrow["\Theta", from=1-4, to=1-6]
+\arrow["R", from=2-1, to=2-3]
+\arrow[""{name=0, anchor=center, inner sep=0}, "{U'}"', shift right=2, from=2-1, to=3-2]
+\arrow[""{name=1, anchor=center, inner sep=0}, "U", shift left=2, from=2-3, to=3-2]
+\arrow["{\Theta UR}", from=2-4, to=2-6]
+\arrow["{\varepsilon_R}"', from=2-4, to=3-4]
+\arrow["{RF'1}", from=2-6, to=3-6]
+\arrow[""{name=2, anchor=center, inner sep=0}, "{F'}"', shift right, from=3-2, to=2-1]
+\arrow[""{name=3, anchor=center, inner sep=0}, "F", shift left, from=3-2, to=2-3]
+\arrow["{R\varepsilon'}", from=3-6, to=3-4]
+\arrow["\Theta", from=4-4, to=4-6]
+\arrow[""{name=4, anchor=center, inner sep=0}, "{F'}", shift left=2, from=5-1, to=6-2]
+\arrow["J"', from=5-3, to=5-1]
+\arrow[""{name=5, anchor=center, inner sep=0}, "F"', shift right=2, from=5-3, to=6-2]
+\arrow["{JU\Theta}"', from=5-6, to=5-4]
+\arrow[""{name=6, anchor=center, inner sep=0}, "{U'}", shift left=2, from=6-2, to=5-1]
+\arrow[""{name=7, anchor=center, inner sep=0}, "U"', shift right, from=6-2, to=5-3]
+\arrow["{J\eta}", from=6-4, to=5-4]
+\arrow["{\eta'J}"', from=6-4, to=6-6]
+\arrow["{1F'J}"', from=6-6, to=5-6]
+\arrow["\Theta", from=7-4, to=7-6]
+\arrow[""{name=8, anchor=center, inner sep=0}, "L", shift left, from=8-1, to=9-2]
+\arrow["J"', from=8-3, to=8-1]
+\arrow[""{name=9, anchor=center, inner sep=0}, "E"', shift right, from=8-3, to=9-2]
+\arrow["{JR\Theta}"', from=8-6, to=8-4]
+\arrow["1LJ", from=8-6, to=9-6]
+\arrow[""{name=10, anchor=center, inner sep=0}, "U", shift left=2, from=9-2, to=8-1]
+\arrow[""{name=11, anchor=center, inner sep=0}, "R"', shift right=2, from=9-2, to=8-3]
+\arrow["{J\rho}", from=9-4, to=8-4]
+\arrow["{\eta J}"', from=9-4, to=9-6]
+\arrow["\dashv"{anchor=center, rotate=-51}, draw=none, from=3, to=1]
+\arrow["\dashv"{anchor=center, rotate=-129}, draw=none, from=2, to=0]
+\arrow["\dashv"{anchor=center, rotate=-129}, draw=none, from=4, to=6]
+\arrow["\dashv"{anchor=center, rotate=-51}, draw=none, from=5, to=7]
+\arrow["\dashv"{anchor=center, rotate=-129}, draw=none, from=8, to=10]
+\arrow["\dashv"{anchor=center, rotate=-51}, draw=none, from=9, to=11]
+\end{tikzcd}\]
+
+#-----OK-----#

@@ -41,6 +41,24 @@
 	marginparwidth=55mm % width of margin notes
 }
 \fontsize{10}{20}\selectfont
+
+
+%\numberwithin{equation}{section}
+
+\setcounter{secnumdepth}{2}
+
+\theoremstyle{theorem}
+\newtheorem{thm}{Theorem}[subsection]
+\newtheorem{lem}[thm]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+
+\theoremstyle{remark}
+\newtheorem{exa}[thm]{Example}
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
 %----------------------------------------------------------------------------------------
@@ -55,10 +73,70 @@
 \begin{document}
 	\justifying 
 	\maketitle
+
+This is just a summary of the definitions and theorems used.
+The theorems are paraphrased, and not the actual theorems stated.
+This is a growing list.
 	
-	\tableofcontents
-	
-	\section{Prerequisites}
-	%TODO: divide prerequisites in Ring theory, module theory, field theory and others.
-	We recall some basic notions for completeness and to introduce the notation.
+\section{Monads}
+\subsection{Monads and their Algebras}
+
+
+		Note on composeability of functors and natural transformations
+		
+		\begin{defn} Monad
+		\end{defn}
+		\begin{defn} $T$-algebra
+		\end{defn} $\eta$ and $\mu$ of a monad $T$ are referred to as the identity and multiplication of a monad
+		\begin{defn} Morphism of $T$-algebras
+		\end{defn}
+		\begin{defn} Eilenberg-Moore category of $ T $, written $\mathbb{X}^T $
+		\end{defn}
+		\begin{thm} Every adjunction determines a monad. \textit{Proof included.}
+		\end{thm}
+		\begin{defn} Monad defined by the adjunction
+		\end{defn}
+		\begin{thm} Every monad is defined by its $ T $-algebras: every monad determines an adjunction and the monad defined by this adjunction is the same as the first monad. \textit{Proof included, with full description of the adjunction.}
+		\end{thm}
+		\begin{thm} Comparison of adjunctions with algebras: existence of Kleisli comparison functor. \textit{Proof included, full description of functor.}
+		\end{thm}
+		\begin{thm} Existence of adjunction between first category $ \mathbb{A} $ and $\mathbb{X}^T $. \textit{Proof included, with full definition of adjunction.}
+		\end{thm}
+		\begin{defn} Comparison functor
+		\end{defn}
+		\begin{defn} Monadic functor
+		\end{defn}
+		\begin{thm} \textcolor{blue}{Kleisli category} of a monad. \textit{Proof included.}
+		\end{thm}
+		\begin{thm} \textcolor{blue}{Comparison theorem} for the Kleisli construction.
+		\end{thm}
+		\begin{thm} The \textcolor{blue}{Eilenberg-Moore and Kleisli} construction as terminal and initial objects.
+		\end{thm}
+		
+\subsection{Beck's Theorem}
+
+		\begin{defn}
+			\textcolor{blue}{Coequaliser, fork, split coequaliser, split fork, absolute coequaliser, reflexive coequaliser}
+		\end{defn}	
+		\begin{thm}
+			\textcolor{blue}{Beck's theorem characterising algebras:} the 3 equivalent conditions about $ K $ being an equivalence, and how the right adjoint creates coequalisers. \textit{Proof included.}
+		\end{thm}
+		\begin{defn}
+			A functor reflects isos
+		\end{defn}
+		\begin{thm}
+			Beck's monadicity theorem: 4 equivalent conditions of monadicity, in terms of preserving coeqaliser diagrams of a given form. \textit{Proof included.}
+		\end{thm}
+	    \begin{thm}
+			Crude monadicity theorem: in which a functor is monadic if it has a left adjoint, reflects isos and preserves reflexive coequalisers. \textit{Proof included}
+		\end{thm}
+
+\subsection{Comonads and Precomonadicity}
+	    \begin{defn}
+			\textcolor{blue}{Comonad}
+		\end{defn}
+		\begin{defn}
+			\textcolor{blue}{Precomonadic}
+		\end{defn}
+
 \end{document}
