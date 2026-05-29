@@ -366,7 +366,7 @@ In the case of the adjunction
 \subsection{The Adjoint Triangle Theorem}
 
 \begin{defn}\label{def:adjoint-triangle}\cite{DubuAT} 
-Given a functor $\mathbb{A} \xrightarrow{J} \mathbb{B}$, an \textit{adjoint triangle} for $ J$ consists of a category $ \mathbb{C}$, and adjunctions $(E \dashv R, \rho, \mu): \mathbb{A} \to \mathbb{C}$ and  $(L \dashv U, \eta, \varepsilon): \mathbb{B} \to \mathbb{C}$ such that $ JR=U$, displayed in the diagram:
+Given a functor $\mathbb{A} \xrightarrow{J} \mathbb{B}$, an \textcolor{marlight}{adjoint triangle for $ J$} consists of a category $ \mathbb{C}$, and adjunctions $(E \dashv R, \rho, \mu): \mathbb{A} \to \mathbb{C}$ and  $(L \dashv U, \eta, \varepsilon): \mathbb{B} \to \mathbb{C}$ such that $ JR=U$, displayed in the diagram:
 	% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG1hdGhiYntBfSJdLFsyLDAsIlxcbWF0aGJie0J9Il0sWzEsMSwiXFxtYXRoYmJ7Q30iXSxbMCwxLCJKIl0sWzEsMiwiTCIsMCx7Im9mZnNldCI6LTF9XSxbMCwyLCJFIiwyLHsib2Zmc2V0IjoxfV0sWzIsMSwiVSIsMCx7Im9mZnNldCI6LTJ9XSxbMiwwLCJSIiwyLHsib2Zmc2V0IjoyfV0sWzQsNiwiIiwwLHsibGV2ZWwiOjEsInN0eWxlIjp7Im5hbWUiOiJhZGp1bmN0aW9uIn19XSxbNSw3LCIiLDIseyJsZXZlbCI6MSwic3R5bGUiOnsibmFtZSI6ImFkanVuY3Rpb24ifX1dXQ==
 	\[\begin{tikzcd}
 		{\mathbb{A}} && {\mathbb{B}} \\
@@ -379,20 +379,98 @@ Given a functor $\mathbb{A} \xrightarrow{J} \mathbb{B}$, an \textit{adjoint tria
 		\arrow["\dashv"{anchor=center, rotate=45}, draw=none, from=0, to=2]
 		\arrow["\dashv"{anchor=center, rotate=135}, draw=none, from=1, to=3]
 	\end{tikzcd}\]
+	. The equality \textit{ $ JR=U $} is sometimes written as the natural transformation $ JR \xrightarrow{1} U $ and \textit{vice verse}.
+\end{defn}
 
-
-\begin{lem}
+\begin{lem}\cite{DubuAT}
 In the notation above, given an adjoint triangle for a functor $J$, there is a natural transformation $LJ\xrightarrow{\Theta} E$ which makes the following diagram commute:
 	% https://q.uiver.app/#q=WzAsNCxbMiwwLCJKUkUiXSxbMCwwLCJKUkxKIl0sWzAsMSwiVUxKIl0sWzIsMSwiSiJdLFsxLDAsIkpSXFxUaGV0YSJdLFsxLDIsIjFMSiIsMl0sWzMsMiwiXFxldGEgSiIsMl0sWzMsMCwiSlxccmhvIiwyXV0=
 	\[\begin{tikzcd}
 		JRLJ && JRE \\
 		ULJ && J
 		\arrow["{JR\Theta}", from=1-1, to=1-3]
-		\arrow["1LJ"', from=1-1, to=2-1]
+		\arrow["1LJ"', from=2-1, to=1-1]
 		\arrow["{J\rho}"', from=2-3, to=1-3]
 		\arrow["{\eta J}"', from=2-3, to=2-1]
 	\end{tikzcd}\]
 \end{lem}
+
+\begin{proof}
+	Define $ \Theta $ as the composite:
+		% https://q.uiver.app/#q=WzAsNCxbMCwxLCJMSiJdLFsyLDEsIkUiXSxbMCwwLCJMSlJFIl0sWzIsMCwiTFVFIl0sWzAsMiwiTEpcXHJobyJdLFsyLDMsIkwxRSJdLFszLDEsIlxcdmFyZXBzaWxvbiBFIl0sWzAsMSwiXFxUaGV0YSIsMl1d
+		\[\begin{tikzcd}
+			LJRE && LUE \\
+			LJ && E
+			\arrow["L1E", from=1-1, to=1-3]
+			\arrow["{\varepsilon E}", from=1-3, to=2-3]
+			\arrow["{LJ\rho}", from=2-1, to=1-1]
+			\arrow["\Theta"', from=2-1, to=2-3]
+		\end{tikzcd}\]
+		
+		Then we clarify the diagram:
+	
+\end{proof}
+
+% https://q.uiver.app/#q=WzAsMTMsWzAsNCwiVUxKIl0sWzgsNCwiSiJdLFswLDAsIkpSTEoiXSxbMiwzLCJVTEpSRSJdLFsyLDAsIkpSTEpSRSJdLFs0LDAsIkpSTFVFIl0sWzQsMiwiVUxVRSJdLFs4LDAsIkpSRSJdLFs2LDEsIlVFIl0sWzYsMiwiVUUiXSxbMTAsMl0sWzgsMywiSlJFIl0sWzQsNF0sWzEsMCwiXFxldGEgSiJdLFswLDIsIjFfe0xKfSJdLFswLDMsIlVMSlxccmhvIiwyXSxbMiw0LCJKUkxKXFxyaG8iXSxbMyw0LCIxX3tMSlJFfSJdLFs0LDUsIkpSTDFfRSJdLFszLDYsIlVMMV9FIl0sWzUsNywiSlJcXHZhcmVwc2lsb25fRSJdLFs2LDgsIlVcXHZhcmVwc2lsb24gX0UiLDJdLFs4LDcsIjFfRSJdLFs4LDksIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOCw5LCIiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksNiwiXFxldGFfe1VFfSJdLFs2LDUsIjFfe0xVRX0iLDJdLFsyLDcsIkpSXFxUaGV0YSIsMCx7ImN1cnZlIjotNX1dLFsxLDExLCJKXFxyaG8iLDJdLFs3LDExLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsMTEsIiIsMix7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTEsMywiXFxldGFfe0pSRX0iXSxbMTEsOSwiMV9FIl1d
+\[\begin{tikzcd}
+JRLJ && JRLJRE && JRLUE &&&& JRE && \\
+&&&&&& UE \\
+&&&& ULUE && UE &&&& {} \\
+&& ULJRE &&&&&& JRE \\
+ULJ &&&& {} &&&& J
+\arrow["{JRLJ\rho}", from=1-1, to=1-3]
+\arrow["{JR\Theta}", from=1-1, to=1-9]
+\arrow["{JRL1_E}", from=1-3, to=1-5]
+\arrow["{JR\varepsilon_E}", from=1-5, to=1-9]
+\arrow[no head, from=1-9, to=4-9]
+\arrow[shift left, no head, from=1-9, to=4-9]
+\arrow["{1_E}", from=2-7, to=1-9]
+\arrow[no head, from=2-7, to=3-7]
+\arrow[shift left, no head, from=2-7, to=3-7]
+\arrow["{1_{LUE}}"', from=3-5, to=1-5]
+\arrow["{U\varepsilon _E}"', from=3-5, to=2-7]
+\arrow["{\eta_{UE}}", from=3-7, to=3-5]
+\arrow["{1_{LJRE}}", from=4-3, to=1-3]
+\arrow["{UL1_E}", from=4-3, to=3-5]
+\arrow["{1_E}", from=4-9, to=3-7]
+\arrow["{\eta_{JRE}}", from=4-9, to=4-3]
+\arrow["{1_{LJ}}", from=5-1, to=1-1]
+\arrow["{ULJ\rho}"', from=5-1, to=4-3]
+\arrow["{J\rho}"', from=5-9, to=4-9]
+\arrow["{\eta J}", from=5-9, to=5-1]
+\end{tikzcd}\]
+
+
+% https://q.uiver.app/#q=WzAsMTMsWzAsNSwiVUxKIl0sWzgsNSwiSiJdLFswLDAsIkpSTEoiXSxbMiw0LCJVTEpSRSJdLFsyLDEsIkpSTEpSRSJdLFs0LDEsIkpSTFVFIl0sWzQsMywiVUxVRSJdLFs4LDEsIkpSRSJdLFs2LDIsIlVFIl0sWzYsMywiVUUiXSxbMTAsMl0sWzgsNCwiSlJFIl0sWzQsNF0sWzEsMCwiXFxldGEgSiJdLFswLDIsIjFfe0xKfSJdLFswLDMsIlVMSlxccmhvIiwyXSxbMiw0LCJKUkxKXFxyaG8iLDJdLFszLDQsIjFfe0xKUkV9Il0sWzQsNSwiSlJMMV9FIiwyXSxbMyw2LCJVTDFfRSJdLFs2LDgsIlVcXHZhcmVwc2lsb24gX0UiLDJdLFs4LDksIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOCw5LCIiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksNiwiXFxldGFfe1VFfSJdLFs2LDUsIjFfe0xVRX0iLDJdLFsyLDcsIkpSXFxUaGV0YSJdLFsxLDExLCJKXFxyaG8iLDJdLFsxMSwzLCJcXGV0YV97SlJFfSJdLFsxMSw5LCIxX0UiXSxbNSw3LCJKUlxcdmFyZXBzaWxvbl9FIiwyXSxbOCw3LCIxX0UiLDJdLFs3LDExLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsMTEsIiIsMix7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+\[\begin{tikzcd}
+JRLJ &&&&&&&&&& \\
+&& JRLJRE && JRLUE &&&& JRE \\
+&&&&&& UE &&&& {} \\
+&&&& ULUE && UE \\
+&& ULJRE && {} &&&& JRE \\
+ULJ &&&&&&&& J
+\arrow["{JRLJ\rho}"', from=1-1, to=2-3]
+\arrow["{JR\Theta}", from=1-1, to=2-9]
+\arrow["{JRL1_E}"', from=2-3, to=2-5]
+\arrow["{JR\varepsilon_E}"', from=2-5, to=2-9]
+\arrow[no head, from=2-9, to=5-9]
+\arrow[shift left, no head, from=2-9, to=5-9]
+\arrow["{1_E}"', from=3-7, to=2-9]
+\arrow[no head, from=3-7, to=4-7]
+\arrow[shift left, no head, from=3-7, to=4-7]
+\arrow["{1_{LUE}}"', from=4-5, to=2-5]
+\arrow["{U\varepsilon _E}"', from=4-5, to=3-7]
+\arrow["{\eta_{UE}}", from=4-7, to=4-5]
+\arrow["{1_{LJRE}}", from=5-3, to=2-3]
+\arrow["{UL1_E}", from=5-3, to=4-5]
+\arrow["{1_E}", from=5-9, to=4-7]
+\arrow["{\eta_{JRE}}", from=5-9, to=5-3]
+\arrow["{1_{LJ}}", from=6-1, to=1-1]
+\arrow["{ULJ\rho}"', from=6-1, to=5-3]
+\arrow["{J\rho}"', from=6-9, to=5-9]
+\arrow["{\eta J}", from=6-9, to=6-1]
+\end{tikzcd}\]
+
 
 \printbibliography
 
