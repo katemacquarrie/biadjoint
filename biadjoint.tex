@@ -39,6 +39,21 @@
 \theoremstyle{remark}
 \newtheorem{exa}[thm]{Example}
 
+\crefname{thm}{theorem}{theorems}
+\Crefname{thm}{Theorem}{Theorems}
+
+\crefname{lem}{lemma}{lemmas}
+\Crefname{lem}{Lemma}{Lemmas}
+
+\crefname{defn}{definition}{definitions}
+\Crefname{defn}{Definition}{Definitions}
+
+\crefname{rem}{remark}{remarks}
+\Crefname{rem}{Remark}{Remarks}
+
+\crefname{exa}{example}{examples}
+\Crefname{exa}{Example}{Examples}
+
 \title{On Biadjoint Triangles}
 \author{KB}
 \date{\today}
@@ -292,6 +307,7 @@ There is another arrow that will make the triangle complete: the functor $K$ as 
 \begin{proof}
 	We define
 	\begin{enumerate}
+	% TODO: finish defn
 		\item the left adjoint $L: T\textsf{-Alg} \to \mathbb{A}$, where $L(x,\xi)$ is defined as the coequaliser of
 		\[\begin{tikzcd}
 			{FUFx} & {Fx} & {L(x,\xi)}
@@ -318,26 +334,28 @@ There is another arrow that will make the triangle complete: the functor $K$ as 
 \end{proof} 
 
 Now our picture is complete, and looks like below, with the $F$- and $U$-triangles commuting.
-% https://q.uiver.app/#q=WzAsMyxbMiwwLCJcXG1hdGhiYntYfSJdLFswLDEsIlxcbWF0aGJie0F9Il0sWzIsMiwiIFxcbWF0aGJie1h9XlQiXSxbMSwwLCJVIiwwLHsib2Zmc2V0IjotMX1dLFswLDIsIkZeVCIsMix7Im9mZnNldCI6MX1dLFsyLDAsIlVeVCIsMix7Im9mZnNldCI6Mn1dLFswLDEsIkYiLDAseyJvZmZzZXQiOi0yfV0sWzEsMiwiSyIsMCx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsyLDEsIkwiLDAseyJvZmZzZXQiOi0yLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNiwzLCIiLDIseyJsZXZlbCI6MSwic3R5bGUiOnsibmFtZSI6ImFkanVuY3Rpb24ifX1dLFs0LDUsIiIsMix7ImxldmVsIjoxLCJzdHlsZSI6eyJuYW1lIjoiYWRqdW5jdGlvbiJ9fV0sWzgsNywiIiwyLHsibGV2ZWwiOjEsInN0eWxlIjp7Im5hbWUiOiJhZGp1bmN0aW9uIn19XV0=
-\[\begin{tikzcd}
-	&& {\mathbb{X}} \\
-	{\mathbb{A}} \\
-	&& { T\textsf{-Alg}}
-	\arrow[""{name=0, anchor=center, inner sep=0}, "F", shift left=2, from=1-3, to=2-1]
-	\arrow[""{name=1, anchor=center, inner sep=0}, "{F^T}"', shift right, from=1-3, to=3-3]
-	\arrow[""{name=2, anchor=center, inner sep=0}, "U", shift left, from=2-1, to=1-3]
-	\arrow[""{name=3, anchor=center, inner sep=0}, "K", shift left, dashed, from=2-1, to=3-3]
-	\arrow[""{name=4, anchor=center, inner sep=0}, "{U^T}"', shift right=2, from=3-3, to=1-3]
-	\arrow[""{name=5, anchor=center, inner sep=0}, "L", shift left=2, dashed, from=3-3, to=2-1]
-	\arrow["\dashv"{anchor=center, rotate=117}, draw=none, from=0, to=2]
-	\arrow["\dashv"{anchor=center}, draw=none, from=1, to=4]
-	\arrow["\dashv"{anchor=center, rotate=63}, draw=none, from=5, to=3]
-\end{tikzcd}\]	
-\\
+	% https://q.uiver.app/#q=WzAsMyxbMiwwLCJcXG1hdGhiYntYfSJdLFswLDEsIlxcbWF0aGJie0F9Il0sWzIsMiwiIFxcbWF0aGJie1h9XlQiXSxbMSwwLCJVIiwwLHsib2Zmc2V0IjotMX1dLFswLDIsIkZeVCIsMix7Im9mZnNldCI6MX1dLFsyLDAsIlVeVCIsMix7Im9mZnNldCI6Mn1dLFswLDEsIkYiLDAseyJvZmZzZXQiOi0yfV0sWzEsMiwiSyIsMCx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsyLDEsIkwiLDAseyJvZmZzZXQiOi0yLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNiwzLCIiLDIseyJsZXZlbCI6MSwic3R5bGUiOnsibmFtZSI6ImFkanVuY3Rpb24ifX1dLFs0LDUsIiIsMix7ImxldmVsIjoxLCJzdHlsZSI6eyJuYW1lIjoiYWRqdW5jdGlvbiJ9fV0sWzgsNywiIiwyLHsibGV2ZWwiOjEsInN0eWxlIjp7Im5hbWUiOiJhZGp1bmN0aW9uIn19XV0=
+	\begin{equation}\label{diag:comparison-diagram}
+		\begin{tikzcd}
+			&& {\mathbb{X}} \\
+			{\mathbb{A}} \\
+			&& { T\textsf{-Alg}}
+			\arrow[""{name=0, anchor=center, inner sep=0}, "F", shift left=2, from=1-3, to=2-1]
+			\arrow[""{name=1, anchor=center, inner sep=0}, "{F^T}"', shift right, from=1-3, to=3-3]
+			\arrow[""{name=2, anchor=center, inner sep=0}, "U", shift left, from=2-1, to=1-3]
+			\arrow[""{name=3, anchor=center, inner sep=0}, "K", shift left, dashed, from=2-1, to=3-3]
+			\arrow[""{name=4, anchor=center, inner sep=0}, "{U^T}"', shift right=2, from=3-3, to=1-3]
+			\arrow[""{name=5, anchor=center, inner sep=0}, "L", shift left=2, dashed, from=3-3, to=2-1]
+			\arrow["\dashv"{anchor=center, rotate=117}, draw=none, from=0, to=2]
+			\arrow["\dashv"{anchor=center}, draw=none, from=1, to=4]
+			\arrow["\dashv"{anchor=center, rotate=63}, draw=none, from=5, to=3]
+		\end{tikzcd}
+	\end{equation}
+
 
 \begin{defn} Let $ (F \dashv U,\eta,\epsilon):\mathbb{X}\longrightarrow \mathbb{A}$ be an adjunction and $T= (T, \eta, \mu)$ be its associated monad. Then \begin{enumerate}
-		\item the functor $ K: \mathbb{A} \longrightarrow T\textsf{-Alg}$ as defined in the previous result is called the \textit{comparison functor};
-		\item the functor $ U: \mathbb{A} \longrightarrow \mathbb{X}$ is said to be \textit{monadic} when the comparison functor is an equivalence.
+		\item the functor $ K: \mathbb{A} \longrightarrow T\textsf{-Alg}$ as defined in the previous result is called the \textcolor{marlight}{comparison functor};
+		\item the functor $ U: \mathbb{A} \longrightarrow \mathbb{X}$ is said to be \textcolor{marlight}{monadic} when the comparison functor is an equivalence.
 	\end{enumerate}
 	
 \end{defn}
@@ -362,11 +380,185 @@ In the case of the adjunction
 	there is an adhybc
 \end{thm}
 
+\subsection{Beck's Monadicity Theorem}
+
+% TODO: Include preamble
+
+\begin{thm}[Beck's Monadicity Theorem]\label{thm:beck}\cite{MaclCT}
+	Let $ (F,U,\eta,\epsilon):\mathbb{X}\longrightarrow \mathbb{A}$ be an adjunction, and $T=(T,\eta, \mu)$ be its associated monad.
+	The following conditions are equivalent:
+		\begin{enumerate}
+			\item the functor $ U: \mathbb{A} \longrightarrow \mathbb{X}$ is monadic;
+			\item the functor $U$ preserves coequaliser diagrams of the form:
+			% https://q.uiver.app/#q=WzAsMyxbMCwwLCJGVUYoWCkiXSxbMSwwLCJGKFgpIl0sWzIsMCwiTChYLFxceGkpIl0sWzAsMSwiXFxlcHNpbG9uX3tGKFgpfSIsMCx7Im9mZnNldCI6LTF9XSxbMCwxLCJGKFxceGkpIiwyLHsib2Zmc2V0IjoxfV0sWzEsMiwiXFxwaV97KFgsIFxceGkpfSJdXQ==
+				\[\begin{tikzcd}
+					{FUF(X)} & {F(X)} & {L(X,\xi)}
+					\arrow["{\epsilon_{F(X)}}", shift left, from=1-1, to=1-2]
+					\arrow["{F(\xi)}"', shift right, from=1-1, to=1-2]
+					\arrow["{\pi_{(X, \xi)}}", from=1-2, to=1-3]
+					\end{tikzcd}\]
+					for every $T$-algebra $(X, \xi)$, and for every object $ A$ in $ \mathbb{A}$, the diagram
+					\[\begin{tikzcd}
+					{FUFU(A)} & {FU(A)} & {A}
+					\arrow["{\epsilon_{FU(A)}}", shift left, from=1-1, to=1-2]
+					\arrow["{FU(\epsilon_A)}"', shift right, from=1-1, to=1-2]
+					\arrow["{ \epsilon_A}", from=1-2, to=1-3]
+					\end{tikzcd}\]
+					is a coequaliser;
+					\item $U$ preserves coequaliser diagrams of the form:
+					\[\begin{tikzcd}
+					{FUF(X)} & {F(X)} & {L(X,\xi)}
+					\arrow["{\epsilon_{F(X)}}", shift left, from=1-1, to=1-2]
+					\arrow["{F(\xi)}"', shift right, from=1-1, to=1-2]
+					\arrow["{\pi_{(X, \xi)}}", from=1-2, to=1-3]
+					\end{tikzcd}\]
+					for every $T$-algebra $(X,\xi)$, and $U$ reflects isos;
+					\item every diagram 
+					\begin{tikzcd}
+					{A} & {B} 
+					\arrow["{f}", shift left, from=1-1, to=1-2]
+					\arrow["{g}"', shift right, from=1-1, to=1-2]
+					\end{tikzcd}
+					in $ \mathbb{A}$ - where
+					\begin{tikzcd}
+					{U(A)} & {U(B)} 
+					\arrow["{U(f)}", shift left, from=1-1, to=1-2]
+					\arrow["{U(g)}"', shift right, from=1-1, to=1-2]
+				\end{tikzcd}
+			has an absolute coequaliser - has a coequaliser preserved by $U$, and $U$ reflects isos.
+		\end{enumerate}
+	\end{thm}
+
+\begin{lem}\label{thm:u^t-reflects-isos}
+	In the situation of \Cref{diag:comparison-diagram}, the functor $ U^T $ reflects isomorphisms.
+\end{lem}
+
+\begin{proof}
+	Working in the context of \Cref{diag:comparison-diagram}, let $ (x,\xi) $ and $ (x',\xi') $ be objects in $  T\textsf{-Alg} $ such that $ (x,\xi) \cong (x',\xi') $.
+	There is an isomorphism $ f:x \to x' $ in $ \mathbb{X}$,  $ U^T(x,\xi) = x \cong x' = U^T(x',\xi')$, and so $ U^T $ reflects isoss.
+\end{proof}
+
+% TODO: Full proof 
+\begin{proof}[\textit{Proof of \Cref{thm:beck}}] Consider the situation of \Cref{thm:beck}: \\
+	
+	\begin{itemize}
+		\item[] \textit{ $ (1) \Leftrightarrow (2) $}: Using the labels of \Cref{diag:comparison-diagram}, note that since $ U^TK=U $ and $ U^T $ reflects isos by \Cref{thm:u^t-reflects-isos}, then $ U$ reflects isos iff so does $ K $.
+		Consider the diagram: 
+			% https://q.uiver.app/#q=WzAsNCxbMCwwLCJVRlVGeCJdLFsyLDAsIlVGeCJdLFszLDAsIngiXSxbMywxLCJVTCh4LFxceGkpIl0sWzEsMiwiXFx4aSJdLFsxLDMsIlVcXHBpX3soeCxcXHhpKX0iLDJdLFswLDEsIlVcXGVwc2lsb25fe0Z4fT1cXG11X3giLDAseyJvZmZzZXQiOi0xfV0sWzAsMSwiVUZcXHhpPVRcXHhpIiwyLHsib2Zmc2V0IjoxfV0sWzIsMywiXFxldGEnX3g9VVxccGlfeyh4LFxceGkpfVxcZXRhX3giLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+			\[\begin{tikzcd}
+				UFUFx && UFx & x \\
+				&&& {UL(x,\xi)}
+				\arrow["{U\epsilon_{Fx}=\mu_x}", shift left, from=1-1, to=1-3]
+				\arrow["{UF\xi=T\xi}"', shift right, from=1-1, to=1-3]
+				\arrow["\xi", from=1-3, to=1-4]
+				\arrow["{U\pi_{(x,\xi)}}"', from=1-3, to=2-4]
+				\arrow["{\eta'_x=U\pi_{(x,\xi)}\eta_x}", dashed, from=1-4, to=2-4]
+			\end{tikzcd}\]
+	\end{itemize}
+	
+	Let $ \mathcal{D}$ be a diagram in $ \mathbb{A}$ such that $ U( \mathcal{D}) =$ 
+		\begin{tikzcd}
+			{X} & {X'}
+			\arrow["u", shift left, from=1-1, to=1-2]
+			\arrow["v"', shift right, from=1-1, to=1-2]
+		\end{tikzcd}
+	with in $ \mathbb{X}$. Suppose $ U( \mathcal{D})$ has an absolute coequaliser $q$.
+
+	% https://q.uiver.app/#q=WzAsNSxbMCwwLCJUKFgpIl0sWzEsMCwiVChYJykiXSxbMCwxLCJYIl0sWzEsMSwiWCciXSxbMiwxLCJRIl0sWzAsMiwiXFx4aSIsMl0sWzEsMywiXFx4aSciXSxbMCwxLCJUKHUpIiwwLHsib2Zmc2V0IjotMX1dLFswLDEsIlQodikiLDIseyJvZmZzZXQiOjF9XSxbMiwzLCJ1IiwwLHsib2Zmc2V0IjotMX1dLFsyLDMsInYiLDIseyJvZmZzZXQiOjF9XSxbMyw0LCJxIiwyXV0=
+	\[\begin{tikzcd}
+		{T(X)} & {T(X')} & \\
+		X & {X'} & Q
+		\arrow["{T(u)}", shift left, from=1-1, to=1-2]
+		\arrow["{T(v)}"', shift right, from=1-1, to=1-2]
+		\arrow["\xi"', from=1-1, to=2-1]
+		\arrow["{\xi'}", from=1-2, to=2-2]
+		\arrow["u", shift left, from=2-1, to=2-2]
+		\arrow["v"', shift right, from=2-1, to=2-2]
+		\arrow["q"', from=2-2, to=2-3]
+	\end{tikzcd}\]	
+	Since $ q$ is an absolute coequaliser of $ u$ and $ v$ in $ \mathbb{X}$, then $ T(q)$ is a coequaliser of $ T(u)$ and $ T(v)$ in $ \mathbb{A}$. 
+	Since the $u$- and $ v$-diagrams commute, then $ q\xi'$ also coequalises $ T(u)$ and $ T(v)$. 
+	Then there is a unique morphism $k: T(Q) \longrightarrow Q$ such that $ kT(q) = q \xi'$.
+	Since this square commutes, then $ q$ is also a morphism in $ T\textsf{-Alg}$.
+	Now we want to show that $ q$ is the coequaliser of $ u$ and $ v$ in $ T\textsf{-Alg}$.
+	Let $ q:(X',\xi') \longrightarrow (Q', k')$ be a morphism of $ T$-algebras such that $ q'u = q'v$ in $ T\textsf{-Alg}$.
+	Then $ q'u=q'v $ in $ \mathbb{X}$, and $ T(q')T(u)=T(q')T(v)$ in $ \mathbb{X}$, which, respectively, induce $l$ and $ T(l)$ in the diagram below, by universal property of the coequalisers.
+
+	% https://q.uiver.app/#q=WzAsOCxbMCwwLCJUKFgpIl0sWzIsMCwiVChYJykiXSxbMCwyLCJYIl0sWzIsMiwiWCciXSxbMywyLCJRIl0sWzMsMCwiVChRKSJdLFs0LDEsIlQoUScpIl0sWzQsMywiUSciXSxbMCwyLCJcXHhpIiwyXSxbMSwzLCJcXHhpJyJdLFswLDEsIlQodSkiLDAseyJvZmZzZXQiOi0xfV0sWzAsMSwiVCh2KSIsMix7Im9mZnNldCI6MX1dLFsyLDMsInUiLDAseyJvZmZzZXQiOi0xfV0sWzIsMywidiIsMix7Im9mZnNldCI6MX1dLFszLDQsInEiXSxbMSw1LCJUKHEpIl0sWzEsNiwiVChxJykiLDIseyJsYWJlbF9wb3NpdGlvbiI6MzB9XSxbMyw3LCJxJyIsMl0sWzUsNCwiayIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs2LDcsImsnIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzUsNiwiVChsKSJdLFs0LDcsImwiXV0=
+	\[\begin{tikzcd}
+		{T(X)} && {T(X')} & {T(Q)} & \\
+		&&&& {T(Q')} \\
+		X && {X'} & Q \\
+		&&&& {Q'}
+		\arrow["{T(u)}", shift left, from=1-1, to=1-3]
+		\arrow["{T(v)}"', shift right, from=1-1, to=1-3]
+		\arrow["\xi"', from=1-1, to=3-1]
+		\arrow["{T(q)}", from=1-3, to=1-4]
+		\arrow["{T(q')}"'{pos=0.3}, from=1-3, to=2-5]
+		\arrow["{\xi'}", from=1-3, to=3-3]
+		\arrow["{T(l)}", dashed, from=1-4, to=2-5]
+		\arrow["k", dashed, from=1-4, to=3-4]
+		\arrow["{k'}", from=2-5, to=4-5]
+		\arrow["u", shift left, from=3-1, to=3-3]
+		\arrow["v"', shift right, from=3-1, to=3-3]
+		\arrow["q", from=3-3, to=3-4]
+		\arrow["{q'}"', from=3-3, to=4-5]
+		\arrow["l", dashed, from=3-4, to=4-5]
+	\end{tikzcd}\]
+	Now we just need to show that $l$ is also a morphism of $T$-algebras, which is to show that $k'T(l)=lk$. 
+	Consider a segment of the diagram:
+	% https://q.uiver.app/#q=WzAsNixbMCwwLCJUKFgnKSJdLFswLDEsIlgnIl0sWzEsMCwiVChRKSJdLFsxLDEsIlEiXSxbMiwwLCJUKFEnKSJdLFsyLDEsIlEnIl0sWzAsMiwiVChxKSJdLFsxLDMsInEiLDJdLFswLDEsIlxceGknIiwyXSxbMiwzLCJrIl0sWzIsNCwiVChsKSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFszLDUsImwiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNCw1LCJrJyJdXQ==
+	\[\begin{tikzcd}
+		{T(X')} & {T(Q)} & {T(Q')} \\
+		{X'} & Q & {Q'}
+		\arrow["{T(q)}", from=1-1, to=1-2]
+		\arrow["{\xi'}"', from=1-1, to=2-1]
+		\arrow["{T(l)}", dashed, from=1-2, to=1-3]
+		\arrow["k", from=1-2, to=2-2]
+		\arrow["{k'}", from=1-3, to=2-3]
+		\arrow["q"', from=2-1, to=2-2]
+		\arrow["l"', dashed, from=2-2, to=2-3]
+	\end{tikzcd}\]
+
+	The outer square commutes because $ k' T(l)T(q)=k' T(q')=q'\xi'= lq \xi'$. 
+	The left square also commutes by assumption, and T(q) is an epi since it is a coequaliser.
+	Then by a pasting lemma, the right square commutes, too.
+	Then $ l$ is indeed a $T$-algebra morphism, which shows that $ q$ is the coequaliser of $ u,v$ in $ T\textsf{-Alg}$.
+	From $ (1)$, $ T\textsf{-Alg}\sim \mathbb{A}$, which means there is also a coequaliser of the diagram $ \mathcal{D}$ in $ \mathbb{A}$, which is trivially preserved by $ U$.
+\end{proof}
+
+
+Now we want a simpler way to check monadicity, which will become useful in the next example.
+
+\begin{thm}\label{thm:crude}{ \textit{Crude Monadicity Theorem}}
+	Let $ U: \mathbb{A} \longrightarrow \mathbb{X}$ be a functor. $ U$ is monadic if
+	\begin{enumerate}
+		\item $ U$ has a left adjoint;
+		\item $ \mathbb{A}$ has, and $ U$ preserves, reflexive coequalisers;
+		\item $ U$ reflects isomorphisms.
+	\end{enumerate}
+
+\end{thm}
+
+% TODO Finish this proof!
+\begin{proof}
+Let us only prove the second point. 
+\end{proof}
+
+
 
 \subsection{The Adjoint Triangle Theorem}
 
 \begin{defn}\label{def:adjoint-triangle}\cite{DubuAT} 
-Given a functor $\mathbb{A} \xrightarrow{J} \mathbb{B}$, an \textcolor{marlight}{adjoint triangle for $ J$} consists of a category $ \mathbb{C}$, and adjunctions $(E \dashv R, \rho, \mu): \mathbb{A} \to \mathbb{C}$ and  $(L \dashv U, \eta, \varepsilon): \mathbb{B} \to \mathbb{C}$ such that $ JR=U$, displayed in the diagram:
+Given a functor $\mathbb{A} \xrightarrow{J} \mathbb{B}$, an \textcolor{marlight}{adjoint triangle for $ J$} consists of a category $ \mathbb{C}$, and adjunctions 
+	\begin{align}
+		(E \dashv R, \rho, \mu): \mathbb{A} \to \mathbb{C}, &\quad (L \dashv U, \eta, \varepsilon): \mathbb{B} \to \mathbb{C}\\
+		\rho: \textsf{id}_{ \mathbb{A}} \to RE, &\quad \eta: \textsf{id}_{ \mathbb{B}} \to UL \\
+		\mu: ER \to \textsf{id}_{ \mathbb{C}}, &\quad \epsilon: LU \to \textsf{id}_{ \mathbb{C}} 
+	\end{align}
+	
+	
+with $ LJ = E$, displayed in the diagram:
 	% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG1hdGhiYntBfSJdLFsyLDAsIlxcbWF0aGJie0J9Il0sWzEsMSwiXFxtYXRoYmJ7Q30iXSxbMCwxLCJKIl0sWzEsMiwiTCIsMCx7Im9mZnNldCI6LTF9XSxbMCwyLCJFIiwyLHsib2Zmc2V0IjoxfV0sWzIsMSwiVSIsMCx7Im9mZnNldCI6LTJ9XSxbMiwwLCJSIiwyLHsib2Zmc2V0IjoyfV0sWzQsNiwiIiwwLHsibGV2ZWwiOjEsInN0eWxlIjp7Im5hbWUiOiJhZGp1bmN0aW9uIn19XSxbNSw3LCIiLDIseyJsZXZlbCI6MSwic3R5bGUiOnsibmFtZSI6ImFkanVuY3Rpb24ifX1dXQ==
 	\[\begin{tikzcd}
 		{\mathbb{A}} && {\mathbb{B}} \\
@@ -379,98 +571,92 @@ Given a functor $\mathbb{A} \xrightarrow{J} \mathbb{B}$, an \textcolor{marlight}
 		\arrow["\dashv"{anchor=center, rotate=45}, draw=none, from=0, to=2]
 		\arrow["\dashv"{anchor=center, rotate=135}, draw=none, from=1, to=3]
 	\end{tikzcd}\]
-	. The equality \textit{ $ JR=U $} is sometimes written as the natural transformation $ JR \xrightarrow{1} U $ and \textit{vice verse}.
-\end{defn}
+	. The equality \textit{ $ LJ=E $} is sometimes written as the natural transformation $ LJ \xrightarrow{1} E $ and \textit{vice verse}.
+\end{defn} 
 
 \begin{lem}\cite{DubuAT}
-In the notation above, given an adjoint triangle for a functor $J$, there is a natural transformation $LJ\xrightarrow{\Theta} E$ which makes the following diagram commute:
-	% https://q.uiver.app/#q=WzAsNCxbMiwwLCJKUkUiXSxbMCwwLCJKUkxKIl0sWzAsMSwiVUxKIl0sWzIsMSwiSiJdLFsxLDAsIkpSXFxUaGV0YSJdLFsxLDIsIjFMSiIsMl0sWzMsMiwiXFxldGEgSiIsMl0sWzMsMCwiSlxccmhvIiwyXV0=
+In the notation above, given an adjoint triangle for a functor $J$, there is a natural transformation $JR\xrightarrow{\Sigma} U$ which makes the following diagram commute:
+	% https://q.uiver.app/#q=WzAsNCxbMiwwLCJVTEoiXSxbMCwwLCJKUkxKIl0sWzAsMSwiSlJFIl0sWzIsMSwiSiJdLFsxLDAsIlxcU2lnbWEgTEoiXSxbMiwxLCJKUjEiXSxbMywyLCJKXFxyaG8iXSxbMywwLCJcXGV0YSBKIiwyXV0=
 	\[\begin{tikzcd}
-		JRLJ && JRE \\
-		ULJ && J
-		\arrow["{JR\Theta}", from=1-1, to=1-3]
-		\arrow["1LJ"', from=2-1, to=1-1]
-		\arrow["{J\rho}"', from=2-3, to=1-3]
-		\arrow["{\eta J}"', from=2-3, to=2-1]
+		JRLJ && ULJ \\
+		JRE && J
+		\arrow["{\Sigma LJ}", from=1-1, to=1-3]
+		\arrow["JR1", from=2-1, to=1-1]
+		\arrow["{\eta J}"', from=2-3, to=1-3]
+		\arrow["{J\rho}", from=2-3, to=2-1]
 	\end{tikzcd}\]
 \end{lem}
 
 \begin{proof}
-	Define $ \Theta $ as the composite:
-		% https://q.uiver.app/#q=WzAsNCxbMCwxLCJMSiJdLFsyLDEsIkUiXSxbMCwwLCJMSlJFIl0sWzIsMCwiTFVFIl0sWzAsMiwiTEpcXHJobyJdLFsyLDMsIkwxRSJdLFszLDEsIlxcdmFyZXBzaWxvbiBFIl0sWzAsMSwiXFxUaGV0YSIsMl1d
+	Define $ \Sigma $ as the composite:
+		% https://q.uiver.app/#q=WzAsNCxbMiwxLCJVIl0sWzAsMSwiSlIiXSxbMiwwLCJVRVIiXSxbMCwwLCJVTEpSIl0sWzIsMCwiVVxcbXUiXSxbMywyLCJVMVIiXSxbMSwzLCJcXGV0YSBKUiJdLFsxLDAsIlxcU2lnbWEiLDJdXQ==
 		\[\begin{tikzcd}
-			LJRE && LUE \\
-			LJ && E
-			\arrow["L1E", from=1-1, to=1-3]
-			\arrow["{\varepsilon E}", from=1-3, to=2-3]
-			\arrow["{LJ\rho}", from=2-1, to=1-1]
-			\arrow["\Theta"', from=2-1, to=2-3]
+			ULJR && UER \\
+			JR && U
+			\arrow["U1R", from=1-1, to=1-3]
+			\arrow["{U\mu}", from=1-3, to=2-3]
+			\arrow["{\eta JR}", from=2-1, to=1-1]
+			\arrow["\Sigma"', from=2-1, to=2-3]
 		\end{tikzcd}\]
 		
-		Then we clarify the diagram:
+		% TODO: weird phrasing
+		Then we fill in the data of the diagram:
 	
+	% https://q.uiver.app/#q=WzAsMTEsWzcsMCwiVUxKIl0sWzYsNCwiVUxKIl0sWzcsNSwiSiJdLFswLDUsIkpSRSJdLFs1LDIsIlVFIl0sWzUsMywiVUUiXSxbMSw0LCJVTEpSRSJdLFsyLDMsIlVFUkUiXSxbNCwxLCJVRVJMSiJdLFsxLDEsIlVMSiBSTEoiXSxbMCwwLCJKUkxKIl0sWzAsMSwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDEsIiIsMCx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwxLCJcXGV0YSBKIl0sWzIsMywiSlxccmhvIiwyXSxbNCw1LCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsNSwiIiwwLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDAsIlUxIiwyXSxbMSw1LCJVMSJdLFsxLDYsIlVMSlxccmhvIiwyXSxbMyw2LCJcXGV0YSBKUkUiXSxbNiw3LCJVMVJFIl0sWzUsNywiVUVcXHJobyJdLFs3LDQsIlVcXG11IEUiXSxbNyw4LCJVRVIxIl0sWzgsMCwiVVxcbXUgTEoiLDJdLFs5LDgsIlUxUkxKIl0sWzEwLDksIlxcZXRhIEpSTEoiLDJdLFsxMCwwLCJcXFNpZ21hIExKIl0sWzYsOSwiVUxKUjEiXSxbMywxMCwiSlIxIl0sWzIsMCwiXFxldGEgSiIsMl1d
+	\[\begin{tikzcd}
+		JRLJ &&&&&&& ULJ \\
+		& {ULJ RLJ} &&& UERLJ \\
+		&&&&& UE \\
+		&& UERE &&& UE \\
+		& ULJRE &&&&& ULJ \\
+		JRE &&&&&&& J
+		\arrow["{\Sigma LJ}", from=1-1, to=1-8]
+		\arrow["{\eta JRLJ}"', from=1-1, to=2-2]
+		\arrow[no head, from=1-8, to=5-7]
+		\arrow[shift left, no head, from=1-8, to=5-7]
+		\arrow["U1RLJ", from=2-2, to=2-5]
+		\arrow["{U\mu LJ}"', from=2-5, to=1-8]
+		\arrow["U1"', from=3-6, to=1-8]
+		\arrow[no head, from=3-6, to=4-6]
+		\arrow[shift left, no head, from=3-6, to=4-6]
+		\arrow["UER1", from=4-3, to=2-5]
+		\arrow["{U\mu E}", from=4-3, to=3-6]
+		\arrow["{UE\rho}", from=4-6, to=4-3]
+		\arrow["ULJR1", from=5-2, to=2-2]
+		\arrow["U1RE", from=5-2, to=4-3]
+		\arrow["U1", from=5-7, to=4-6]
+		\arrow["{ULJ\rho}"', from=5-7, to=5-2]
+		\arrow["JR1", from=6-1, to=1-1]
+		\arrow["{\eta JRE}", from=6-1, to=5-2]
+		\arrow["{\eta J}"', from=6-8, to=1-8]
+		\arrow["{\eta J}", from=6-8, to=5-7]
+		\arrow["{J\rho}"', from=6-8, to=6-1]
+	\end{tikzcd}\]
 \end{proof}
 
-% https://q.uiver.app/#q=WzAsMTMsWzAsNCwiVUxKIl0sWzgsNCwiSiJdLFswLDAsIkpSTEoiXSxbMiwzLCJVTEpSRSJdLFsyLDAsIkpSTEpSRSJdLFs0LDAsIkpSTFVFIl0sWzQsMiwiVUxVRSJdLFs4LDAsIkpSRSJdLFs2LDEsIlVFIl0sWzYsMiwiVUUiXSxbMTAsMl0sWzgsMywiSlJFIl0sWzQsNF0sWzEsMCwiXFxldGEgSiJdLFswLDIsIjFfe0xKfSJdLFswLDMsIlVMSlxccmhvIiwyXSxbMiw0LCJKUkxKXFxyaG8iXSxbMyw0LCIxX3tMSlJFfSJdLFs0LDUsIkpSTDFfRSJdLFszLDYsIlVMMV9FIl0sWzUsNywiSlJcXHZhcmVwc2lsb25fRSJdLFs2LDgsIlVcXHZhcmVwc2lsb24gX0UiLDJdLFs4LDcsIjFfRSJdLFs4LDksIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOCw5LCIiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksNiwiXFxldGFfe1VFfSJdLFs2LDUsIjFfe0xVRX0iLDJdLFsyLDcsIkpSXFxUaGV0YSIsMCx7ImN1cnZlIjotNX1dLFsxLDExLCJKXFxyaG8iLDJdLFs3LDExLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsMTEsIiIsMix7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTEsMywiXFxldGFfe0pSRX0iXSxbMTEsOSwiMV9FIl1d
-\[\begin{tikzcd}
-JRLJ && JRLJRE && JRLUE &&&& JRE && \\
-&&&&&& UE \\
-&&&& ULUE && UE &&&& {} \\
-&& ULJRE &&&&&& JRE \\
-ULJ &&&& {} &&&& J
-\arrow["{JRLJ\rho}", from=1-1, to=1-3]
-\arrow["{JR\Theta}", from=1-1, to=1-9]
-\arrow["{JRL1_E}", from=1-3, to=1-5]
-\arrow["{JR\varepsilon_E}", from=1-5, to=1-9]
-\arrow[no head, from=1-9, to=4-9]
-\arrow[shift left, no head, from=1-9, to=4-9]
-\arrow["{1_E}", from=2-7, to=1-9]
-\arrow[no head, from=2-7, to=3-7]
-\arrow[shift left, no head, from=2-7, to=3-7]
-\arrow["{1_{LUE}}"', from=3-5, to=1-5]
-\arrow["{U\varepsilon _E}"', from=3-5, to=2-7]
-\arrow["{\eta_{UE}}", from=3-7, to=3-5]
-\arrow["{1_{LJRE}}", from=4-3, to=1-3]
-\arrow["{UL1_E}", from=4-3, to=3-5]
-\arrow["{1_E}", from=4-9, to=3-7]
-\arrow["{\eta_{JRE}}", from=4-9, to=4-3]
-\arrow["{1_{LJ}}", from=5-1, to=1-1]
-\arrow["{ULJ\rho}"', from=5-1, to=4-3]
-\arrow["{J\rho}"', from=5-9, to=4-9]
-\arrow["{\eta J}", from=5-9, to=5-1]
-\end{tikzcd}\]
-
-
-% https://q.uiver.app/#q=WzAsMTMsWzAsNSwiVUxKIl0sWzgsNSwiSiJdLFswLDAsIkpSTEoiXSxbMiw0LCJVTEpSRSJdLFsyLDEsIkpSTEpSRSJdLFs0LDEsIkpSTFVFIl0sWzQsMywiVUxVRSJdLFs4LDEsIkpSRSJdLFs2LDIsIlVFIl0sWzYsMywiVUUiXSxbMTAsMl0sWzgsNCwiSlJFIl0sWzQsNF0sWzEsMCwiXFxldGEgSiJdLFswLDIsIjFfe0xKfSJdLFswLDMsIlVMSlxccmhvIiwyXSxbMiw0LCJKUkxKXFxyaG8iLDJdLFszLDQsIjFfe0xKUkV9Il0sWzQsNSwiSlJMMV9FIiwyXSxbMyw2LCJVTDFfRSJdLFs2LDgsIlVcXHZhcmVwc2lsb24gX0UiLDJdLFs4LDksIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOCw5LCIiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzksNiwiXFxldGFfe1VFfSJdLFs2LDUsIjFfe0xVRX0iLDJdLFsyLDcsIkpSXFxUaGV0YSJdLFsxLDExLCJKXFxyaG8iLDJdLFsxMSwzLCJcXGV0YV97SlJFfSJdLFsxMSw5LCIxX0UiXSxbNSw3LCJKUlxcdmFyZXBzaWxvbl9FIiwyXSxbOCw3LCIxX0UiLDJdLFs3LDExLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsMTEsIiIsMix7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
-\[\begin{tikzcd}
-JRLJ &&&&&&&&&& \\
-&& JRLJRE && JRLUE &&&& JRE \\
-&&&&&& UE &&&& {} \\
-&&&& ULUE && UE \\
-&& ULJRE && {} &&&& JRE \\
-ULJ &&&&&&&& J
-\arrow["{JRLJ\rho}"', from=1-1, to=2-3]
-\arrow["{JR\Theta}", from=1-1, to=2-9]
-\arrow["{JRL1_E}"', from=2-3, to=2-5]
-\arrow["{JR\varepsilon_E}"', from=2-5, to=2-9]
-\arrow[no head, from=2-9, to=5-9]
-\arrow[shift left, no head, from=2-9, to=5-9]
-\arrow["{1_E}"', from=3-7, to=2-9]
-\arrow[no head, from=3-7, to=4-7]
-\arrow[shift left, no head, from=3-7, to=4-7]
-\arrow["{1_{LUE}}"', from=4-5, to=2-5]
-\arrow["{U\varepsilon _E}"', from=4-5, to=3-7]
-\arrow["{\eta_{UE}}", from=4-7, to=4-5]
-\arrow["{1_{LJRE}}", from=5-3, to=2-3]
-\arrow["{UL1_E}", from=5-3, to=4-5]
-\arrow["{1_E}", from=5-9, to=4-7]
-\arrow["{\eta_{JRE}}", from=5-9, to=5-3]
-\arrow["{1_{LJ}}", from=6-1, to=1-1]
-\arrow["{ULJ\rho}"', from=6-1, to=5-3]
-\arrow["{J\rho}"', from=6-9, to=5-9]
-\arrow["{\eta J}", from=6-9, to=6-1]
-\end{tikzcd}\]
-
+\begin{thm}[Adjoint Triangle Theorem]\cite{DubuAT}\label{thm:dubuc-coadjoint-triangle}
+	Consider an adjoint triangle for a functor $J:\mathbb{A} \to \mathbb{B}$ using the notation of \Cref{def:adjoint-triangle}.
+	% TODO is this the same as fernando's one?
+	Assume that	$ \eta $ is the equaliser of the diagram
+			% https://q.uiver.app/#q=WzAsMyxbMiwwLCJVTFVMIl0sWzEsMCwiVUwiXSxbMCwwLCJcXHRleHRzZntpZH1feyBcXG1hdGhiYntCfX0iXSxbMiwxLCJcXGV0YSJdLFsxLDAsIlVMXFxldGEiLDAseyJvZmZzZXQiOi0xfV0sWzEsMCwiXFxldGEgVUwiLDIseyJvZmZzZXQiOjF9XV0=
+				\[\begin{tikzcd}
+				{\textsf{id}_{ \mathbb{B}}} & UL & ULUL
+				\arrow["\eta", from=1-1, to=1-2]
+				\arrow["{UL\eta}", shift left, from=1-2, to=1-3]
+				\arrow["{\eta UL}"', shift right, from=1-2, to=1-3]
+			\end{tikzcd}\].
+	Then, if the equaliser of the diagram
+			% https://q.uiver.app/#q=WzAsNCxbMCwwLCJSTCJdLFsxLDEsIlJFUkwiXSxbMywwLCJSTFVMIl0sWzIsMSwiUkxKUkwiXSxbMCwxLCJcXHJobyBSTCIsMl0sWzAsMiwiUkxcXGV0YSJdLFsxLDMsIlIxUkwiLDJdLFszLDIsIlJMXFxTaWdtYSBMIiwyXV0=
+			\[\begin{tikzcd}
+				RL &&& RLUL \\
+				& RERL & RLJRL
+				\arrow["{RL\eta}", from=1-1, to=1-4]
+				\arrow["{\rho RL}"', from=1-1, to=2-2]
+				\arrow["R1RL"', from=2-2, to=2-3]
+				\arrow["{RL\Sigma L}"', from=2-3, to=1-4]
+			\end{tikzcd}\]
+	exists in the category $ \mathbb{A}^{ \mathbb{B}} $, $ J  $ has a right adjoint, $ G $, and $ G $ is computed as this equaliser.  
+\end{thm}
 
 
 
