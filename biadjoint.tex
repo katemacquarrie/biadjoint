@@ -33,6 +33,9 @@
 \theoremstyle{definition}
 \newtheorem{defn}[thm]{Definition}
 
+\theoremstyle{theorem}
+\newtheorem{cor}[thm]{Corollary}
+
 \theoremstyle{remark}
 \newtheorem{rem}[thm]{Remark}
 
@@ -576,12 +579,13 @@ with $ LJ = E$, displayed in the diagram:
 
 \begin{lem}\cite{DubuAT}
 In the notation above, given an adjoint triangle for a functor $J$, there is a natural transformation $JR\xrightarrow{\Sigma} U$ which makes the following diagram commute:
-	% https://q.uiver.app/#q=WzAsNCxbMiwwLCJVTEoiXSxbMCwwLCJKUkxKIl0sWzAsMSwiSlJFIl0sWzIsMSwiSiJdLFsxLDAsIlxcU2lnbWEgTEoiXSxbMiwxLCJKUjEiXSxbMywyLCJKXFxyaG8iXSxbMywwLCJcXGV0YSBKIiwyXV0=
+	% https://q.uiver.app/#q=WzAsNCxbMiwwLCJVTEoiXSxbMCwwLCJKUkxKIl0sWzAsMSwiSlJFIl0sWzIsMSwiSiJdLFsxLDAsIlxcU2lnbWEgTEoiXSxbMiwxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsMiwiSlxccmhvIl0sWzMsMCwiXFxldGEgSiIsMl0sWzEsMiwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
 	\[\begin{tikzcd}
 		JRLJ && ULJ \\
 		JRE && J
 		\arrow["{\Sigma LJ}", from=1-1, to=1-3]
-		\arrow["JR1", from=2-1, to=1-1]
+		\arrow[shift left, no head, from=1-1, to=2-1]
+		\arrow[no head, from=2-1, to=1-1]
 		\arrow["{\eta J}"', from=2-3, to=1-3]
 		\arrow["{J\rho}", from=2-3, to=2-1]
 	\end{tikzcd}\]
@@ -589,11 +593,12 @@ In the notation above, given an adjoint triangle for a functor $J$, there is a n
 
 \begin{proof}
 	Define $ \Sigma $ as the composite:
-		% https://q.uiver.app/#q=WzAsNCxbMiwxLCJVIl0sWzAsMSwiSlIiXSxbMiwwLCJVRVIiXSxbMCwwLCJVTEpSIl0sWzIsMCwiVVxcbXUiXSxbMywyLCJVMVIiXSxbMSwzLCJcXGV0YSBKUiJdLFsxLDAsIlxcU2lnbWEiLDJdXQ==
+		% https://q.uiver.app/#q=WzAsNCxbMiwxLCJVIl0sWzAsMSwiSlIiXSxbMiwwLCJVRVIiXSxbMCwwLCJVTEpSIl0sWzIsMCwiVVxcbXUiXSxbMywyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMywiXFxldGEgSlIiXSxbMSwwLCJcXFNpZ21hIiwyXSxbMywyLCIiLDEseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
 		\[\begin{tikzcd}
 			ULJR && UER \\
 			JR && U
-			\arrow["U1R", from=1-1, to=1-3]
+			\arrow[no head, from=1-1, to=1-3]
+			\arrow[shift left, no head, from=1-1, to=1-3]
 			\arrow["{U\mu}", from=1-3, to=2-3]
 			\arrow["{\eta JR}", from=2-1, to=1-1]
 			\arrow["\Sigma"', from=2-1, to=2-3]
@@ -645,20 +650,23 @@ In the notation above, given an adjoint triangle for a functor $J$, there is a n
 				\arrow["{UL\eta}", shift left, from=1-2, to=1-3]
 				\arrow["{\eta UL}"', shift right, from=1-2, to=1-3]
 			\end{tikzcd}\].
-	Then, if the equaliser of the diagram
-			% https://q.uiver.app/#q=WzAsNCxbMCwwLCJSTCJdLFsxLDEsIlJFUkwiXSxbMywwLCJSTFVMIl0sWzIsMSwiUkxKUkwiXSxbMCwxLCJcXHJobyBSTCIsMl0sWzAsMiwiUkxcXGV0YSJdLFsxLDMsIlIxUkwiLDJdLFszLDIsIlJMXFxTaWdtYSBMIiwyXV0=
+	If the equaliser of the diagram
+			% https://q.uiver.app/#q=WzAsMixbMCwwLCJSTCJdLFsyLDAsIlJMVUwiXSxbMCwxLCJSTFxcZXRhIiwwLHsib2Zmc2V0IjotMX1dLFswLDEsIlJMXFxTaWdtYSBMIFxccmhvIFJMIiwyLHsib2Zmc2V0IjoxfV1d
 			\[\begin{tikzcd}
-				RL &&& RLUL \\
-				& RERL & RLJRL
-				\arrow["{RL\eta}", from=1-1, to=1-4]
-				\arrow["{\rho RL}"', from=1-1, to=2-2]
-				\arrow["R1RL"', from=2-2, to=2-3]
-				\arrow["{RL\Sigma L}"', from=2-3, to=1-4]
+				RL && RLUL
+				\arrow["{RL\eta}", shift left, from=1-1, to=1-3]
+				\arrow["{RL\Sigma L \rho RL}"', shift right, from=1-1, to=1-3]
 			\end{tikzcd}\]
-	exists in the category $ \mathbb{A}^{ \mathbb{B}} $, $ J  $ has a right adjoint, $ G $, and $ G $ is computed as this equaliser.  
+	exists in the category $ \mathbb{A}^{ \mathbb{B}} $, then $ J  $ has a right adjoint $ G $. In this case, the equaliser gives the value of $ G $. 
 \end{thm}
 
+Now we put these things together. For an object $ Y  $ in $ \mathbb{B} $:
+\begin{align*}
+	\rho	
+\end{align*} 
+  
 
+Because the Yoneda embedding preserves limits, the \textit{Adjoint Triangle Theorem} may equivalently be formulated in terms of \textsf{Hom}-sets.
 
 \printbibliography
 
