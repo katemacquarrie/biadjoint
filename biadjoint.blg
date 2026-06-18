@@ -1,15 +1,15 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
 [0] Config.pm:331> INFO - Logfile is 'biadjoint.blg'
-[64] biber:342> INFO - === Thu May 28, 2026, 14:12:24
-[77] Biber.pm:421> INFO - Reading 'biadjoint.bcf'
-[140] Biber.pm:1002> INFO - Found 2 citekeys in bib section 0
-[153] Biber.pm:4487> INFO - Processing section 0
-[163] Biber.pm:4678> INFO - Looking for bibtex file 'references.bib' for section 0
-[163] bibtex.pm:1713> INFO - LaTeX decoding ...
-[168] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
-[202] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[202] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[202] Biber.pm:4307> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[202] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
-[206] bbl.pm:676> INFO - Writing 'biadjoint.bbl' with encoding 'UTF-8'
-[207] bbl.pm:779> INFO - Output to biadjoint.bbl
+[71] biber:342> INFO - === Thu Jun 18, 2026, 16:47:33
+[83] Biber.pm:421> INFO - Reading 'biadjoint.bcf'
+[148] Biber.pm:1002> INFO - Found 3 citekeys in bib section 0
+[160] Biber.pm:4487> INFO - Processing section 0
+[169] Biber.pm:4678> INFO - Looking for bibtex file 'references.bib' for section 0
+[170] bibtex.pm:1713> INFO - LaTeX decoding ...
+[176] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
+[216] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[217] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[217] Biber.pm:4307> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[217] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[221] bbl.pm:676> INFO - Writing 'biadjoint.bbl' with encoding 'UTF-8'
+[222] bbl.pm:779> INFO - Output to biadjoint.bbl

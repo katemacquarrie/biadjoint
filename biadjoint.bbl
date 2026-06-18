@@ -73,6 +73,30 @@
       \field{title}{Categories for the Working Mathematician}
       \field{year}{1971}
     \endentry
+    \entry{NuneBT}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=85548582004380f0182cf778da090ee6}{%
+           family={Nunes},
+           familyi={N\bibinitperiod},
+           given={FL.},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{85548582004380f0182cf778da090ee6}
+      \strng{fullhash}{85548582004380f0182cf778da090ee6}
+      \strng{fullhashraw}{85548582004380f0182cf778da090ee6}
+      \strng{bibnamehash}{85548582004380f0182cf778da090ee6}
+      \strng{authorbibnamehash}{85548582004380f0182cf778da090ee6}
+      \strng{authornamehash}{85548582004380f0182cf778da090ee6}
+      \strng{authorfullhash}{85548582004380f0182cf778da090ee6}
+      \strng{authorfullhashraw}{85548582004380f0182cf778da090ee6}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Theory and Applications of Categories, Vol. 31, No. 9, 2016, pp. 217–256.}
+      \field{title}{On Biadjoint Triangles}
+      \field{year}{2016}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
