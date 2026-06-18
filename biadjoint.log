@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.2.23)  15 JUN 2026 15:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.2.23)  18 JUN 2026 12:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -961,31 +961,31 @@ Package amsthm Warning: Unknown theoremstyle `theorem' on input line 36.
 
 \@quotelevel=\count463
 \@quotereset=\count464
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 6
-4.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 4
+9.
 (/home/kate/.miktex/texmfs/install/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (biadjoint.aux)
 \openout1 = `biadjoint.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
 
 (/home/kate/.miktex/texmfs/install/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1042,7 +1042,7 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 64.
+Package hyperref Info: Link coloring OFF on input line 49.
 (biadjoint.out) (biadjoint.out)
 \@outlinefile=\write6
 \openout6 = `biadjoint.out'.
@@ -1062,38 +1062,38 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'biadjoint.bbl' found.
 
 (biadjoint.bbl)
-Package biblatex Info: Reference section=0 on input line 64.
-Package biblatex Info: Reference segment=0 on input line 64.
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 6
-8.
+Package biblatex Info: Reference section=0 on input line 49.
+Package biblatex Info: Reference segment=0 on input line 49.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 5
+3.
  (/home/kate/.miktex/texmfs/install/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-68.
+53.
 
 (/home/kate/.miktex/texmfs/install/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-68.
+53.
 
 (/home/kate/.miktex/texmfs/install/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 68.
+(Font)              <12> on input line 53.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 68.
+(Font)              <8> on input line 53.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 68.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 68.
+(Font)              <6> on input line 53.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 53.
 
 
 (/home/kate/.miktex/texmfs/install/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 68.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 53.
 
 
 (/home/kate/.miktex/texmfs/install/tex/latex/amsfonts/umsb.fd
@@ -1114,41 +1114,47 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 {/home/kate/.miktex/texmfs/data/fonts/map/pdftex/pdftex.map}{/home/kate/.miktex
 /texmfs/install/fonts/enc/dvips/lm/lm-rm.enc}]
-Underfull \hbox (badness 10000) in paragraph at lines 79--84
+Underfull \hbox (badness 10000) in paragraph at lines 64--69
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--117
+Underfull \hbox (badness 10000) in paragraph at lines 97--101
 
  []
 
 LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 
-154.
+138.
 (/home/kate/.miktex/texmfs/install/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [1{/home/kate/.miktex/texmfs/install/fonts/enc/dvips/lm/lm-mathit.enc}{/home/
 kate/.miktex/texmfs/install/fonts/enc/dvips/lm/lm-mathsy.enc}]
 LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <10> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 210.
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 194.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 239--241
+Underfull \hbox (badness 10000) in paragraph at lines 223--225
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 279--281
+Overfull \hbox (12.25388pt too wide) in paragraph at lines 263--265
+\OT1/lmr/m/n/10 The left and right traingles commute respectively from the comm
+utativity of Diagram []1.2[] and Diagram []1.3[]. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 263--265
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 369--371
+Underfull \hbox (badness 10000) in paragraph at lines 353--355
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 445--446
+Underfull \hbox (badness 10000) in paragraph at lines 429--430
 
  []
 
@@ -1164,13 +1170,13 @@ Package logreq Info: Writing requests to 'biadjoint.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33212 strings out of 469804
- 653066 string characters out of 5470439
- 1458024 words of memory out of 5000000
- 61319 multiletter control sequences out of 15000+600000
+ 33121 strings out of 469804
+ 650953 string characters out of 5470439
+ 1456379 words of memory out of 5000000
+ 61228 multiletter control sequences out of 15000+600000
  690269 words of font info for 84 fonts, out of 8000000 for 9000
  0 hyphenation exceptions out of 8191
- 84i,17n,104p,876b,1272s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,17n,104p,876b,1273s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </home/kate/.miktex/texmfs/install/fonts/type1/public/lm/lmbx10.pfb></home/ka
 te/.miktex/texmfs/install/fonts/type1/public/lm/lmbx12.pfb></home/kate/.miktex/
 texmfs/install/fonts/type1/public/lm/lmmi10.pfb></home/kate/.miktex/texmfs/inst
@@ -1188,9 +1194,9 @@ iktex/texmfs/install/fonts/type1/public/lm/lmsy5.pfb></home/kate/.miktex/texmfs
 /install/fonts/type1/public/lm/lmsy7.pfb></home/kate/.miktex/texmfs/install/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb></home/kate/.miktex/texmfs/install/
 fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on biadjoint.pdf (9 pages, 356565 bytes).
+Output written on biadjoint.pdf (9 pages, 356121 bytes).
 PDF statistics:
- 251 PDF objects out of 1000 (max. 8388607)
+ 252 PDF objects out of 1000 (max. 8388607)
  60 named destinations out of 1000 (max. 500000)
  45 words of extra memory for PDF output out of 10000 (max. 10000000)
 

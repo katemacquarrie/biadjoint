@@ -42,21 +42,6 @@
 \theoremstyle{remark}
 \newtheorem{exa}[thm]{Example}
 
-\crefname{thm}{theorem}{theorems}
-\Crefname{thm}{Theorem}{Theorems}
-
-\crefname{lem}{lemma}{lemmas}
-\Crefname{lem}{Lemma}{Lemmas}
-
-\crefname{defn}{definition}{definitions}
-\Crefname{defn}{Definition}{Definitions}
-
-\crefname{rem}{remark}{remarks}
-\Crefname{rem}{Remark}{Remarks}
-
-\crefname{exa}{example}{examples}
-\Crefname{exa}{Example}{Examples}
-
 \title{On Biadjoint Triangles}
 \author{KB}
 \date{\today}
@@ -83,12 +68,12 @@ This intuition becomes all the more clear once examples of monads and monadicity
 Much of this comes directly from Mac Lane, and will begin with a quick remark on composeability of functors and natural transformations.\\
 
 For a category $\mathbb{X} $ and endofunctor $T:\mathbb{X} \to \mathbb{X}$, there are composite endofunctors $T^2 = T \circ T$ and $T^3 = T^2 \circ T$. 
-If, additionally, there is a natural transformation $\mu: T^2\to T$, then, for each object $ x $ in $\mathbb{ X} $, the natural transformations $T\mu, \, \mu T: T^3\to T^2 $ have, respectively, components $(T\mu)_x= T\mu _x$, and $(\mu T)_x = \mu_{Tx} $ .
+If, additionally, there is a natural transformation $\mu: T^2 \to T$, then, for each object $ X $ in $\mathbb{ X} $, the natural transformations $T\mu, \, \mu T: T^3\to T^2 $ have, respectively, components $(T\mu)_X= T\mu _X$, and $(\mu T)_X = \mu_{T(X)} $ .
 
 \begin{defn}\label{def:monad-defn} \cite{MaclCT}
 	A \textcolor{marlight}{monad} $T=( T,\eta, \mu ) $ on a category $\mathbb{X}$ is a triple in which $T:\mathbb{X}\to \mathbb{X}$ is an endofunctor on $ \mathbb{X} $ and $ \eta, \mu $ are two natural transformations
 	\begin{equation}
-		1_\mathbb{X}\xlongrightarrow{\eta} T \xlongleftarrow{\mu} T^2
+		 \mathrm{id}_{\mathbb{X}}\xlongrightarrow{\eta} T \xlongleftarrow{\mu} T^2
 	\end{equation}
 	such that the following diagram commutes:
 	\begin{equation}\label{thm:monad-identities}
@@ -109,39 +94,38 @@ If, additionally, there is a natural transformation $\mu: T^2\to T$, then, for e
 	\end{equation}	
 \end{defn}
 
-% TODO: Change cref from Theorem to Definition
-Replace in \Cref{def:monad-defn} the endofunctor $ T: \mathbb{X} \to \mathbb{X} $ with a set $ M $, $ T^2$ and $ T ^3 $ with the cartesian product $ M\times M $ and $  M\times M \times M $ respectively, and lastly the natural transformations $ \eta: 1_{ \mathbb{X}} \to T $ with $ \eta: 1 \to M $ and $ \mu: T^2 \to T $ with the binary operation $ \mu: M\times M \to M $.
-Then the diagram in \Cref{thm:monad-identities} expresses the usual axioms of a monoid.
+Replace in Definition~\ref{def:monad-defn} the endofunctor $ T: \mathbb{X} \to \mathbb{X} $ with a set $ M $, $ T^2$ and $ T ^3 $ with the cartesian product $ M\times M $ and $  M\times M \times M $ respectively, the natural transformations $ \eta: \mathrm{id}_{ \mathbb{X}} \to T $ with $ \eta: \{\cdot\} \to M $ ($ \{ \cdot \} $ is any singleton set), and $ \mu: T^2 \to T $ with the binary operation $ \mu: M\times M \to M $.
+Then Diagram~\ref{thm:monad-identities} expresses the usual axioms of a monoid.
 This is what motivates the naming of the natural transformations $ \eta $ as the \textcolor{marlight}{identity} and $ \mu $ as the \textcolor{marlight}{multiplication} of a monad $ (T, \eta, \mu) $.
 This is also where we recover the famous ``a monad is just a monoid in \dots"\\
 
 % TODO: Add something here
 
-\begin{defn}
+\begin{defn}\cite{MaclCT}\label{def:talg-defn}
 	Let $T=(T, \eta, \mu)$ be a monad on $ \mathbb{X}$.
-	A \textcolor{marlight}{ $ T $-algebra} is a pair $(x,\xi)$ in which $x$ is an object in $ \mathbb{X}$ and $\xi: Tx \to x$ is a morphism in $ \mathbb{X} $ making the diagram
+	A \textcolor{marlight}{ $ T $-algebra} is a pair $(X,\xi)$ in which $X$ is an object in $ \mathbb{X}$ and $\xi: T(X) \to X$ is a morphism in $ \mathbb{X} $ making the diagram
 		\begin{equation}\label{def:t-algebra}
 			% https://q.uiver.app/#q=WzAsNSxbMCwwLCJUXjIoWCkiXSxbMCwxLCJUKFgpIl0sWzEsMCwiVChYKSJdLFsyLDAsIlgiXSxbMSwxLCJYIl0sWzAsMiwiXFxtdV9YIl0sWzAsMSwiVChcXHhpKSIsMl0sWzMsMiwiXFxldGFfWCIsMl0sWzIsNCwiXFx4aSIsMl0sWzEsNCwiXFx4aSIsMl0sWzMsNCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIiIsMCx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
 			\begin{tikzcd}
-				{T^2x} & {Tx} & x \\
-				{Tx} & x
-				\arrow["{\mu_x}", from=1-1, to=1-2]
+				{T^2(X)} & {T(X)} & X \\
+				{T(X)} & X
+				\arrow["{\mu_X}", from=1-1, to=1-2]
 				\arrow["{T\xi}"', from=1-1, to=2-1]
 				\arrow["\xi"', from=1-2, to=2-2]
-				\arrow["{\eta_x}"', from=1-3, to=1-2]
+				\arrow["{\eta_X}"', from=1-3, to=1-2]
 				\arrow[no head, from=1-3, to=2-2]
 				\arrow[shift left, no head, from=1-3, to=2-2]
 				\arrow["\xi"', from=2-1, to=2-2]
 			\end{tikzcd}
 		\end{equation}
 			
-	commute. A \textcolor{marlight}{morphism of $T$-algebras} $h:(x,\xi) \to (x',\xi')$ is a morphism $h:x \to  x'$ in $ \mathbb{X}$ making the diagram below commute:
+	commute. A \textcolor{marlight}{morphism of $T$-algebras} $h:(X,\xi) \to (X',\xi')$ is a morphism $h:X \to  X'$ in $ \mathbb{X}$ making the diagram below commute:
 		\begin{equation}
 			% https://q.uiver.app/#q=WzAsNCxbMCwwLCJUKFgpIl0sWzEsMCwiVChYJykiXSxbMCwxLCJYIl0sWzEsMSwiWCciXSxbMCwxLCJUKGgpIl0sWzAsMiwiXFx4aSIsMl0sWzEsMywiXFx4aSciXSxbMiwzLCJoIiwyXV0=
 			\begin{tikzcd}
-				{Tx} & {Tx'} \\
-				x & {x'}
-				\arrow["{Th}", from=1-1, to=1-2]
+				{T(X)} & {T(X')} \\
+				X & {X'}
+				\arrow["{T(h)}", from=1-1, to=1-2]
 				\arrow["\xi"', from=1-1, to=2-1]
 				\arrow["{\xi'}", from=1-2, to=2-2]
 				\arrow["h"', from=2-1, to=2-2]
@@ -161,25 +145,25 @@ This is also where we recover the famous ``a monad is just a monoid in \dots"\\
 \end{thm}
 
 \begin{proof}
-	Firstly, $ T = UF $ is an endofucntor on $ \mathbb{X} $, $ \eta $ is a natural transformation $ \eta: 1_{ \mathbb{X}} \to UF =T $ and $ \mu = U \epsilon F: UFUF= T^2 \to T= UF$ is a natural transformation.
-	For an object $ x $ in $ \mathbb{X} $, the commutativity of the diagram below must be checked:
+	Firstly, $ T = UF $ is an endofunctor on $ \mathbb{X} $, $ \eta $ is a natural transformation $ \eta: \mathrm{id}_{ \mathbb{X}} \to UF =T $ and $ \mu = U \epsilon F: UFUF= T^2 \to T= UF$ is a natural transformation.
+	For an object $ X $ in $ \mathbb{X} $, the commutativity of the diagram below must be checked:
 		\begin{equation}\label{thm:proof-of-adj-monad}
 			\begin{tikzcd}
-				{UFUFUFx} & & {UFUFx} & & {UFx} \\
+				{UFUFUF(X)} & & {UFUF(X)} & & {UF(X)} \\
 				& & & &\\
-				{UFUFx} & & {UFx} & & {UFUFx}
-				\arrow["{U\epsilon _{FUFx} }", from=1-1, to=1-3]
-				\arrow["{UFU\epsilon _{Fx}}"', from=1-1, to=3-1]
-				\arrow["U\epsilon _{Fx}"', from=1-3, to=3-3]
-				\arrow["{\eta_{UFx}}"', from=1-5, to=1-3]
+				{UFUF(X)} & & {UF(X)} & & {UFUF(X)}
+				\arrow["{U\epsilon _{FUF(X)} }", from=1-1, to=1-3]
+				\arrow["{UFU\epsilon _{F(X)}}"', from=1-1, to=3-1]
+				\arrow["U\epsilon _{F(X)}"', from=1-3, to=3-3]
+				\arrow["{\eta_{UF(X)}}"', from=1-5, to=1-3]
 				\arrow[shift left, no head, from=1-5, to=3-3]
 				\arrow[no head, from=1-5, to=3-3]
-				\arrow["{UF \eta_x}", from=1-5, to=3-5]
-				\arrow["U\epsilon _{Fx}"', from=3-1, to=3-3]
-				\arrow["U\epsilon _{Fx}", from=3-5, to=3-3]
+				\arrow["{UF \eta_X}", from=1-5, to=3-5]
+				\arrow["U\epsilon _{F(X)}"', from=3-1, to=3-3]
+				\arrow["U\epsilon _{F(X)}", from=3-5, to=3-3]
 			\end{tikzcd}
 		\end{equation}
-	The left square commutes because of the naturality of $  \epsilon:FU \to 1_{ \mathbb{A}} $ applied to $ \epsilon_{Fx}:FUFx\to Fx $, which is preserved under $  U $.
+	The left square commutes because of the naturality of $  \epsilon:FU \to \mathrm{id}_{ \mathbb{A}} $ applied to $ \epsilon_{F(X)}:FUF(X)\to F(X) $, which is preserved under $  U $.
 	The right square commutes because of the triangle identities for the adjunction $ (F \dashv U,\eta, \epsilon): \mathbb{ X} \to \mathbb{A} $.
 	The identities are recalled:
 		\begin{equation}\label{thm:triangle-identities-adjunction}
@@ -197,8 +181,8 @@ This is also where we recover the famous ``a monad is just a monoid in \dots"\\
 				\arrow[no head, from=1-4, to=2-3]
 			\end{tikzcd}
 		\end{equation}
-	This is shown by first considering the bottom triangle in \Cref{thm:proof-of-adj-monad}, which is just the $ x $-component of the left triangle of \Cref{thm:triangle-identities-adjunction} under $ U $, and so it commutes.
-	The top triangle in \Cref{thm:proof-of-adj-monad} is the $ Fx $-component of the right triangle in \Cref{thm:proof-of-adj-monad}.
+	This is shown by first considering the bottom triangle in Diagram~\ref{thm:proof-of-adj-monad}, which is just the $ X $-component of the left triangle of Diagram~\ref{thm:triangle-identities-adjunction} under $ U $, and so it commutes.
+	The top triangle in Diagram~\ref{thm:proof-of-adj-monad} is the $ F(X) $-component of the right triangle in Diagram~\ref{thm:proof-of-adj-monad}.
 	This shows that $  (UF, \eta, U \epsilon F) $ is a monad on $ \mathbb{X} $.
 	This monad is called the \textcolor{marlight}{monad defined by the adjunction} $ (F \dashv U, \eta, \epsilon): \mathbb{X}\to \mathbb{A} $.
 \end{proof}
@@ -215,71 +199,71 @@ The answer is \textit{yes}, and is discussed in the next theorem.
 \begin{proof}
 	Define
 		\begin{enumerate}
-			\item the right adjoint $U^{T}: T \textsf{-Alg} \to \mathbb{X}$ to be the forgetful functor, $ U^{T}(x,\xi) := x$;
-			\item the left adjoint $F^{T}: \mathbb{X} \to T\textsf{-Alg}$ to be the free functor, $F^Tx:= (Tx, \mu_{x})$;
-			\item the unit $\eta^{T}: 1_{ \mathbb{X}} \to U^{T}F^{T}$ to be the same $\eta$ of the monad;
+			\item the right adjoint $U^{T}: T \textsf{-Alg} \to \mathbb{X}$ to be the forgetful functor, $ U^{T}(X,\xi) := X$;
+			\item the left adjoint $F^{T}: \mathbb{X} \to T\textsf{-Alg}$ to be the free functor, $F^T(X):= (T(X), \mu_{X})$;
+			\item the unit $\eta^{T}: \mathrm{id}_{ \mathbb{X}} \to U^{T}F^{T}$ to be the same $\eta$ of the monad;
 			% TODO: very dodgy definition
-			\item the counit $ \epsilon^{ T}: F^{T}U^{T} \to 1_{ T\textsf{-Alg}} $ to be $ \epsilon^{ T}_{(Tx,\mu _x)} := \mu_x$. 
+			\item the counit $ \epsilon^{ T}: F^{T}U^{T} \to \mathrm{id}_{ T\textsf{-Alg}} $ to be $ \epsilon^{ T}_{(T(X),\mu _X)} := \mu_X$. 
 			
 		\end{enumerate}		
 	Now it is checked that this is indeed the desired adjunction.
-	Firstly, note that $ (Tx,\mu_x) $ is a $ T $-algebra.
+	Firstly, note that $ (T(X),\mu_X) $ is a $ T $-algebra.
 	That is, the diagram from \Cref{def:t-algebra} commutes:
 		% https://q.uiver.app/#q=WzAsNSxbMCwwLCJUXjN4Il0sWzAsMSwiVF4yeCJdLFsxLDAsIlReMngiXSxbMiwwLCJUeCJdLFsxLDEsIlR4Il0sWzAsMiwiXFxtdV97VHh9Il0sWzAsMSwiVChcXHhpKSIsMl0sWzMsMiwiXFxldGFfe1R4fSIsMl0sWzIsNCwiXFxtdV94IiwyXSxbMSw0LCJcXG11X3giLDJdLFszLDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMyw0LCIiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
 		\[\begin{tikzcd}
-			{T^3x} & {T^2x} & Tx \\
-			{T^2x} & Tx
-			\arrow["{\mu_{Tx}}", from=1-1, to=1-2]
-			\arrow["{T\mu_x}"', from=1-1, to=2-1]
-			\arrow["{\mu_x}"', from=1-2, to=2-2]
-			\arrow["{\eta_{Tx}}"', from=1-3, to=1-2]
+			{T^3(X)} & {T^2(X)} & T(X) \\
+			{T^2(X)} & T(X)
+			\arrow["{\mu_{T(X)}}", from=1-1, to=1-2]
+			\arrow["{T\mu_X}"', from=1-1, to=2-1]
+			\arrow["{\mu_X}"', from=1-2, to=2-2]
+			\arrow["{\eta_{T(X)}}"', from=1-3, to=1-2]
 			\arrow[no head, from=1-3, to=2-2]
 			\arrow[shift left, no head, from=1-3, to=2-2]
-			\arrow["{\mu_x}"', from=2-1, to=2-2]
+			\arrow["{\mu_X}"', from=2-1, to=2-2]
 		\end{tikzcd}\]
-	But this is just the $ x $-component of \Cref{thm:monad-identities}, which commutes because $ T $ is a monad.\\
+	But this is just the $ X $-component of Diagram~\ref{thm:monad-identities}, which commutes because $ T $ is a monad.\\
 	
 	Now to check naturality of $\eta^T$ and $\epsilon^T$.
 	The naturality of $ \eta^T $ is just the naturality of $ \eta $.
-	This is shown by taking $ x $ an object in $\mathbb{X} $, then the $ x $-component of $ \eta^T $ is the morphism in $ \mathbb{X} $, $ \eta^T_x: x \to U^TF^Tx = U^T(Tx, \mu_x)=Tx $, which is the same as $ \eta_x $.
-	Now for $ \epsilon^T $: take $ (x, \xi) $ an object in $ T\textsf{-Alg} $. Then $ F^TU^T(x,\xi) = F^Tx = (Tx, \mu_x) $.
-	Then the $ (x,\xi) $-component of $\epsilon^T$ is $ \epsilon^T_{(x,\xi)}:(Tx,\mu_x) \to (x,\xi) $.
-	Taking a morphism of $ h:(x,\xi) \to (x',\xi') $ in $ T\textsf{-Alg} $ gives a naturality square:
+	This is shown by taking $ X $ an object in $\mathbb{X} $, then the $ X $-component of $ \eta^T $ is the morphism in $ \mathbb{X} $, $ \eta^T_X: X \to U^TF^T(X) = U^T(T(X), \mu_X)=T(X) $, which is the same as $ \eta_X $.
+	Now for $ \epsilon^T $: take $ (X, \xi) $ an object in $ T\textsf{-Alg} $. Then $ F^TU^T(X,\xi) = F^T(X) = (T(X), \mu_X) $.
+	Then the $ (X,\xi) $-component of $\epsilon^T$ is $ \epsilon^T_{(X,\xi)}:(T(X),\mu_X) \to (X,\xi) $.
+	Taking a morphism of $ h:(X,\xi) \to (X',\xi') $ in $ T\textsf{-Alg} $ gives a naturality square:
 		\begin{equation}\label{thm:naturality-of-epsilon-T}
 			% https://q.uiver.app/#q=WzAsNixbMCwwLCIoeCxcXHhpKSJdLFswLDEsIih4JyxcXHhpJykiXSxbMSwwLCIoVHgsIFxcbXVfeCkiXSxbMSwxLCIoVHgnLFxcbXVfe3gnfSkiXSxbMiwwLCIoeCxcXHhpKSJdLFsyLDEsIih4JyxcXHhpJykiXSxbMCwxLCJoIiwyXSxbMiwzLCJGXlRVXlRoIiwyXSxbNCw1LCJoIl0sWzIsNCwiXFxtdV94Il0sWzMsNSwiXFxtdV94JyIsMl1d
 			\begin{tikzcd}
-				{(x,\xi)} & {(Tx, \mu_x)} & {(x,\xi)} \\
-				{(x',\xi')} & {(Tx',\mu_{x'})} & {(x',\xi')}
+				{(X,\xi)} & {(T(X), \mu_X)} & {(X,\xi)} \\
+				{(X',\xi')} & {(T(X)',\mu_{x'})} & {((X)',\xi')}
 				\arrow["h"', from=1-1, to=2-1]
-				\arrow["{\mu_x}", from=1-2, to=1-3]
-				\arrow["{F^TU^Th}"', from=1-2, to=2-2]
+				\arrow["{\mu_X}", from=1-2, to=1-3]
+				\arrow["{F^TU^T(h)}"', from=1-2, to=2-2]
 				\arrow["h", from=1-3, to=2-3]
-				\arrow["{\mu_x'}"', from=2-2, to=2-3]
+				\arrow["{\mu_X'}"', from=2-2, to=2-3]
 			\end{tikzcd}
 		\end{equation}
 		
 	% TODO: must i elaborate on this?
-	For some morphism $ f: x\to x' $ in $\mathbb{X} $, $ F^Tf: (Tx, \mu_x) \to (Tx', \mu_{x'}) $ must be a morphism of $ T $-algebras, which means $ F^Tf: Tx \to Tx' $ must be defined as $ F^Tf := Tf $.
-	Then $ F^TU^Th = Th $. 
-	So $ F^TU^Th $ in \Cref{thm:naturality-of-epsilon-T} becomes $ Th $, and the square thus commutes by naturality of $ \mu $, and becuase $ h $ is a morphism of $ T $-algebras.
-	To check that there is an adjunction is to check the triangles in \Cref{thm:triangle-identities-adjunction} commute.
-	For $ (x,\xi) $ an object in $ T\textsf{-Alg} $ and $ x $ and object in $ \mathbb{X} $, the left triangle is the $ (x,\xi) $-component of the left triangle of \Cref{thm:naturality-of-epsilon-T}, and the right is the $ x $-component of the right triangle of \Cref{thm:naturality-of-epsilon-T}:
+	For some morphism $ f: X\to X' $ in $\mathbb{X} $, $ F^T(f): (T(X), \mu_X) \to (T(X)', \mu_{X'}) $ must be a morphism of $ T $-algebras, which means $ F^T(f): T(X) \to T(X') $ must be defined as $ F^T(f) := T(f) $.
+	Then $ F^TU^T(h) = T(h) $. 
+	So $ F^TU^T(h) $ in Diagram~\ref{thm:naturality-of-epsilon-T} becomes $ T(h) $, and the square thus commutes by naturality of $ \mu $, and becuase $ h $ is a morphism of $ T $-algebras.
+	To check that there is an adjunction is to check the triangles in Diagram~\ref{thm:triangle-identities-adjunction} commute.
+	For $ (X,\xi) $ an object in $ T\textsf{-Alg} $ and $ X $ an object in $ \mathbb{X} $, the left triangle is the $ (X,\xi) $-component of the left triangle of Diagram~\ref{thm:naturality-of-epsilon-T}, and the right is the $ X $-component of the right triangle of Diagram~\ref{thm:naturality-of-epsilon-T}:
 		% https://q.uiver.app/#q=WzAsNixbMCwwLCJUeCJdLFsxLDAsIlReMngiXSxbMSwxLCJUeCJdLFsyLDAsIlR4Il0sWzMsMCwieCJdLFsyLDEsIngiXSxbMCwxLCJUXFxldGFfeCJdLFswLDIsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwyLCIiLDIseyJvZmZzZXQiOjEsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCJcXG11X3giXSxbNCwzLCJcXGV0YV94IiwyXSxbMyw1LCJcXHhpIiwyXSxbNCw1LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsNSwiIiwxLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
 		\[\begin{tikzcd}
-			Tx & {T^2x} & Tx & x \\
-			& Tx & x
-			\arrow["{T\eta_x}", from=1-1, to=1-2]
+			T(X) & {T^2(X)} & T(X) & X \\
+			& T(X) & X
+			\arrow["{T\eta_X}", from=1-1, to=1-2]
 			\arrow[no head, from=1-1, to=2-2]
 			\arrow[shift right, no head, from=1-1, to=2-2]
-			\arrow["{\mu_x}", from=1-2, to=2-2]
+			\arrow["{\mu_X}", from=1-2, to=2-2]
 			\arrow["\xi"', from=1-3, to=2-3]
-			\arrow["{\eta_x}"', from=1-4, to=1-3]
+			\arrow["{\eta_X}"', from=1-4, to=1-3]
 			\arrow[no head, from=1-4, to=2-3]
 			\arrow[shift left, no head, from=1-4, to=2-3]
 		\end{tikzcd}\]
-	The left and right traingles commute respectively from the commutativity of the monad diagram \Cref{thm:monad-identities} and the $ T $-algebra diagram \Cref{def:t-algebra}.\\
+	The left and right traingles commute respectively from the commutativity of Diagram~\ref{thm:monad-identities} and Diagram~\ref{def:t-algebra}.\\
 	
-	Lastly, notice that for an object $ x $ in $\mathbb{X} $, $ U^TF^Tx = Tx $, $ \eta^T = \eta $ and $ U^T\epsilon^TF^Tx=\mu_x $, and so the monad defined by this adjunction is $ T=(T, \eta, \mu) $, as desired.		
+	Lastly, notice that for an object $ X $ in $\mathbb{X} $, $ U^TF^T(X) = T(X) $, $ \eta^T = \eta $ and $ U^T\epsilon^TF^T(X)=\mu_X $, and so the monad defined by this adjunction is $ T=(T, \eta, \mu) $, as desired.		
 	
 \end{proof}
 
@@ -297,7 +281,7 @@ We get a sense of how monadic an adjunction is (or measure its \textit{monadicit
 % TODO: add stuff about desceeeeeent
 % TODO: make a bibliography
 \begin{proof}
-	Define $K: \mathbb{A} \to T\textsf{-Alg}$ by $Ka := (Ua, U \epsilon _a)$, and on morphisms $Kf:=Uf$.
+	Define $K: \mathbb{A} \to T\textsf{-Alg}$ by $K(A) := (U(A), U \epsilon_A)$, and on morphisms $K(f):=U(f)$.
 \end{proof}
 
 There is another arrow that will make the triangle complete: the functor $K$ as defined above has a left adjoint, the functor $L: T\textsf{-Alg} \to \mathbb{A}$. 
@@ -311,24 +295,24 @@ There is another arrow that will make the triangle complete: the functor $K$ as 
 	We define
 	\begin{enumerate}
 	% TODO: finish defn
-		\item the left adjoint $L: T\textsf{-Alg} \to \mathbb{A}$, where $L(x,\xi)$ is defined as the coequaliser of
+		\item the left adjoint $L: T\textsf{-Alg} \to \mathbb{A}$, where $L(X,\xi)$ is defined as the coequaliser of
 		\[\begin{tikzcd}
-			{FUFx} & {Fx} & {L(x,\xi)}
-			\arrow["{\epsilon_{Fx}}", shift left, from=1-1, to=1-2]
-			\arrow["{F\xi}"', shift right, from=1-1, to=1-2]
-			\arrow["{\pi_{(x, \xi)}}", from=1-2, to=1-3]
+			{FUF(X)} & {F(X)} & {L(X,\xi)}
+			\arrow["{\epsilon_{F(X)}}", shift left, from=1-1, to=1-2]
+			\arrow["{F(\xi)}"', shift right, from=1-1, to=1-2]
+			\arrow["{\pi_{(X, \xi)}}", from=1-2, to=1-3]
 		\end{tikzcd}\]
-		\item the right adjoint $K: \mathbb{A} \to  T\textsf{-Alg}$, defined by $Ka:=(Ua, U \epsilon_a)$ on objects and $Kf:=Uf$ on morphisms;
-		\item the unit $\overline{\eta}: 1_{ T\textsf{-Alg}} \to  KL$ defined by $\overline{\eta}_{(x,\xi)}=U\pi_{(x,\xi)}\eta_x$;
-		\item the counit $\overline{ \epsilon}: LK \to 1_{ \mathbb{A}}$ is defined for each $ \overline{ \epsilon}_a$ as the unique morphism making the diagram
+		\item the right adjoint $K: \mathbb{A} \to  T\textsf{-Alg}$, defined by $K(A):=(U(A), U(\epsilon_A))$ on objects and $K(f):=U(f)$ on morphisms;
+		\item the unit $\overline{\eta}: \mathrm{id}_{ T\textsf{-Alg}} \to  KL$ defined by $\overline{\eta}_{(X,\xi)}=U(\pi_{(X,\xi)})\eta_X$;
+		\item the counit $\overline{ \epsilon}: LK \to \mathrm{id}_{ \mathbb{A}}$ is defined for each $ \overline{ \epsilon}_A$ as the unique morphism making the diagram
 		\[\begin{tikzcd}
-			{FUFUa} & {FUa} & {(LUa, U\epsilon_a)}\\ 
-			& & {a}
-			\arrow["{\epsilon_{FUa}}", shift left, from=1-1, to=1-2]
-			\arrow["{FU\epsilon_a}"', shift right, from=1-1, to=1-2]
-			\arrow["{\pi_{(Ua, U \epsilon_a)}}", from=1-2, to=1-3]
-			\arrow["{ \epsilon_a}"', from=1-2, to=2-3]
-			\arrow["{\overline{ \epsilon}_a}", from=1-3, to=2-3]
+			{FUFU(A)} & {FU(A)} & {(LU(A), U\epsilon_A)}\\ 
+			& & {A}
+			\arrow["{\epsilon_{FU(A)}}", shift left, from=1-1, to=1-2]
+			\arrow["{FU\epsilon_A}"', shift right, from=1-1, to=1-2]
+			\arrow["{\pi_{(U(A), U \epsilon_(A))}}", from=1-2, to=1-3]
+			\arrow["{ \epsilon_A}"', from=1-2, to=2-3]
+			\arrow["{\overline{ \epsilon}_A}", from=1-3, to=2-3]
 		\end{tikzcd}\]
 		commute.
 		
@@ -437,25 +421,25 @@ In the case of the adjunction
 \end{lem}
 
 \begin{proof}
-	Working in the context of \Cref{diag:comparison-diagram}, let $ (x,\xi) $ and $ (x',\xi') $ be objects in $  T\textsf{-Alg} $ such that $ (x,\xi) \cong (x',\xi') $.
-	There is an isomorphism $ f:x \to x' $ in $ \mathbb{X}$,  $ U^T(x,\xi) = x \cong x' = U^T(x',\xi')$, and so $ U^T $ reflects isoss.
+	Working in the context of Diagram~\ref{diag:comparison-diagram}, let $ (X,\xi) $ and $ (X',\xi') $ be objects in $  T\textsf{-Alg} $ such that $ (X,\xi) \cong (X',\xi') $.
+	There is an isomorphism $ f:X \to X' $ in $ \mathbb{X}$,  $ U^T(X,\xi) = X \cong X' = U^T(X',\xi')$, and so $ U^T $ reflects isos.
 \end{proof}
 
 % TODO: Full proof 
 \begin{proof}[\textit{Proof of \Cref{thm:beck}}] Consider the situation of \Cref{thm:beck}: \\
 	
 	\begin{itemize}
-		\item[] \textit{ $ (1) \Leftrightarrow (2) $}: Using the labels of \Cref{diag:comparison-diagram}, note that since $ U^TK=U $ and $ U^T $ reflects isos by \Cref{thm:u^t-reflects-isos}, then $ U$ reflects isos iff so does $ K $.
+		\item[] \textit{ $ (1) \Leftrightarrow (2) $}: Using the labels of Diagram~\ref{diag:comparison-diagram}, note that since $ U^TK=U $ and $ U^T $ reflects isos by \Cref{thm:u^t-reflects-isos}, then $ U$ reflects isos iff so does $ K $.
 		Consider the diagram: 
 			% https://q.uiver.app/#q=WzAsNCxbMCwwLCJVRlVGeCJdLFsyLDAsIlVGeCJdLFszLDAsIngiXSxbMywxLCJVTCh4LFxceGkpIl0sWzEsMiwiXFx4aSJdLFsxLDMsIlVcXHBpX3soeCxcXHhpKX0iLDJdLFswLDEsIlVcXGVwc2lsb25fe0Z4fT1cXG11X3giLDAseyJvZmZzZXQiOi0xfV0sWzAsMSwiVUZcXHhpPVRcXHhpIiwyLHsib2Zmc2V0IjoxfV0sWzIsMywiXFxldGEnX3g9VVxccGlfeyh4LFxceGkpfVxcZXRhX3giLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
 			\[\begin{tikzcd}
-				UFUFx && UFx & x \\
-				&&& {UL(x,\xi)}
-				\arrow["{U\epsilon_{Fx}=\mu_x}", shift left, from=1-1, to=1-3]
-				\arrow["{UF\xi=T\xi}"', shift right, from=1-1, to=1-3]
+				UFUF(X) && UF(X) & X \\
+				&&& {UL(X,\xi)}
+				\arrow["{U\epsilon_{F(X)}=\mu_X}", shift left, from=1-1, to=1-3]
+				\arrow["{UF(\xi)=T(\xi)}"', shift right, from=1-1, to=1-3]
 				\arrow["\xi", from=1-3, to=1-4]
-				\arrow["{U\pi_{(x,\xi)}}"', from=1-3, to=2-4]
-				\arrow["{\eta'_x=U\pi_{(x,\xi)}\eta_x}", dashed, from=1-4, to=2-4]
+				\arrow["{U\pi_{(X,\xi)}}"', from=1-3, to=2-4]
+				\arrow["{\eta'_X=U\pi_{(X,\xi)}\eta_X}", dashed, from=1-4, to=2-4]
 			\end{tikzcd}\]
 	\end{itemize}
 	
@@ -466,7 +450,7 @@ In the case of the adjunction
 			\arrow["v"', shift right, from=1-1, to=1-2]
 		\end{tikzcd}
 	with in $ \mathbb{X}$. Suppose $ U( \mathcal{D})$ has an absolute coequaliser $q$.
-
+	% TODO - definition of abs coeq
 	% https://q.uiver.app/#q=WzAsNSxbMCwwLCJUKFgpIl0sWzEsMCwiVChYJykiXSxbMCwxLCJYIl0sWzEsMSwiWCciXSxbMiwxLCJRIl0sWzAsMiwiXFx4aSIsMl0sWzEsMywiXFx4aSciXSxbMCwxLCJUKHUpIiwwLHsib2Zmc2V0IjotMX1dLFswLDEsIlQodikiLDIseyJvZmZzZXQiOjF9XSxbMiwzLCJ1IiwwLHsib2Zmc2V0IjotMX1dLFsyLDMsInYiLDIseyJvZmZzZXQiOjF9XSxbMyw0LCJxIiwyXV0=
 	\[\begin{tikzcd}
 		{T(X)} & {T(X')} & \\
@@ -556,8 +540,8 @@ Let us only prove the second point.
 Given a functor $\mathbb{A} \xrightarrow{J} \mathbb{B}$, an \textcolor{marlight}{adjoint triangle for $ J$} consists of a category $ \mathbb{C}$, and adjunctions 
 	\begin{align}
 		(E \dashv R, \rho, \mu): \mathbb{A} \to \mathbb{C}, &\quad (L \dashv U, \eta, \varepsilon): \mathbb{B} \to \mathbb{C}\\
-		\rho: \textsf{id}_{ \mathbb{A}} \to RE, &\quad \eta: \textsf{id}_{ \mathbb{B}} \to UL \\
-		\mu: ER \to \textsf{id}_{ \mathbb{C}}, &\quad \epsilon: LU \to \textsf{id}_{ \mathbb{C}} 
+		\rho: \mathrm{id}_{ \mathbb{A}} \to RE, &\quad \eta: \mathrm{id}_{ \mathbb{B}} \to UL \\
+		\mu: ER \to \mathrm{id}_{ \mathbb{C}}, &\quad \epsilon: LU \to \mathrm{id}_{ \mathbb{C}} 
 	\end{align}
 	
 	
@@ -645,7 +629,7 @@ In the notation above, given an adjoint triangle for a functor $J$, there is a n
 	Assume that	$ \eta $ is the equaliser of the diagram
 			% https://q.uiver.app/#q=WzAsMyxbMiwwLCJVTFVMIl0sWzEsMCwiVUwiXSxbMCwwLCJcXHRleHRzZntpZH1feyBcXG1hdGhiYntCfX0iXSxbMiwxLCJcXGV0YSJdLFsxLDAsIlVMXFxldGEiLDAseyJvZmZzZXQiOi0xfV0sWzEsMCwiXFxldGEgVUwiLDIseyJvZmZzZXQiOjF9XV0=
 				\[\begin{tikzcd}
-				{\textsf{id}_{ \mathbb{B}}} & UL & ULUL
+				{ \mathrm{id}_{ \mathbb{B}}} & UL & ULUL
 				\arrow["\eta", from=1-1, to=1-2]
 				\arrow["{UL\eta}", shift left, from=1-2, to=1-3]
 				\arrow["{\eta UL}"', shift right, from=1-2, to=1-3]
