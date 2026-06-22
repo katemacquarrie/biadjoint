@@ -645,7 +645,7 @@ In the notation above, given an adjoint triangle for a functor $J$, there is a n
 	% TODO is this the same as fernando's one?
 	Assume that	$ \eta $ is the equaliser of the diagram
 			% https://q.uiver.app/#q=WzAsMyxbMiwwLCJVTFVMIl0sWzEsMCwiVUwiXSxbMCwwLCJcXHRleHRzZntpZH1feyBcXG1hdGhiYntCfX0iXSxbMiwxLCJcXGV0YSJdLFsxLDAsIlVMXFxldGEiLDAseyJvZmZzZXQiOi0xfV0sWzEsMCwiXFxldGEgVUwiLDIseyJvZmZzZXQiOjF9XV0=
-				\[\begin{tikzcd}
+				\[\begin{tikzcd}\label{diag:eta-equaliser}
 				{ \mathrm{id}_{ \mathbb{B}}} & UL & ULUL
 				\arrow["\eta", from=1-1, to=1-2]
 				\arrow["{UL\eta}", shift left, from=1-2, to=1-3]
@@ -653,7 +653,7 @@ In the notation above, given an adjoint triangle for a functor $J$, there is a n
 			\end{tikzcd}\].
 	If the equaliser of the diagram
 			% https://q.uiver.app/#q=WzAsMixbMCwwLCJSTCJdLFsyLDAsIlJMVUwiXSxbMCwxLCJSTFxcZXRhIiwwLHsib2Zmc2V0IjotMX1dLFswLDEsIlJMXFxTaWdtYSBMIFxccmhvIFJMIiwyLHsib2Zmc2V0IjoxfV1d
-			\[\begin{tikzcd}
+			\[\begin{tikzcd}\label{diag:g-equaliser}
 				RL && RLUL
 				\arrow["{RL\eta}", shift left, from=1-1, to=1-3]
 				\arrow["{RL\Sigma L \rho RL}"', shift right, from=1-1, to=1-3]
@@ -663,11 +663,44 @@ In the notation above, given an adjoint triangle for a functor $J$, there is a n
 
 \begin{proof}
 	Firstly note that for some object $ Y $ in $  \mathbb{B} $, the $ Y $-component of $ RL\Sigma L \rho RL $ is calculated as: 
-		\[( RL\Sigma L \rho RL )_Y = RL(\Sigma_{L(Y)})\rho_{RL(Y)} = RL(U\mu \cdot \eta JR)_{L(Y)} \rho_{RL(Y)}= RL(U(\mu_{L(Y)})\eta_{JRL(Y)})\rho_{RL(Y)}
-		\]
+	\[( RL\Sigma L \rho RL )_Y = RL(\Sigma_{L(Y)})\rho_{RL(Y)} = RL(U\mu \cdot \eta JR)_{L(Y)} \rho_{RL(Y)}= RL(U(\mu_{L(Y)})\eta_{JRL(Y)})\rho_{RL(Y)}
+	\]
 	which is how the theorem is stated in \cite{NuneBT}.
+	For each pair of objects $ B $ in $ \mathbb{B} $ and $ C $ in $ \mathbb{C} $, let
+		\[
+		\chi_{(B,C)}: \mathbb{C}(L(B),C) \cong \mathbb{B}(B,U(C))
+		\]
+	denote the natural isomorphism associated to the adjunction $ L\dashv U $, given by $ \chi_{(B,C)} = \mathbb{B}(\eta_B, U(C))\circ U_{L(B),C}$.
+	Next, we will prove there is a natural isomorphism $\mathbb{A}(-, G-) \cong \mathbb{B}(J-,-) $.
+	Assuming the situation of the theorem.
+	Diagram~\ref{diag:eta-equaliser} is an equaliser iff for every pair of objects $ X, Y $ in $ \mathbb{B} $, the diagram
+		% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG1hdGhiYntCfShYLFkpIl0sWzIsMCwiVUxZIl0sWzQsMCwiVUxVTFkiXSxbMCwxLCJcXG1hdGhiYntCfShYLFxcZXRhX1kpIl0sWzEsMiwiXFxtYXRoYmJ7Qn0oWCxVTChcXGV0YV9ZKSkiLDAseyJvZmZzZXQiOi0xfV0sWzEsMiwiXFxtYXRoYmJ7Qn0oWCxcXGV0YV97VUwoWSl9KSIsMix7Im9mZnNldCI6MX1dXQ==
+		\[\begin{tikzcd}
+		{\mathbb{B}(X,Y)} && {\mathbb{B}(X,ULY)} && {\mathbb{B}(X,ULULY)}
+		\arrow["{\mathbb{B}(X,\eta_Y)}", from=1-1, to=1-3]
+		\arrow["{\mathbb{B}(X,UL(\eta_Y))}", shift left, from=1-3, to=1-5]
+		\arrow["{\mathbb{B}(X,\eta_{UL(Y)})}"', shift right, from=1-3, to=1-5]
+		\end{tikzcd}\]
+	is an equaliser (by the fully-faithful \textit{Yoneda embedding}).
+	Now let $ X = J(A) $ for some object $ A $ in $  \mathbb{A} $ and consider the natural isomorphisms:
+		% https://q.uiver.app/#q=WzAsNSxbMCwwLCJcXG1hdGhiYntCfShKQSxZKSJdLFsyLDAsIntcXG1hdGhiYntCfShKQSxVTFkpfSJdLFs0LDAsIntcXG1hdGhiYntCfShKQSxVTFVMWSl9Il0sWzAsMSwiXFxtYXRoYmJ7Qn0oSkEsWSkiXSxbMiwxLCJcXG1hdGhiYntDfShMSkEsTFkpIl0sWzAsMSwiXFxtYXRoYmJ7Qn0oSkEsXFxldGFfWSkiXSxbMSwyLCJcXG1hdGhiYntCfShKQSxVTChcXGV0YV9ZKSkiLDAseyJvZmZzZXQiOi0xfV0sWzEsMiwiXFxtYXRoYmJ7Qn0oSkEsXFxldGFfe1VMKFkpfSkiLDIseyJvZmZzZXQiOjF9XSxbNCwxLCJcXGMiLDIseyJvZmZzZXQiOi0yfV1d
+		\[\begin{tikzcd}
+		{\mathbb{B}(JA,Y)} && {{\mathbb{B}(JA,ULY)}} && {{\mathbb{B}(JA,ULULY)}} \\
+		{\mathbb{B}(JA,Y)} && {\mathbb{C}(LJA,LY)}
+		\arrow["{\mathbb{B}(JA,\eta_Y)}", from=1-1, to=1-3]
+		\arrow["{\mathbb{B}(JA,UL(\eta_Y))}", shift left, from=1-3, to=1-5]
+		\arrow["{\mathbb{B}(JA,\eta_{UL(Y)})}"', shift right, from=1-3, to=1-5]
+		\arrow[""', shift left=2, from=2-3, to=1-3]
+		\end{tikzcd}\]
+		
+	
 \end{proof}
 
+\begin{cor}
+ % TODO Rephrasing adjoint triangle theorem with fernandos definitions
+ 
+ 
+\end{cor}
 % TODO Hom to \Hom
 
 Because the Yoneda embedding preserves limits, the \textit{Adjoint Triangle Theorem} may equivalently be formulated in terms of $ \hom $-sets.
