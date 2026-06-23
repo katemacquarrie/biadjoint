@@ -662,38 +662,89 @@ In the notation above, given an adjoint triangle for a functor $J$, there is a n
 \end{thm}
 
 \begin{proof}
+	The proof will follow a strategy similar to \cite{NuneBT}, therefore the theorem will first be translated into the form it takes in \cite{NuneBT}.
 	Firstly note that for some object $ Y $ in $  \mathbb{B} $, the $ Y $-component of $ RL\Sigma L \rho RL $ is calculated as: 
 	\[( RL\Sigma L \rho RL )_Y = RL(\Sigma_{L(Y)})\rho_{RL(Y)} = RL(U\mu \cdot \eta JR)_{L(Y)} \rho_{RL(Y)}= RL(U(\mu_{L(Y)})\eta_{JRL(Y)})\rho_{RL(Y)}
 	\]
 	which is how the theorem is stated in \cite{NuneBT}.
 	For each pair of objects $ B $ in $ \mathbb{B} $ and $ C $ in $ \mathbb{C} $, let
-		\[
-		\chi_{(B,C)}: \mathbb{C}(L(B),C) \cong \mathbb{B}(B,U(C))
-		\]
-	denote the natural isomorphism associated to the adjunction $ L\dashv U $, given by $ \chi_{(B,C)} = \mathbb{B}(\eta_B, U(C))\circ U_{L(B),C}$.
+		% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXG1hdGhiYntDfShMKEIpLEMpIl0sWzIsMCwiXFxtYXRoYmJ7Qn0oQixVKEMpKSJdLFswLDEsIlxcY2hpX3soQixDKX0iLDAseyJvZmZzZXQiOi0yfV0sWzEsMCwiXFxwc2lfeyhCLEMpfSIsMCx7Im9mZnNldCI6LTJ9XSxbMCwxLCJcXGNvbmciLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+		\[\begin{tikzcd}
+			{\mathbb{C}(L(B),C)} && {\mathbb{B}(B,U(C))}
+			\arrow["{\chi_{(B,C)}}", shift left=2, from=1-1, to=1-3]
+			\arrow["\cong"{description}, draw=none, from=1-1, to=1-3]
+			\arrow["{\psi_{(B,C)}}", shift left=2, from=1-3, to=1-1]
+		\end{tikzcd}\]
+	denote the natural isomorphism associated to the adjunction $ L\dashv U $.
+	The maps are given by 
+		\[\chi_{(B,C)} = \mathbb{B}(\eta_B, U(C))\circ U_{L(B),C} \text{ and } \psi_{(B,C)} = \mathbb{C}(L(B), \epsilon_C)\circ L_{B,U(C)} .\]
 	Next, we will prove there is a natural isomorphism $\mathbb{A}(-, G-) \cong \mathbb{B}(J-,-) $.
 	Assuming the situation of the theorem.
 	Diagram~\ref{diag:eta-equaliser} is an equaliser iff for every pair of objects $ X, Y $ in $ \mathbb{B} $, the diagram
 		% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG1hdGhiYntCfShYLFkpIl0sWzIsMCwiVUxZIl0sWzQsMCwiVUxVTFkiXSxbMCwxLCJcXG1hdGhiYntCfShYLFxcZXRhX1kpIl0sWzEsMiwiXFxtYXRoYmJ7Qn0oWCxVTChcXGV0YV9ZKSkiLDAseyJvZmZzZXQiOi0xfV0sWzEsMiwiXFxtYXRoYmJ7Qn0oWCxcXGV0YV97VUwoWSl9KSIsMix7Im9mZnNldCI6MX1dXQ==
 		\[\begin{tikzcd}
-		{\mathbb{B}(X,Y)} && {\mathbb{B}(X,ULY)} && {\mathbb{B}(X,ULULY)}
+		{\mathbb{B}(X,Y)} && {\mathbb{B}(X,UL(Y))} && {\mathbb{B}(X,ULUL(Y))}
 		\arrow["{\mathbb{B}(X,\eta_Y)}", from=1-1, to=1-3]
 		\arrow["{\mathbb{B}(X,UL(\eta_Y))}", shift left, from=1-3, to=1-5]
 		\arrow["{\mathbb{B}(X,\eta_{UL(Y)})}"', shift right, from=1-3, to=1-5]
 		\end{tikzcd}\]
 	is an equaliser (by the fully-faithful \textit{Yoneda embedding}).
-	Now let $ X = J(A) $ for some object $ A $ in $  \mathbb{A} $ and consider the natural isomorphisms:
-		% https://q.uiver.app/#q=WzAsNSxbMCwwLCJcXG1hdGhiYntCfShKQSxZKSJdLFsyLDAsIntcXG1hdGhiYntCfShKQSxVTFkpfSJdLFs0LDAsIntcXG1hdGhiYntCfShKQSxVTFVMWSl9Il0sWzAsMSwiXFxtYXRoYmJ7Qn0oSkEsWSkiXSxbMiwxLCJcXG1hdGhiYntDfShMSkEsTFkpIl0sWzAsMSwiXFxtYXRoYmJ7Qn0oSkEsXFxldGFfWSkiXSxbMSwyLCJcXG1hdGhiYntCfShKQSxVTChcXGV0YV9ZKSkiLDAseyJvZmZzZXQiOi0xfV0sWzEsMiwiXFxtYXRoYmJ7Qn0oSkEsXFxldGFfe1VMKFkpfSkiLDIseyJvZmZzZXQiOjF9XSxbNCwxLCJcXGMiLDIseyJvZmZzZXQiOi0yfV1d
+	Now let $ X = J(A) $ for some object $ A $ in $  \mathbb{A} $ and consider the diagram:
+		% https://q.uiver.app/#q=WzAsNyxbMCwwLCJcXG1hdGhiYntCfShKKEEpLFkpIl0sWzIsMCwie1xcbWF0aGJie0J9KEooQSksVUwoWSl9Il0sWzQsMCwie1xcbWF0aGJie0J9KEooQSksVUxVTChZKSl9Il0sWzAsMSwiXFxtYXRoYmJ7Qn0oSihBKSxZKSJdLFsyLDEsIlxcbWF0aGJie0N9KExKKEEpLEwoWSkpIl0sWzQsMSwiXFxtYXRoYmJ7Q30oTEooQSksTFVMKFkpKSJdLFs0LDJdLFswLDEsIlxcbWF0aGJie0J9KEooQSksXFxldGFfWSkiXSxbMSwyLCJcXG1hdGhiYntCfShKKEEpLFVMKFxcZXRhX1kpKSIsMCx7Im9mZnNldCI6LTF9XSxbMSwyLCJcXG1hdGhiYntCfShKKEEpLFxcZXRhX3tVTChZKX0pIiwyLHsib2Zmc2V0IjoxfV0sWzAsMywiIiwyLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCwxLCJcXGNoaV97KEooQSksTChZKSl9IiwwLHsib2Zmc2V0IjotMX1dLFsxLDQsIlxccHNpX3soSihBKSxMKFkpKX0iLDAseyJvZmZzZXQiOi0xfV0sWzMsNCwiTF97SihBKSxZfSIsMl0sWzIsNSwiXFxwc2lfeyhKKEEpLCBVTFVMKFkpKX0iXSxbNCw1LCJcXG1hdGhiYntDfShMSihBKSxMKFxcZXRhX1kpKSIsMCx7Im9mZnNldCI6LTF9XSxbNCw1LCJcXGdhbW1hX1kiLDIseyJvZmZzZXQiOjF9XV0=
 		\[\begin{tikzcd}
-		{\mathbb{B}(JA,Y)} && {{\mathbb{B}(JA,ULY)}} && {{\mathbb{B}(JA,ULULY)}} \\
-		{\mathbb{B}(JA,Y)} && {\mathbb{C}(LJA,LY)}
-		\arrow["{\mathbb{B}(JA,\eta_Y)}", from=1-1, to=1-3]
-		\arrow["{\mathbb{B}(JA,UL(\eta_Y))}", shift left, from=1-3, to=1-5]
-		\arrow["{\mathbb{B}(JA,\eta_{UL(Y)})}"', shift right, from=1-3, to=1-5]
-		\arrow[""', shift left=2, from=2-3, to=1-3]
+			{\mathbb{B}(J(A),Y)} && {{\mathbb{B}(J(A),UL(Y)}} && {{\mathbb{B}(J(A),ULUL(Y))}} \\
+			{\mathbb{B}(J(A),Y)} && {\mathbb{C}(LJ(A),L(Y))} && {\mathbb{C}(LJ(A),LUL(Y))} \\
+			&&&& {}
+			\arrow["{\mathbb{B}(J(A),\eta_Y)}", from=1-1, to=1-3]
+			\arrow[equals, from=1-1, to=2-1]
+			\arrow["{\mathbb{B}(J(A),UL(\eta_Y))}", shift left, from=1-3, to=1-5]
+			\arrow["{\mathbb{B}(J(A),\eta_{UL(Y)})}"', shift right, from=1-3, to=1-5]
+			\arrow["{\psi_{(J(A),L(Y))}}", shift left, from=1-3, to=2-3]
+			\arrow["{\psi_{(J(A), ULUL(Y))}}", from=1-5, to=2-5]
+			\arrow["{L_{J(A),Y}}"', from=2-1, to=2-3]
+			\arrow["{\chi_{(J(A),L(Y))}}", shift left, from=2-3, to=1-3]
+			\arrow["{\mathbb{C}(LJ(A),L(\eta_Y))}", shift left, from=2-3, to=2-5]
+			\arrow["{\gamma_Y}"', shift right, from=2-3, to=2-5]
 		\end{tikzcd}\]
-		
-	
+		Where $ \gamma_Y = \psi_{(J(A), ULUL(Y))}\circ \mathbb{B}(J(A), \eta_{UL(Y)}) \circ \chi_{(J(A), L(Y))} $.
+		We verify the diagram commutes:
+			\begin{itemize}
+				\item The left rectangle commutes: some $ f \in \mathbb{B}(J(A),Y) $ is sent to $ \epsilon_{L(Y)}\cdot L(\eta_Y\cdot f) \in \mathbb{C}(LJ(A), L(Y)) $ via $ \psi_{(J(A),L(Y) )} \circ \mathbb{B}(J(A),\eta_Y) $.
+				But $ \epsilon_{L(Y)}\cdot L(\eta_Y\cdot f) =\epsilon_{L(Y)}\cdot L(\eta_Y)\cdot L(f) = L(f) $ by Theorem~\ref{thm:triangle-identities-adjunction}.
+				So the left rectangle commutes.
+				% TODO: alternatively
+				%\item The upper right rectangle commutes: some $ g\in \mathbb{B}(J(A),UL(Y)) $ is sent to $\epsilon_{LUL(Y)}\cdot LUL(\eta_Y)\cdot L(g) = L(g)$ via $ \psi_{(J(A),ULUL(Y))} \circ \mathbb{B}(J(A),UL(\eta_{Y}))$.
+				\item The upper right rectangle commutes via naturality of $ \psi_{(J(A), -)} $.
+				\item The lower right rectangle commutes by construction.
+				
+			\end{itemize}
+		Then we complete the commutative diagram:
+		% https://q.uiver.app/#q=WzAsOSxbMCwwLCJcXG1hdGhiYntCfShKKEEpLFkpIl0sWzIsMCwie1xcbWF0aGJie0J9KEooQSksVUwoWSl9Il0sWzQsMCwie1xcbWF0aGJie0J9KEooQSksVUxVTChZKSl9Il0sWzAsMSwiXFxtYXRoYmJ7Qn0oSihBKSxZKSJdLFsyLDEsIlxcbWF0aGJie0N9KExKKEEpLEwoWSkpIl0sWzQsMSwiXFxtYXRoYmJ7Q30oTEooQSksTFVMKFkpKSJdLFswLDIsIlxcbWF0aGJie0J9KEooQSksWSkiXSxbMiwyLCJcXG1hdGhiYntDfShFKEEpLEwoWSkpIl0sWzQsMiwiXFxtYXRoYmJ7Q30oRShBKSxMVUwoWSkpIl0sWzAsMSwiXFxtYXRoYmJ7Qn0oSihBKSxcXGV0YV9ZKSJdLFsxLDIsIlxcbWF0aGJie0J9KEooQSksVUwoXFxldGFfWSkpIiwwLHsib2Zmc2V0IjotMX1dLFsxLDIsIlxcbWF0aGJie0J9KEooQSksXFxldGFfe1VMKFkpfSkiLDIseyJvZmZzZXQiOjF9XSxbMCwzLCIiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDEsIlxcY2hpX3soSihBKSxMKFkpKX0iLDAseyJvZmZzZXQiOi0xfV0sWzEsNCwiXFxwc2lfeyhKKEEpLEwoWSkpfSIsMCx7Im9mZnNldCI6LTF9XSxbMyw0LCJMX3tKKEEpLFl9IiwyXSxbMiw1LCJcXHBzaV97KEooQSksIFVMVUwoWSkpfSJdLFs0LDUsIlxcbWF0aGJie0N9KExKKEEpLEwoXFxldGFfWSkpIiwwLHsib2Zmc2V0IjotMX1dLFs0LDUsIlxcZ2FtbWFfWSIsMix7Im9mZnNldCI6MX1dLFszLDYsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsNywiIiwyLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSw4LCIiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDcsIkxfe0ooQSksWX0iLDJdLFs3LDgsIlxcbWF0aGJie0N9KEUoQSksTChcXGV0YV9ZKSkiLDAseyJvZmZzZXQiOi0xfV0sWzcsOCwiXFxnYW1tYV9ZIiwyLHsib2Zmc2V0IjoxfV1d
+		\[\begin{tikzcd}
+			{\mathbb{B}(J(A),Y)} && {{\mathbb{B}(J(A),UL(Y)}} && {{\mathbb{B}(J(A),ULUL(Y))}} \\
+			{\mathbb{B}(J(A),Y)} && {\mathbb{C}(LJ(A),L(Y))} && {\mathbb{C}(LJ(A),LUL(Y))} \\
+			{\mathbb{B}(J(A),Y)} && {\mathbb{C}(E(A),L(Y))} && {\mathbb{C}(E(A),LUL(Y))}
+			\arrow["{\mathbb{B}(J(A),\eta_Y)}", from=1-1, to=1-3]
+			\arrow[equals, from=1-1, to=2-1]
+			\arrow["{\mathbb{B}(J(A),UL(\eta_Y))}", shift left, from=1-3, to=1-5]
+			\arrow["{\mathbb{B}(J(A),\eta_{UL(Y)})}"', shift right, from=1-3, to=1-5]
+			\arrow["{\psi_{(J(A),L(Y))}}", shift left, from=1-3, to=2-3]
+			\arrow["{\psi_{(J(A), ULUL(Y))}}", from=1-5, to=2-5]
+			\arrow["{L_{J(A),Y}}"', from=2-1, to=2-3]
+			\arrow[equals, from=2-1, to=3-1]
+			\arrow["{\chi_{(J(A),L(Y))}}", shift left, from=2-3, to=1-3]
+			\arrow["{\mathbb{C}(LJ(A),L(\eta_Y))}", shift left, from=2-3, to=2-5]
+			\arrow["{\gamma_Y}"', shift right, from=2-3, to=2-5]
+			\arrow[equals, from=2-3, to=3-3]
+			\arrow[equals, from=2-5, to=3-5]
+			\arrow["{L_{J(A),Y}}"', from=3-1, to=3-3]
+			\arrow["{\mathbb{C}(E(A),L(\eta_Y))}", shift left, from=3-3, to=3-5]
+			\arrow["{\gamma_Y}"', shift right, from=3-3, to=3-5]
+		\end{tikzcd}\]
+		A morphism $ g\in \mathbb{C}(E(A),L(Y)) $ is sent to $ \epsilon_{LUL(Y)} \cdot L(\eta_{UL(Y)}) \cdot LU(g) \cdot L(\eta_{J(A)})= L(U(g) \cdot \eta_{J(A)})$ under $ \gamma_Y $.
+		This means that $ \gamma_Y = L_{J(A),UL(Y)} \circ \chi_{(J(A),L(Y))}$.
+		So the bottom line of the diagram is now as it appears in \cite{NuneBT}.
+			
 \end{proof}
 
 \begin{cor}
